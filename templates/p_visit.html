@@ -16,6 +16,7 @@
 		<link rel="stylesheet" href="{% static '/plugins/datepicker-in-fullscreen/datepicker-in-fullscreen.css' %}">
 		<!-- Bootstrap -->
         <link href="{% static '/css/bs5/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+{#    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">#}
         <!-- Icons -->
         <link href="{% static '/css/materialdesignicons.min.css' %}" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.7/css/unicons.cs">
@@ -357,7 +358,7 @@
 
                                         <div class="form-group mb-0">
                                             <!--<a href="javascript:void(0);" id="loadTestInfo" class="btn btn-primary w-100 disabled" data-loading-text="잠시만 기다려 주세요..."> 교통안전공단 시스템 점검으로 예약이 되지 않습니다.</a>-->
-                                            <a href="javascript:void(0);" id="loadTestInfo" data-bs-toggle="modal" data-bs-target="#register_alert" class="btn btn-primary shadow-none w-100" data-loading-text="잠시만 기다려 주세요..."><i data-feather="search" class="fea icon-sm"> </i> 자동차검사정보 조회</a>
+                                            <a href="javascript:void(0);" id="loadTestInfo" class="btn btn-primary shadow-none w-100" data-loading-text="잠시만 기다려 주세요..."><i data-feather="search" class="fea icon-sm"> </i> 자동차검사정보 조회</a>
                                         </div>
                                     </form>
 								</div>
@@ -1963,13 +1964,13 @@
 										<div class="col-md-12 order-2 order-md-1">
 											<dl class="row">
 												<dt class="col-md-3 col-6 font-weight-normal">자동차 :</dt>
-												<dd class="col-md-9 col-6 text-muted text-right" id="carname_alert_display"></dd>
+												<dd class="col-md-9 col-6 text-muted text-right" id="carname_alert_display" class="carname_display"></dd>
 
 												<dt class="col-md-3 col-6 font-weight-normal">다음검사일 :</dt>
-												<dd class="col-md-9 col-6 text-muted text-right" id="expdate_alert_display"></dd>
+												<dd class="col-md-9 col-6 text-muted text-right" id="expdate_alert_display" ></dd>
 
 												<dt class="col-md-3 col-6 font-weight-normal">검사안내일 :</dt>
-												<dd class="col-md-9 col-6 text-muted text-right" id="alertdate_display"></dd>
+												<dd class="col-md-9 col-6 text-muted text-right" id="alertdate_alert_display"></dd>
 												<input type="hidden" id="carname_alert"	name="carname_alert" placeholder="자동차 정보" readonly="">
 												<input type="hidden" id="expdate_alert"	name="expdate_alert" placeholder="다음검사일" readonly="">
 												<input type="hidden" id="alertdate_alert" name="alertdate_alert" placeholder="검사안내일" readonly="">
@@ -2089,6 +2090,8 @@
     <!-- javascript -->
     <script src="{% static '/js/jquery.min.js' %}"></script>
     <script src="{% static '/js/bootstrap.bundle.min.js' %}"></script>
+{#    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>#}
+{#    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>#}
     <script src="{% static '/js/jquery.easing.min.js' %}"></script>
     <script src="{% static '/js/scrollspy.min.js' %}"></script>
     <!-- Icons -->
@@ -2187,27 +2190,41 @@
         const carno = document.querySelector('#carno');
         const bymd = document.querySelector('#bymd');
 
+        carno.value = '28어2384'
+        bymd.value = '960324'
+        // get 방식
         loadTestInfo.addEventListener('click', () => {
-            let qry = '?carno=' + carno.value + '&&bymd=' + bymd.value;
+            let qry = '?carno=' + carno.value + '&bymd=' + bymd.value;
 
             fetch('{% url 'carinfo' %}' + qry)
                 .then(response => response.text())
                 .then(text => expInfo(text));
         });
-        const carname_alt = document.querySelector('#carname_alert');
-        const expdate_alt = document.querySelector('#expdate_alert');
-        const alertdate_alt = document.querySelector('#alertdate_alert');
+        const carname_alt = document.querySelector('#carname_alert_display');
+        const expdate_alt = document.querySelector('#expdate_alert_display');
+        const alertdate_alt = document.querySelector('#alertdate_alert_display');
         const expInfo = (expdate) => {
             expdate = JSON.parse(expdate);
             console.log(expdate)
-            md_expdate = expdate.fdate + '~' + expdate.edate;
-            md_fdate = expdate.fdate;
+            let md_expdate = expdate.fdate + '~' + expdate.edate;
+            let md_fdate = expdate.fdate;
+            expdate_alt.innerHTML= md_expdate;
+            alertdate_alt.innerHTML = md_fadte;
 
-            carname_alt.innerHTML = carno.value;
-            expdate_alt.innerHTML = md_expdate;
-            alertdate_alt.innerHTML = md_fdate;
-            console.log(carno.value, '/',md_expdate, '/',md_fdate )
-        }
+            console.log(carno.value, '/',md_expdate, '/',md_fdate );
+
+
+
+
+            // Show the Modal on load
+            $("#register_alert").modal('show')
+            {#$("#register_alert").on('show.bs.modal', function (event) {#}
+            {#    $(this).find('.carname_display').text('kkk')#}
+            {# }); #}
+
+        };
+
+        // post 방식
     {#    loadTestInfo.addEventListener('click', () => {#}
     {#        let car_info = { carno: carno.value, birth: bymd.value };#}
     {#        jscarinfo = JSON.stringify(car_info);#}
@@ -2222,7 +2239,7 @@
     </script>  <!-- 자동차검사정보 조회 -->
 
 	<!-- 모터맨 스크립트 -->
-{#	<script type="text/javascript">#}
+	<script type="text/javascript">
 {#		var disabledDays = ['2022-01-01','2022-01-31','2022-02-01','2022-02-02','2022-03-01','2022-03-09','2022-05-05','2022-06-01','2022-06-06','2022-08-15','2022-09-09','2022-09-10','2022-09-12','2022-10-03','2022-10-10','2022-12-25'];#}
 {#		/*#}
 {#		FLATPICKR DISABLED#}
@@ -2318,7 +2335,7 @@
 {##}
 {#			// End Channel Plugin -->#}
 {#	});#}
-{#	</script>#}
+	</script>
 
 	<!-- // 자동차 검사 일시 정보  layer -->
 	<form action="" name="frm" id="frm" method="post" style="">
