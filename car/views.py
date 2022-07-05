@@ -16,6 +16,7 @@ class CarView(View):
     def get(self, request):
         form = request.GET.dict()
         # print(form)
+
         try:
             carno = form['carno']
             bymd = form['bymd']
