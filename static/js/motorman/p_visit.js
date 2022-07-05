@@ -681,9 +681,10 @@ carInfo = {
 			theme: 'dark'
 		});
 
+		var qry = '?carno=' + '28어2384' + '&bymd=' + '960324';
 		$.ajax({
-			type : "post",
-			url : "{% url 'car' %}",
+			type : "get",
+			url : "{% url 'carinfo' %}" + qry,
 			contentType : "application/x-www-form-urlencoded; charset=UTF-8",
 			data : {"no1" : carNo, "no2" : bymd, "no3" : sido, "no4" : gugun, "no5" : dong, "no6" : addretc, "no7" : cost2},
 			dataType : "json",
