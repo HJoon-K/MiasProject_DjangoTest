@@ -9,5 +9,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.CarView.as_view(), name='carinfo'),
+    path('', views.CarinfoView.as_view(), name='carinfo'),
 ]

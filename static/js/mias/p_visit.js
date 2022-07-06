@@ -683,9 +683,9 @@ carInfo = {
 
 		var qry = '?carno=' + '28어2384' + '&bymd=' + '960324';
 		$.ajax({
-			type : "get",
-			url : "{% url 'carinfo' %}" + qry,
-			contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+			type : "post",
+			url : "{% url 'carinfo' %}",
+			// contentType : "application/x-www-form-urlencoded; charset=UTF-8",
 			data : {"no1" : carNo, "no2" : bymd, "no3" : sido, "no4" : gugun, "no5" : dong, "no6" : addretc, "no7" : cost2},
 			dataType : "json",
 			success : function(data) {
@@ -707,15 +707,16 @@ carInfo = {
 					$('#enddate').val(data.result.tvdt);
 					$('#expdate').val(data.result.middate);
 					//$('#h_cost1').val(data.result.cost1);
-
+					//
 					$('#h_bymd').val(bymd);
 					$('#h_carno').val(carNo);
-					$("#h_carsize").val(data.result.class);
-
-					$('#h_owner_pnm').val(data.result.owner_pnm);
-					$('#h_vin').val(data.result.vin);
-
-					$('#h_makeymd').val(data.result.make_ymd);
+					// $("#h_carsize").val(data.result.class);
+					//
+					// $('#h_owner_pnm').val(data.result.owner_pnm);
+					// $('#h_vin').val(data.result.vin);
+					//
+					// $('#h_makeymd').val(data.result.make_ymd);
+			// =========================================================================  test
 					/*
 					var total = data.result.cost1 + parseInt($('#h_cost2').val());
 					var prepaid_cost = $('#prepaid_cost').val();						//회원 할인
@@ -2321,7 +2322,7 @@ function innopay_result(data){
 					f.act.value	= json.act;
 					f.u.value	= json.u;
 					f.o.value	= json.o;
-					f.action		= './p_visit.html';
+					f.action		= './p_visit-1.html';
 					f.submit();
 
 				} else {
@@ -2807,7 +2808,7 @@ function checkOTPTime( otptime ){
 				//Notify.suc('OK');
 				//alert("검사소를 조회할 자동차 운행지역을 선택해 주세요.");
 
-				location.href='/p2020/p_visit.html';			
+				location.href='/p2020/p_visit-1.html';
 			}
 		});
 

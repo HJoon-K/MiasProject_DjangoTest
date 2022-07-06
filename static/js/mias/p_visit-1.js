@@ -2320,7 +2320,7 @@ function innopay_result(data){
 					f.act.value	= json.act;
 					f.u.value	= json.u;
 					f.o.value	= json.o;
-					f.action		= './p_visit.html';
+					f.action		= './p_visit-1.html';
 					f.submit();
 
 				} else {
@@ -2806,7 +2806,7 @@ function checkOTPTime( otptime ){
 				//Notify.suc('OK');
 				//alert("검사소를 조회할 자동차 운행지역을 선택해 주세요.");
 
-				location.href='/p2020/p_visit.html';			
+				location.href='/p2020/p_visit-1.html';
 			}
 		});
 

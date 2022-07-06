@@ -12,16 +12,25 @@ import json
 
 
 # Create your views here.
-class CarView(View):
+
+class CarinfoView(View):
     def get(self, request):
         form = request.GET.dict()
         # print(form)
+        return render(request, 'm_visit.html')
+
+
+
+
+    def post(self, request):
+        form = request.POST.dict()
+        print(form)
 
         try:
             carno = form['carno']
             bymd = form['bymd']
         except:
-            return render(request, 'p_visit.html')
+            return render(request, 'm_visit.html')
 
         URL = 'https://www.cyberts.kr/cp/pvr/cpr/readCpPvrCarPrsecResveMainView.do'
 
@@ -58,9 +67,5 @@ class CarView(View):
         context = {'fdate': fdate.text, 'edate': edate.text}
         print(context)
 
-        # return render(request, 'p_visit.html')
+        # return render(request, 'p_visit-1.html')
         return HttpResponse(json.dumps(context), content_type='application/json')
-
-
-    def post(self, request):
-        pass
