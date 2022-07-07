@@ -1840,12 +1840,7 @@ AlertInfo = {
 		}
 
 		//자동차번호 형식 체크
-		var checkNum = carInfo.checkCno($('#carno').val());
-		if(checkNum != 1){
-			alert("자동차번호 형식이 올바르지 않습니다.");
-			$('#carno').focus();
-			return;
-		 }
+testInfoChk
 
 		//알림서비스 신청자 이름
 		var name_alert = $("#name_alert").val();

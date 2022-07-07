@@ -14,7 +14,7 @@ import json
 def carInfoSearch(request):
     form = request.GET.dict()
     isError = 'N'
-    carno = '' ;  bymd = ''
+    carno = '';  bymd = ''
     f = ''; e = ''; i = ''; c = ''
 
     try:
@@ -94,13 +94,24 @@ def carInfoSearch(request):
 
 class CarinfoView(View):
     def get(self, request):
+        form = request.GET.dict()
+        print(form)
+        isError = 'N'
+        try:
+            carno = form['carno']
+            bymd = form['bymd']
+        except:
+            isError = 'Y'
+
         # carno, insptype, fdate, edate, carname, isError = carInfoSearch(request)
+
+
         carno ='28어8354'
         insptype = '종합검사'
         fdate = '2022-07-01'
-        edate = '2022-07-01'
+        edate = '2022-09-01'
         carname = '아반떼'
-        isError = 'N'
+
 
         if isError == 'Y':
             return render(request, 'm_visit.html')
@@ -108,8 +119,7 @@ class CarinfoView(View):
             context = { 'carno': carno, 'insptype':insptype, 'fdate': fdate, 'edate': edate, 'carname': carname}
             print(context)
 
-            return render(request, 'm_visit.html', context)
-            # return HttpResponse(json.dumps(context, ensure_ascii=False), content_type='application/json')
+            return HttpResponse(json.dumps(context), content_type='application/json')
 
     def post(self, request):
         form = request.POST.dict()

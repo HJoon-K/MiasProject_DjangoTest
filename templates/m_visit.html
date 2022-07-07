@@ -185,7 +185,7 @@
                                                     <li class="h6 mb-0 jobs" id="tsresult_test_type">검사종류</li>
                                                 </ul>
                                                 <ul class="list-unstyled d-flex justify-content-between mb-0">
-                                                    <li><a href="javascript:void(0)" class="title h6 text-dark">검사만료일</a></li>
+                                                    <li><a href="javascript:void(0)" class="title h6 text-dark">검사기간</a></li>
                                                     <li class="h6 mb-0 jobs" id="tsresult_exp_date">검사만료일</li>
                                                 </ul>
                                             </div>
@@ -246,7 +246,7 @@
                                         <a href="javascript:void(0)"
                                             class="btn btn-primary shadow-none w-100"
                                             id="btnschdate"
-                                            style="font-size: 13px"><i class="mdi mdi-map-search-outline" style="font-size: 14px;"></i> 가까운 검사소 찾기 </a>
+                                            style="font-size: 13px"><i class="bi bi-search" style="font-size: 14px;"></i> 가까운 검사소 찾기 </a>
                                         </div>
                                     </div>
                                     <div class="col-lg-12" id="tsinfo_schedule_detail" style="display:none;">
@@ -1727,46 +1727,13 @@
 	<!-- 다음지도, 도로명으로 좌표가져오기 -->
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=49d5b06da199c81f7c230cda9870ba77&libraries=services,clusterer,drawing"></script>
 
-	<script src="{% static '/js/mias/p_visit.js' %}"></script>
+{#	<script src="{% static '/js/mias/p_visit.js' %}"></script>#}
 
 	<!-- Image Upload	-->
 	<script src="{% static '/js/Uploader/drop_uploader.js' %}"></script>
 
 {% block script %}
 	<script>
-		$(document).ready(function(){
-			$('input[type=file]').drop_uploader({
-				uploader_text: '차량사진을 여기로 가져오거나 ',
-				browse_text: '컴퓨터에서 찾기',
-				only_one_error_text: 'Only one file allowed',
-				not_allowed_error_text: '이미지 파일만 가능합니다',
-				big_file_before_error_text: 'Files, bigger than',
-				big_file_after_error_text: 'is not allowed',
-				allowed_before_error_text: 'Only',
-				allowed_after_error_text: 'files allowed',
-				browse_css_class: 'btn btn-primary',
-				browse_css_selector: 'file_browse',
-				uploader_icon: '<i class="mdi mdi-tooltip-image-outline"></i>',
-				file_icon: '<i class="pe-7s-file"></i>',
-				progress_color: '#4a90e2',
-				time_show_errors: 5,
-				layout: 'thumbnails',
-				method: 'normal',
-				url: 'ajax_upload.php',
-				delete_url: 'ajax_delete.php',
-			});
-		});
-
-		$(document).on('click', '.btn_login_sns', function() {
-			var sns = $(this).attr('data-type');
-			if(sns == 'naver') {
-				window.open('/plugins/sns/naver.php', 'sns', "width=600,height=350,resizable=yes,scrollbars=yes");
-			}
-		});
-		function goNext(url) {
-			location.href=url;
-		}
-
         // function
         let checkCno = (cno) => {
             let len = 0;
@@ -1885,40 +1852,49 @@
 
             fetch('{% url 'carinfo' %}' + qry)
                 .then(response => response.text())
-                .then(text => carInfo(text));
+                .then(text => carData(text));
         });
 
-        const carInfo = (gdata)=>{
-            gdata = JSON.parse(gdata)
-            console.log(gdata)
-        }
+        const carData = (tsdata)=>{
+            tsdata = JSON.parse(tsdata)
+            // console.log(tsdata)
+            if (tsdata.insptype != '') {
+              //  console.log(tsdata.insptype)
+                const tsresult_car_name = document.querySelector('#tsresult_car_name')
+                const tsresult_test_type = document.querySelector('#tsresult_test_type')
+                const tsresult_exp_date = document.querySelector('#tsresult_exp_date')
+                const result_ts = document.querySelector('#result_ts')
 
-        const carname_alt = document.querySelector('#carname_alert_display');
-        const expdate_alt = document.querySelector('#expdate_alert_display');
-        const alertdate_alt = document.querySelector('#alertdate_alert_display');
-    /*    const carInfo = (expdate) => {
-            expdate = JSON.parse(expdate);
-            console.log(expdate)
-            let md_expdate = expdate.fdate + '~' + expdate.edate;
-            let md_fdate = expdate.fdate;
+                expdate = tsdata.fdate + '~' + tsdata.edate;
+                tsresult_car_name.innerHTML = tsdata.carname;
+                tsresult_test_type.innerHTML = tsdata.insptype;
+                tsresult_exp_date.innerHTML = expdate;
 
-            carno.value = '28어8324'
-            md_expdate = '2022-07-01';
-            md_fdate = '2022-09-01';
-            carname_alt.innerHTML = carno.value;
-            expdate_alt.innerHTML= md_expdate;
-            alertdate_alt.innerHTML = md_fdate;
-
-            console.log(carno.value, '/',md_expdate, '/',md_fdate );
-
-            $('#result_ts').show();
+                result_ts.setAttribute('style', 'display:block')
 
 
-            // Show the Modal on load
-    //        $("#register_alert").modal('show')
+            } else {
+                const carname_alt = document.querySelector('#carname_alert_display');
+                const expdate_alt = document.querySelector('#expdate_alert_display');
+                const alertdate_alt = document.querySelector('#alertdate_alert_display');
 
-        };
-    */
+                let md_expdate = expdate.fdate + '~' + expdate.edate;
+                let md_fdate = expdate.fdate;
+
+                carno.value = '28어8324'
+                md_expdate = '2022-09-01';
+                md_fdate = '2022-07-01';
+                carname_alt.innerHTML = carno.value;
+                expdate_alt.innerHTML= md_expdate;
+                alertdate_alt.innerHTML = md_fdate;
+
+                console.log(carno.value, '/',md_expdate, '/',md_fdate );
+
+                $('#result_ts').show();
+            }
+         };
+
+
         // post 방식
     // {#    loadTestInfo.addEventListener('click', () => {#}
     // {#        let car_info = { carno: carno.value, birth: bymd.value };#}
