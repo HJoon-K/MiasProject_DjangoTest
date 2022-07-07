@@ -147,22 +147,23 @@
                                             </div>
                                             <div class="text-danger"></div>
                                         </div>
-                                        <div class="custom-control custom-switch">
+                                        <div class="custom-control custom-switch mt-2">
                                             <div class="form-group">
                                                 <div class="d-flex justify-content-between mt-1">
-                                                    <div>
-                                                        <input type="checkbox" class="custom-control-input mk" id="testInfoSwitch" onclick="agreeTerm.testInfoChk();">
-                                                        <label class="custom-control-label  text-dark" for="testInfoSwitch"><span class="text-danger">*</span> 안내를 읽고 동의합니다.</label>
+                                                    <div class="form-check form-switch">
+{#                                                        <input type="checkbox" class="form-check-input mk" id="testInfoSwitch" onclick="agreeTerm.testInfoChk();">#}
+                                                        <input type="checkbox" class="form-check-input mk" id="testInfoSwitch">
+                                                        <label class="form-check-label  text-dark" for="testInfoSwitch"><span class="text-danger">*</span> 안내를 읽고 동의합니다.</label>
                                                     </div>
-                                                    <a href="#" id="" data-toggle="modal" data-target="#tsSearchChk_modal" class="small text-muted ">  <i data-feather="file" class="fea icon-sm"> </i> 안내문 보기</a>
+                                                    <a href="#" id="" data-bs-toggle="modal" data-bs-target="#tsSearchChk_modal" class="small text-muted "><i data-feather="file" class="fea icon-sm"> </i> 안내문 보기</a>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="form-group mb-0">
+                                        <div class="form-group mb-0  mt-2">
                                             <!--<a href="javascript:void(0);" id="loadTestInfo" class="btn btn-primary w-100 disabled" data-loading-text="잠시만 기다려 주세요..."> 교통안전공단 시스템 점검으로 예약이 되지 않습니다.</a>-->
 {#                                                    <button id="loadTestInfo" class="btn btn-primary shadow-none w-100" data-loading-text="잠시만 기다려 주세요..."><i data-feather="search" class="fea icon-sm"> </i> 자동차검사정보 조회</button>#}
-                                            <a href="javascript:void(0);" id="loadTestInfo" class="btn btn-primary shadow-none w-100" data-loading-text="잠시만 기다려 주세요..."><i data-feather="search" class="fea icon-sm"> </i> 자동차검사정보 조회</a>
+                                            <a href="#" id="loadTestInfo" class="btn btn-primary shadow-none w-100" data-loading-text="잠시만 기다려 주세요..."><i data-feather="search" class="fea icon-sm"> </i> 자동차검사정보 조회</a>
 
                                         </div>
                                     </div>
@@ -1439,9 +1440,7 @@
 				<div class="modal-content rounded shadow border-0">
 					<div class="modal-header">
 						<h5 class="modal-title" id="exampleModalCenterTitle5">자동차검사 정보조회에 대한 안내</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 					<div class="modal-body">
 						<div class="bg-white p-3 rounded box-shadow">
@@ -1465,23 +1464,18 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 					</div>
 				</div>
 			</div>
 		</div>
 		<!-- Modal Content End : 자동차검사 정보조회에 대한 안내 -->
 
-        <!-- Footer End -->
-
         <!-- Back to top -->
         <a href="#" class="back-to-top rounded text-center" id="back-to-top">
             <i class="mdi mdi-chevron-up d-block"></i>
         </a>
         <!-- Back to top -->
-
-
-
 
 	<!-- Modal Content Start -->
 	<div class="modal fade" id="scheduleAgentLayer" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -1848,7 +1842,9 @@
         const loadTestInfo = document.querySelector('#loadTestInfo');
         const carno = document.querySelector('#carno');
         const bymd = document.querySelector('#bymd');
+        const testInfoSwitch = document.querySelector('#testInfoSwitch');
         const carnomsg = document.querySelector('#carnomsg');
+        const subReqForm = document.submitReqForm;
 
 
         carno.addEventListener('blur', ()=>{
@@ -1875,16 +1871,32 @@
         {#bymd.value = '960324'#}
         // get 방식
         loadTestInfo.addEventListener('click', () => {
+            if (bymd.value.length != 6) {
+                alert('주민번호(생년월일) 앞 6자리를 입력하세요.\n※자동차가 법인소유이면 법인번호·개인사업자인 경우 사업자번호 앞6자리를 입력하세요.');
+                bymd.focus();
+                return;
+            } else if (subReqForm.testInfoSwitch.checked == false) {
+                alert('자동차검사 정보조회를 위한 주의 사항을 읽으시고 동의가 필요합니다.\n동의를 하지 않는 경우에는 자동차검사 정보 조회가 되지 않습니다.')
+                return;
+            }
+
+
             let qry = '?carno=' + carno.value + '&bymd=' + bymd.value;
 
             fetch('{% url 'carinfo' %}' + qry)
                 .then(response => response.text())
-                .then(text => expInfo(text));
+                .then(text => carInfo(text));
         });
+
+        const carInfo = (gdata)=>{
+            gdata = JSON.parse(gdata)
+            console.log(gdata)
+        }
+
         const carname_alt = document.querySelector('#carname_alert_display');
         const expdate_alt = document.querySelector('#expdate_alert_display');
         const alertdate_alt = document.querySelector('#alertdate_alert_display');
-        const expInfo = (expdate) => {
+    /*    const carInfo = (expdate) => {
             expdate = JSON.parse(expdate);
             console.log(expdate)
             let md_expdate = expdate.fdate + '~' + expdate.edate;
@@ -1906,7 +1918,7 @@
     //        $("#register_alert").modal('show')
 
         };
-
+    */
         // post 방식
     // {#    loadTestInfo.addEventListener('click', () => {#}
     // {#        let car_info = { carno: carno.value, birth: bymd.value };#}

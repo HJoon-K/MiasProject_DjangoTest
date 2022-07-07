@@ -1,7 +1,6 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, request
 from django.shortcuts import render
 from django.views import View
-from django.views.decorators.csrf import csrf_exempt  # csrf 적용 X
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -12,25 +11,23 @@ import json
 
 
 # Create your views here.
+def carInfoSearch(request):
+    form = request.GET.dict()
+    isError = 'N'
+    carno = '' ;  bymd = ''
+    f = ''; e = ''; i = ''; c = ''
 
-class CarinfoView(View):
-    def get(self, request):
-        form = request.GET.dict()
-        # print(form)
-        return render(request, 'm_visit.html')
+    try:
+        carno = form['carno']
+        bymd = form['bymd']
+    except:
+        isError = 'Y'
 
+    print(carno, bymd)
 
-
-
-    def post(self, request):
-        form = request.POST.dict()
-        print(form)
-
-        try:
-            carno = form['carno']
-            bymd = form['bymd']
-        except:
-            return render(request, 'm_visit.html')
+    if isError == 'N':
+        # carno = '28어2384'
+        # bymd = '960324'
 
         URL = 'https://www.cyberts.kr/cp/pvr/cpr/readCpPvrCarPrsecResveMainView.do'
 
@@ -50,22 +47,80 @@ class CarinfoView(View):
         driver.switch_to.window(driver.window_handles[0])
         keyword = driver.find_element(By.XPATH,
                                       "/html/body/div[1]/div[3]/form/table/tbody/tr[1]/td/ul/li/input")  # 검색 속성 찾기
-        keyword.send_keys("28어2384")  # 검색어 입력
+        keyword.send_keys(carno)  # 검색어 입력
 
         keyword = driver.find_element(By.XPATH,
                                       "/html/body/div[1]/div[3]/form/table/tbody/tr[2]/td/ul/li/input")  # 검색 속성 찾기
-        keyword.send_keys("960324")  # 검색어 입력
+        keyword.send_keys(bymd)  # 검색어 입력
 
         keyword.send_keys("\ue007")  # 검색후 enter키 입력
 
-        fdate = driver.find_element(By.XPATH, f"/html/body/div[4]/div/div[2]/div[1]/div/span/span[1]")
-        edate = driver.find_element(By.XPATH, f"/html/body/div[4]/div/div[2]/div[1]/div/span/span[2]")
-        pdate = driver.find_element(By.XPATH, f"/html/body/div[4]/div/div[2]/div[1]/div/span/span[3]")
+        msg = (driver.find_element(By.XPATH, "/html/body/div[4]/div/div[2]/div[1]/div").text)
+        # print(driver.find_element(By.XPATH,"/html/body/div[4]/div/div[2]/div[1]/div/span/p[1]/span"))
 
-        print(f'{fdate.text} / {edate.text} / {pdate.text}')
+        if msg == '검사예약 진행 가능합니다. \
+        ※ 추가정보 \
+        - 검사 당일 기준 보험 미가입자는 검사를 받으실 수 없습니다.':
+            keyword = driver.find_element(By.XPATH, f"/html/body/div[4]/div/div[2]/div[2]/button")  # 계속진행
+            keyword.send_keys("\ue007")  # 검색후 enter키 입력 -- 다음페이지 이동
 
-        context = {'fdate': fdate.text, 'edate': edate.text}
-        print(context)
+            # data1 = driver.find_element("/html/body/div[1]/div[4]/div[1]/form/table/tbody/tr[1]/td")  # 검사구분 ex)종합검사, 부하검사 같이 받아올수 있지 확인해야 하는 영역
+            # data1 = driver.find_element("/html/body/div[1]/div[4]/div[1]/form/table/tbody/tr[1]/td/ul[2]/li/p/span")  # 검사구분 ex)부하검사영역 받아올수 있는지 확인해야 함
 
-        # return render(request, 'p_visit-1.html')
-        return HttpResponse(json.dumps(context), content_type='application/json')
+            insptype = driver.find_element(By.XPATH,
+                                        f"/html/body/div[2]/div[4]/div[1]/form/table/tbody/tr[1]/td/ul[1]/li")  # 검사구분 ex)종합검사 영역
+            fdate = driver.find_element(By.XPATH,
+                                        f"/html/body/div[2]/div[4]/div[1]/form/table/tbody/tr[3]/td[1]/ul/li/input[1]")  # 검사기간1 (검사 만료일)
+            edate = driver.find_element(By.XPATH,
+                                        f"/html/body/div[2]/div[4]/div[1]/form/table/tbody/tr[3]/td[1]/ul/li/input[2]")  # 검사기간2 (검사 만료일)
+            carname = driver.find_element(By.XPATH, f"/html/body/div[2]/div[4]/div[1]/form/table/tbody/tr[3]/td[2]")  # 차명
+
+            print(insptype.text, fdate.text, edate.text, carname.text)
+
+        else:  # 차량 검사 일자가 아닐시
+            fdate = driver.find_element(By.XPATH, f"/html/body/div[4]/div/div[2]/div[1]/div/span/span[1]")
+            edate = driver.find_element(By.XPATH, f"/html/body/div[4]/div/div[2]/div[1]/div/span/span[2]")
+
+
+        i = insptype.text
+        f = fdate.text
+        e = edate.text
+        c = carname.text
+
+    print(f'{i} / {f} / {e} / {c}')
+
+    return carno, i, f, e, c, isError
+
+
+class CarinfoView(View):
+    def get(self, request):
+        # carno, insptype, fdate, edate, carname, isError = carInfoSearch(request)
+        carno ='28어8354'
+        insptype = '종합검사'
+        fdate = '2022-07-01'
+        edate = '2022-07-01'
+        carname = '아반떼'
+        isError = 'N'
+
+        if isError == 'Y':
+            return render(request, 'm_visit.html')
+        elif isError == 'N':
+            context = { 'carno': carno, 'insptype':insptype, 'fdate': fdate, 'edate': edate, 'carname': carname}
+            print(context)
+
+            return render(request, 'm_visit.html', context)
+            # return HttpResponse(json.dumps(context, ensure_ascii=False), content_type='application/json')
+
+    def post(self, request):
+        form = request.POST.dict()
+        print(form)
+
+        carno, insptype, fdate, edate, carname, isError = carInfoSearch(request)
+
+        if isError == 'Y':
+            return render(request, 'm_visit.html')
+        elif isError == 'N':
+            context = { 'carno': carno, 'insptype':insptype, 'fdate': fdate, 'edate': edate, 'carname': carname}
+            print(context)
+
+            return HttpResponse(json.dumps(context), content_type='application/json')
