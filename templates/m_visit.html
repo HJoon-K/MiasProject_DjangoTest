@@ -155,7 +155,7 @@
                                                         <input type="checkbox" class="form-check-input mk" id="testInfoSwitch">
                                                         <label class="form-check-label  text-dark" for="testInfoSwitch"><span class="text-danger">*</span> 안내를 읽고 동의합니다.</label>
                                                     </div>
-                                                    <a href="#" id="" data-bs-toggle="modal" data-bs-target="#tsSearchChk_modal" class="small text-muted "><i data-feather="file" class="fea icon-sm"> </i> 안내문 보기</a>
+                                                    <a href="javascript:void(0);" id="" data-bs-toggle="modal" data-bs-target="#tsSearchChk_modal" class="small text-muted "><i data-feather="file" class="fea icon-sm"> </i> 안내문 보기</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -163,7 +163,7 @@
                                         <div class="form-group mb-0  mt-2">
                                             <!--<a href="javascript:void(0);" id="loadTestInfo" class="btn btn-primary w-100 disabled" data-loading-text="잠시만 기다려 주세요..."> 교통안전공단 시스템 점검으로 예약이 되지 않습니다.</a>-->
 {#                                                    <button id="loadTestInfo" class="btn btn-primary shadow-none w-100" data-loading-text="잠시만 기다려 주세요..."><i data-feather="search" class="fea icon-sm"> </i> 자동차검사정보 조회</button>#}
-                                            <a href="#" id="loadTestInfo" class="btn btn-primary shadow-none w-100" data-loading-text="잠시만 기다려 주세요..."><i data-feather="search" class="fea icon-sm"> </i> 자동차검사정보 조회</a>
+                                            <a href="javascript:void(0);" id="loadTestInfo" class="btn btn-primary shadow-none w-100" data-loading-text="잠시만 기다려 주세요..."><i data-feather="search" class="fea icon-sm"> </i> 자동차검사정보 조회</a>
 
                                         </div>
                                     </div>
@@ -200,13 +200,13 @@
                                 <div class="row" id="locationInfo">
                                     <div class="col-lg-12">
                                         <div class="form-group position-relative">
-                                            <button id="btnexecDaumPostcode" name="btnexecDaumPostcode" class="btn btn-primary w-100 shadow-none">
+                                            <a href="javascript:void(0);" id="btnexecDaumPostcode" name="btnexecDaumPostcode" class="btn btn-primary w-100 shadow-none">
                                                 <!--<span> 죄송합니다! 지금은 서비스를 이용하실 수 없습니다</span>-->
                                                 <i data-feather="search" class="fea icon-sm"></i>
                                                 <span>출발할 내 위치·주소 선택</span>
-                                            </button>
+                                            </a>
                                             <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:100;-webkit-overflow-scrolling:touch;">
-                                                <button  id="btnCloseLayer" name="btnCloseLayer" class="btn btn-primary w-100 rounded-0 shadow-none" onclick="closeDaumPostcode()"><span>닫 기</span></button>
+                                                <a href="javascript:void(0);"  id="btnCloseLayer" name="btnCloseLayer" class="btn btn-primary w-100 rounded-0 shadow-none" onclick="closeDaumPostcode()"><span>닫 기</span></a>
                                             </div>
                                         </div>
                                     </div>
@@ -214,19 +214,27 @@
                                     <div id="wrap" style="display:none;border:1px solid #dee2e6;position:relative"></div>
 
                                     <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:100;-webkit-overflow-scrolling:touch;">
-                                        <button  id="btnCloseLayer" name="btnCloseLayer" class="btn btn-primary w-100 rounded-0 shadow-none" onclick="closeDaumPostcode()"><span>닫 기</span></button>
+                                        <a href="javascript:void(0);"  id="btnCloseLayer" name="btnCloseLayer" class="btn btn-primary w-100 rounded-0 shadow-none" onclick="closeDaumPostcode()"><span>닫 기</span></a>
                                     </div>
 
                                     <div class="col-lg-12">
                                         <div class="form-group position-relative mb-0">
-                                            <label class="form-label"><span class="text-danger">*</span> 검사소로 출발할 내 위치</label>
-                                            <div class="form-icon position-relative">
-                                            <i data-feather="map-pin" class="fea icon-sm icons"></i>
-                                            <input type="text" name="roadaddr" id="roadaddr" class="form-control pl-5 bg-light" placeholder="버튼을 클릭해서 위치를 선택합니다." readonly>
+                                            <label class="form-label mt-3"><span class="text-danger">*</span> 검사소로 출발할 내 위치</label>
+                                            <div class="form-icon position-relative ">
+                                                <i data-feather="map-pin" class="fea icon-sm icons"></i>
+                                                <input type="text" name="roadaddr" id="roadaddr" class="form-control ps-5 bg-light" placeholder="버튼을 클릭해서 위치를 선택합니다." readonly>
                                             </div>
                                         </div>
                                     </div>
 
+                                    <div class="col-5 mt-3">
+                                        <div>
+                                        <a href="javascript:void(0)"
+                                            class="btn btn-success shadow-none w-100"
+                                            id="btnschdate"
+                                            style="font-size: 13px"><i class="bi bi-search" style="font-size: 14px;"></i> 가까운 검사소 찾기 </a>
+                                        </div>
+                                    </div>
                                     <input type="hidden"	id="detailaddress" name="detailaddress">
                                     <input type="hidden"	id="zipcode"				name="zipcode">
                                     <input type="hidden"	id="jibunaddr"				name="jibunaddr" placeholder="지번주소">
@@ -239,17 +247,9 @@
                             </div><!-- 픽업주소 END-->
 
                             <!-- 검사소&예약일 -->
-                            <div class="custom-form p-4 rounded border  mt-5">
+                            <div class="custom-form p-4 rounded border  mt-5" style="display:none;">
                                 <div class="row" id="tsinfo_schedule">
-                                    <div class="col-lg-12">
-                                        <div class="mb-3">
-                                        <a href="javascript:void(0)"
-                                            class="btn btn-primary shadow-none w-100"
-                                            id="btnschdate"
-                                            style="font-size: 13px"><i class="bi bi-search" style="font-size: 14px;"></i> 가까운 검사소 찾기 </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12" id="tsinfo_schedule_detail" style="display:none;">
+                                    <div class="col-lg-12" id="tsinfo_schedule_detail">
                                         <div class="mb-3">
                                             <label class="form-label" for="schdate"><span class="text-danger mr-1 me-1">*</span>방문할 예약일</label>
                                             <div class="input-group mb-3">
@@ -296,7 +296,7 @@
                                         <label class="form-label">신청인 이름<span class="text-danger">*</span></label>
                                         <div class="form-icon position-relative">
                                         <i data-feather="user" class="fea icon-sm icons"></i>
-                                        <input type="text" class="form-control pl-5" placeholder="" id="name" name="name" value="" required="">
+                                        <input type="text" class="form-control ps-5" placeholder="" id="name" name="name" value="" required="">
                                         </div>
                                     </div>
                                 </div><!--end col-->
@@ -305,7 +305,7 @@
                                         <label class="form-label">예약확인 휴대전화 (숫자만입력)<span class="text-danger">*</span></label>
                                         <div class="form-icon position-relative">
                                         <i data-feather="smartphone" class="fea icon-sm icons"></i>
-                                        <input type="text" id="tel1" name="tel1"  value="" maxlength="11" style="ime-mode:disabled;" class="form-control pl-5" placeholder="" required="" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');">
+                                        <input type="text" id="tel1" name="tel1"  value="" maxlength="11" style="ime-mode:disabled;" class="form-control ps-5" placeholder="" required="" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');">
                                         </div>
                                     </div>
                                 </div><!--end col-->
@@ -1727,84 +1727,13 @@
 	<!-- 다음지도, 도로명으로 좌표가져오기 -->
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=49d5b06da199c81f7c230cda9870ba77&libraries=services,clusterer,drawing"></script>
 
-{#	<script src="{% static '/js/mias/p_visit.js' %}"></script>#}
+	<script src="{% static '/js/mias/m_visit.js' %}"></script>
 
 	<!-- Image Upload	-->
 	<script src="{% static '/js/Uploader/drop_uploader.js' %}"></script>
 
 {% block script %}
 	<script>
-        // function
-        let checkCno = (cno) => {
-            let len = 0;
-            let sido = "";
-            let cnoJong = "";
-            let cnoUse = "";
-            let num = "";
-
-            try {
-                if (cno != null) {
-                    len = cno.length;
-                    if (len == 7) {	// ex) 05주2312
-                        cnoJong = cno.substring(0, 2);
-                        cnoUse = cno.substring(2, 3);
-                        num = cno.substring(3, 7);
-
-                        if (!isNaN(cnoJong) && isNaN(cnoUse) && !isNaN(num)) {
-                            return 1;
-                        } else {
-                            return 0;
-                        }
-                    } else if (len == 8) {	// ex) 1차점검 서울2사1234 --> 2차점검 999하9999
-                        sido = cno.substring(0, 2);
-                        cnoJong = cno.substring(2, 3);
-                        cnoUse = cno.substring(3, 4);
-                        num = cno.substring(4, 8);
-
-                        if (isNaN(sido) && !isNaN(cnoJong) && isNaN(cnoUse) && !isNaN(num)) {
-                            return 1;
-                        } else {
-                            //ex) 999하9999
-                            cnoJong = cno.substring(0, 3);
-                            cnoUse = cno.substring(3, 4);
-                            num = cno.substring(4, 8);
-                            if (!isNaN(cnoJong) && isNaN(cnoUse) && !isNaN(num)) {
-                                return 1;
-                            } else {
-                                return 0;
-                            }
-                            //return 0;
-                        }
-                    } else if (len == 9) {	// ex) 서울52자1234
-                        sido = cno.substring(0, 2);
-                        cnoJong = cno.substring(2, 4);
-                        cnoUse = cno.substring(4, 5);
-                        num = cno.substring(5, 9);
-
-                        if (isNaN(sido) && !isNaN(cnoJong) && isNaN(cnoUse) && !isNaN(num)) {
-                            if ("기,니,디,리,미,비,시,이,지,치".indexOf(cnoUse) != -1) {
-                                return 2;
-                            } else {
-                                return 1;
-                            }
-                        } else {
-                            return 0;
-                        }
-                    } else {
-                        return 0;
-                    }
-                } else {
-                    return 0;
-                }
-            } catch (e) {
-                alert(e);
-                return 0;
-            }
-
-            return 0;
-        };  // 차량번호 유효성 체크
-
-
         // Mias 스크립트
         const loadTestInfo = document.querySelector('#loadTestInfo');
         const carno = document.querySelector('#carno');
@@ -1836,7 +1765,7 @@
 
         {#carno.value = '28어2384'#}
         {#bymd.value = '960324'#}
-        // get 방식
+
         loadTestInfo.addEventListener('click', () => {
             if (bymd.value.length != 6) {
                 alert('주민번호(생년월일) 앞 6자리를 입력하세요.\n※자동차가 법인소유이면 법인번호·개인사업자인 경우 사업자번호 앞6자리를 입력하세요.');
@@ -1847,16 +1776,36 @@
                 return;
             }
 
+            const csrftoken = getCookie('csrftoken');
+            console.log(csrftoken);
 
-            let qry = '?carno=' + carno.value + '&bymd=' + bymd.value;
+            // post 방식
+            let carinput = { cn:carno.value, birth:bymd.value };
+            console.log(carinput)
 
-            fetch('{% url 'carinfo' %}' + qry)
-                .then(response => response.text())
-                .then(text => carData(text));
+            fetch('{% url "carinfo" %}', {
+                method: 'POST',
+                headers: { 'X-CSRFToken': csrftoken, 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    cn:carno.value,
+                    birth:bymd.value
+                }),
+            }).then(response => response.json())
+                .then(text => carData(text))
+            .catch((error) => {
+            console.error('실패:', error);
+            });
+
+
+            // get 방식
+            {#let qry = '?carno=' + carno.value + '&bymd=' + bymd.value;#}
+            {#fetch('{% url 'carinfo' %}' + qry)#}
+            {#    .then(response => response.text())#}
+            {#    .then(text => carData(text));#}
         });
 
         const carData = (tsdata)=>{
-            tsdata = JSON.parse(tsdata)
+            // tsdata = JSON.parse(tsdata)
             // console.log(tsdata)
             if (tsdata.insptype != '') {
               //  console.log(tsdata.insptype)
@@ -1894,150 +1843,20 @@
             }
          };
 
+        const daumPostcode = document.querySelector('#btnexecDaumPostcode')
+        const roadaddr = document.querySelector('#roadaddr')
 
-        // post 방식
-    // {#    loadTestInfo.addEventListener('click', () => {#}
-    // {#        let car_info = { carno: carno.value, birth: bymd.value };#}
-    // {#        jscarinfo = JSON.stringify(car_info);#}
-    // {#        console.log(jscarinfo)#}
-    // {##}
-    // {#        fetch('{% url 'carinfo' %}', {#}
-    // {#            method: "POST",#}
-    // {#            headers: {"Content-Type": "application/json",},#}
-    // {#            body: JSON.stringify(car_info)#}
-    // {#        }).then(response => response.text()).then(text => console.log(text));#}
-    // {#    })#}
+        daumPostcode.addEventListener('click', ()=>{
+            findAddr()
+        });
 
-	<!-- SejongPay 결제연동 스크립트(필수) -->
-	{# <script src="innopay/js/Innopay.js" type="text/javascript"></script> #}
+        roadaddr.addEventListener('click', ()=>{
+            findAddr()
+        });
 
-	{#<script type="text/javascript" src="https://pg.innopay.co.kr/ipay/js/innopay-2.0.js" charset="utf-8"></script>#}
 
-	<!-- 모터맨 스크립트 -->
-{#	<script type="text/javascript">#}
-{#		let disabledDays = ['2022-01-01','2022-01-31','2022-02-01','2022-02-02','2022-03-01','2022-03-09','2022-05-05','2022-06-01','2022-06-06','2022-08-15','2022-09-09','2022-09-10','2022-09-12','2022-10-03','2022-10-10','2022-12-25'];#}
-		/*
-		FLATPICKR DISABLED
-		let disabledDays = ['2022-01-01','2022-01-31','2022-02-01','2022-02-02','2022-03-01','2022-03-09','2022-05-05','2022-06-01','2022-06-06','2022-08-15','2022-09-09','2022-09-10','2022-09-12','2022-10-03','2022-10-10','2022-12-25',
-				function(date) {
-					// return true to disable
-					//return (date.getDay() === 0 || date.getDay() === 6);
-					return (date.getDay() === 0);
-				}
-		];
-		*/
-		//let disabledDays = ''2022-01-01','2022-01-31','2022-02-01','2022-02-02','2022-03-01','2022-03-09','2022-05-05','2022-06-01','2022-06-06','2022-08-15','2022-09-09','2022-09-10','2022-09-12','2022-10-03','2022-10-10','2022-12-25'';
-
-		//console.log(disabledDays);
-	{#	$(document).ready(function() {#}
-	{#		$("#pickup_address").on("click", function() {#}
-	{#			$('#btnCarLoc').trigger('click');#}
-	{#		});#}
-	{#		$("#locSido").on("change", function() {#}
-	{#			carInfo.loadAgentArea(2);#}
-	{#		});#}
-	{#		$("#locGugun").on("change", function() {#}
-	{#			carInfo.loadAgentArea(3);#}
-	{#		});#}
-	{#		$("#locDong").on("change", function() {#}
-	{#			carInfo.loadAgentArea(4);#}
-	{#		});#}
-	{#		$("#loadTestInfo").on("click", function() {#}
-	{#			carInfo.loadTestInfo();#}
-	{#		});#}
-    {##}
-	{#		//예약희망일 txt fiele를 클릭했을 때#}
-	{#		$("#schdate").on("click", function() {#}
-	{#			$('#btnschdate').trigger('click');#}
-	{#		});#}
-    {##}
-	{#		//예약일 선택버튼 클릭#}
-	{#		$("#btnschdate").on("click", function() {#}
-	{#			$('#schdate').val('');			//선택된 희망일#}
-	{#			$('#schtime_t').val('');			//선택된 희망시간 (화면표시용도)#}
-	{#			$('#schtime').val('');			//선택된 희망시간 (저장용도)#}
-	{#			$('#h_cuno').val('');			//선택된 대행원번호 (저장용도)#}
-	{#			$('#cuname').val('');			//선택된 대행원이름 (화면표시용도)#}
-	{#			$('#hopeSchDate').val('');	//예약일 Layer의 hidden		희망일#}
-	{#			$('#sch_data').html('');		//예약일 Layer의 시간표#}
-	{#			schedule.openSchConstractors();#}
-	{#		});#}
-    {##}
-	{#		/*#}
-	{#		$("#p_method").change(function(){#}
-	{#			if("VBANK"==$("#p_method").val()){#}
-	{#				if ($('input[name=schdate]').val() == "") {#}
-	{#					alert("예약일을 먼저 선택하세요");#}
-	{#				} else {#}
-	{#					$("#VbankExpDate").removeAttr("disabled");#}
-	{#					$("#VbankExpDate").val("20220701091037");#}
-	{#					$('input[name=PayMethod]').val("VBANK");#}
-	{#				}#}
-	{#			}else{#}
-	{#				$("#VbankExpDate").attr("disabled",true);#}
-	{#				$("#VbankExpDate").val("");#}
-	{#				$('input[name=PayMethod]').val("CARD");#}
-	{#			}#}
-	{#		});#}
-	{#		*/#}
-    {##}
-	{#		// Channel Plugin Scripts -->#}
-	{#		$('#OpenChat').click(function(){#}
-	{#			$('.textLauncherIcon').trigger('click');#}
-	{#		});#}
-	{#		$('.OpenChat').click(function(){#}
-	{#			$('.textLauncherIcon').trigger('click');#}
-	{#		});#}
-	{#		$('.OpenChat').click(function(){#}
-	{#			$('#ch-plugin-launcher').trigger('click');#}
-	{#		});#}
-    {##}
-	{#	// Channel Plugin Scripts -->#}
-	{#		$('#OpenChat').click(function(){#}
-	{#			$('.textLauncherIcon').trigger('click');#}
-	{#		});#}
-    {##}
-    {##}
-	{#		$('.OpenChat').click(function(){#}
-	{#			$('.textLauncherIcon').trigger('click');#}
-	{#		});#}
-    {##}
-	{#		$('.OpenChat').click(function(){#}
-	{#			ChannelIO('show');#}
-	{#			//ChannelIO('lounge');#}
-	{#		});#}
-	{#	// End Channel Plugin -->#}
-    {##}
-	{#		// End Channel Plugin -->#}
-	{# });                                     #}
 	</script>
 
 {% endblock %}
-
-		<!-- Global site tag (gtag.js) - Google Analytics -->
-{#<script async src="https://www.googletagmanager.com/gtag/js?id=UA-113408994-1"></script>#}
-{#<script>#}
-{#  window.dataLayer = window.dataLayer || [];#}
-{#  function gtag(){dataLayer.push(arguments);}#}
-{#  gtag('js', new Date());#}
-{##}
-{#  gtag('config', 'UA-113408994-1');#}
-{#</script>#}
-{#		<!-- 공통 적용 스크립트 , 모든 페이지에 노출되도록 설치. 단 전환페이지 설정값보다 항상 하단에 위치해야함 -->#}
-{#<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>#}
-{#<script type="text/javascript">#}
-{#if(!wcs_add) let wcs_add = {};#}
-{#wcs_add["wa"] = "s_3ee505a55f79";#}
-{#if(window.wcs) {#}
-{#wcs_do();#}
-{#}#}
-{#</script>		<!-- 공통 적용 스크립트 , 모든 페이지에 노출되도록 설치. 단 전환페이지 설정값보다 항상 하단에 위치해야함 -->#}
-{#<script type="text/javascript" src="//wsa.mig-log.com/wsalog.js"> </script>#}
-{#<script type="text/javascript">#}
-{#wsa.inflow("m.mias.co.kr");#}
-{#wsa_do(wsa);#}
-{#</script>#}
-{# {% endblock %} #}
-
 </body>
 </html>

@@ -122,15 +122,33 @@ class CarinfoView(View):
             return HttpResponse(json.dumps(context), content_type='application/json')
 
     def post(self, request):
-        form = request.POST.dict()
+        # form = request.POST.dict()
+
+        # json으로 넘겨서 json으로 받아야 함
+        form = json.loads(request.body)
+
+        print('aaa')
         print(form)
 
-        carno, insptype, fdate, edate, carname, isError = carInfoSearch(request)
+        isError = 'N'
+        try:
+            carno = form['cn']
+            bymd = form['birth']
+        except:
+            isError = 'Y'
+
+        # carno, insptype, fdate, edate, carname, isError = carInfoSearch(request)
+
+        carno = '28어8354'
+        insptype = '종합검사'
+        fdate = '2022-07-01'
+        edate = '2022-09-01'
+        carname = '아반떼'
 
         if isError == 'Y':
-            return render(request, 'm_visit.html')
+            return HttpResponse(json.dumps("{'msg':'오류발생!!'}"), content_type='application/json')
         elif isError == 'N':
-            context = { 'carno': carno, 'insptype':insptype, 'fdate': fdate, 'edate': edate, 'carname': carname}
+            context = {'carno': carno, 'insptype': insptype, 'fdate': fdate, 'edate': edate, 'carname': carname}
             print(context)
 
             return HttpResponse(json.dumps(context), content_type='application/json')
