@@ -1,17 +1,37 @@
-
-
 <!DOCTYPE html>
     <html lang="ko">
-
     <head>
- {% load static %}
+        {% load static %}
         <meta charset="utf-8" />
-		<title>내 주변의 가까운 자동차검사소를 찾고 할인받아서 방문하세요.</title>
+		<title>전국 자동차검사대행서비스 | 케이엠디에스</title>   
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        <meta name="description" content="전국 자동차검사대행서비스 | 케이엠디에스" />
+        <meta name="keywords" content="강남자동차검사소,
+		자동차검사대행비용,
+		검사대행,
+		성동자동차검사소,
+		부천자동차검사소,
+		세차,
+		세차대행,
+		자동차검사, 
+		자동차검사대행, 
+		정기검사, 
+		정기검사대행,
+		종합검사,
+		종합검사대행, 
+		자동차검사대행,
+		수입차 검사대행
+		">
+		<meta name="author" content="케이엠디에스">
+		<meta name="Version" content="2.0" />
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="자동차검사 대행은 케이엠디에스">
+		<meta property="og:description" content="자동차검사대행, 가까운 검사소에 할인받고 방문하세요! 케이엠디에스의 자동차검사는 기업과 개인을 대상으로 서비스합니다.">
+		<meta property="og:image" content="">
+		<meta property="og:url" content="https://m.motorman.co.kr">
         <!-- favicon -->
         <link rel="shortcut icon"	href="{% static '/images/favicon.ico' %}">
-{#		<link rel="canonical"		href="p_visit-1.html">#}
+        <link rel="canonical"		href="orderTestReq.html">
 		<!-- Date Picker in Fullscreen -->
 		<link rel="stylesheet" href="{% static '/plugins/datepicker-in-fullscreen/components/bootstrap-datepicker/bootstrap-datepicker3.min.css' %}">
 		<link rel="stylesheet" href="{% static '/plugins/datepicker-in-fullscreen/datepicker-in-fullscreen.css' %}">
@@ -23,6 +43,8 @@
         <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@mdi/font@6.9.96/css/materialdesignicons.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 {#        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.7/css/unicons.cs">#}
+        <!-- Magnific -->
+        <link href="{% static '/css/magnific-popup.css' %}" rel="stylesheet" type="text/css" />
 		<!-- Slider -->
 {#        <link rel="stylesheet" href="{% static '/css/owl.carousel.min.css' %}"/>#}
 {#        <link rel="stylesheet" href="{% static '/css/owl.theme.default.min.css' %}"/>#}
@@ -44,36 +66,23 @@
 
 		<!-- alert	-->
 		<link rel="stylesheet" href="{% static '/plugins/alert-succss-confirm-notify-mobile/css/notify.css' %}">
-
-        {% block style %}
-		<style>
-        .form-control:focus { background: #f8f9fa;}
-        .msgfs { font-size: 75%}
-		/* 검사소 목록이 표시되는 지도에 텍스트 스타일 */
-		.label {margin-bottom: 96px;}
-		.label * {display: inline-block;vertical-align: top;}
-		.label .left {background: url("https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_l.png") no-repeat;display: inline-block;height: 24px;overflow: hidden;vertical-align: top;width: 7px;}
-		.label .center {background: url("https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_bg.png") repeat-x;display: inline-block;height: 24px;font-size: 12px;line-height: 24px;}
-		.label .right {background: url("https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_r.png") -1px 0  no-repeat;display: inline-block;height: 24px;overflow: hidden;width: 6px;}
-		</style>
-        {% endblock %}	</head>
+    </head>
 
     <body>
 
-        <!-- Navbar Start -->
-
+		
         <header id="topnav" class="defaultscroll sticky">
             <div class="container">
                 <!-- Logo container-->
 
 				<div>
-					<div class="post-recent-thumb float-left">
-						<a href="/index.html" class="logo">
+					<div class="post-recent-thumb float-left"> 
+						<a href="index.html" class="logo">
 							<img alt="img" src="/images/logo/kmds_yellow.png" class="img-fluid rounded avatar avatar-md-sm">
 						</a>
 					</div>
 					<div class="post-recent-content float-left  d-none d-sm-block">
-						<a href="/index.html" class="logo">kmds<span class="text-primary"></span></a>
+						<a href="index.html" class="logo">kmds<span class="text-primary"></span></a>
 					</div>
 				</div>
 
@@ -94,512 +103,906 @@
 
                 <!--Login button Start-->
                 <ul class="buy-button list-inline mb-0">
+
+                    
+					<!--
+                    <li class="list-inline-item ps-1 mb-0">
+                        <a href="/p2020/p_test_req.html">
+                            <div class="btn btn-primary">예약하기</div>
+                        </a>
+                    </li>
+					-->
                 </ul>
                 <!--Login button End-->
+        
+                <div id="navigation">
+                    <!-- Navigation Menu-->   
+                    <ul class="navigation-menu">
+                        <li><a href="/index.html" class="sub-menu-item">Home</a></li>
+                        <li><a href="/page-aboutus.html" class="sub-menu-item">KMDS</a></li>
+                        <li class="has-submenu parent-menu-item">
+                            <a href="javascript:void(0)">자동차검사</a><span class="menu-arrow"></span>
+                            <ul class="submenu">
+                                <li><a href="car_info.html" class="sub-menu-item"><span class="badge bg-info"> 선결제할인 </span> 가까운 검사소 찾기</a></li>
+                                <li><a href="tel:1577-0266" class="sub-menu-item"><i class="mdi mdi-phone text-danger"></i> 1577-0266 전화문의 / 예약</a></li>
+                            </ul>
+                        </li>
 
+                        <li class="has-submenu parent-menu-item">
+                            <a href="javascript:void(0)">서비스</a><span class="menu-arrow"></span>
+                            <ul class="submenu">
+                                <li><a href="/page-forcompany.html" class="sub-menu-item">기업·법인고객</a></li>
+                                <li><a href="/page-forpersonal.html" class="sub-menu-item">개인고객</a></li>
+                            </ul>
+                        </li>
+
+
+                        <li class="has-submenu parent-menu-item">
+                            <a href="javascript:void(0)">커뮤니티</a><span class="menu-arrow"></span>
+                            <ul class="submenu">
+                                <li><a href="/page-blog.html" class="sub-menu-item">Blog</a></li>
+                                <li><a href="/page-faq.html" class="sub-menu-item">Faq</a></li>
+                                <li><a href="/page-contact.html" class="sub-menu-item">Contact</a></li>
+                            </ul>
+                        </li>
+
+                        <li><a href="/page-reviews.html" class="sub-menu-item"><i class="mdi mdi-heart text-danger"></i>이용후기</a></li>
+
+					<li class="list-inline-item mb-0">	<a href="/page-login.html">		<img alt="회원" src="/images/icon/naver_square.png" class="me-1 mr-1" style="max-width:18px;">로그인	</a></li>
+
+
+                    </ul><!--end navigation menu-->
+                </div><!--end navigation-->
             </div><!--end container-->
         </header><!--end header-->
-		        <!-- Navbar End -->
+
+
+
+        <!-- Navbar End -->
 		<!-- Channel Plugin Scripts -->
+		
+<!-- Channel Plugin Scripts -->
+<script>
+  (function() {
+    var w = window;
+    if (w.ChannelIO) {
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
+    var d = window.document;
+    var ch = function() {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function(args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
+  })();
+  ChannelIO('boot', {
+    "pluginKey": "24b3a3c9-10ad-4089-b95f-02e59ae31740"
+  });
+</script>
+<!-- End Channel Plugin -->
 
 		<!-- Channel Plugin Scripts -->
 
 		<!-- Hero Start -->
-		<section class="bg-half-70 border-bottom shadow d-table w-100 d-none d-sm-none d-md-block" >
-			<div class="container">
-				<div class="row position-relative align-items-center pt-4">
-					<div class="col-lg-8 offset-lg-0">
-						<div class="title-heading studio-home mt-5">
-							<p class="mb-4 h5" style="word-break: keep-all;">내 주변의 가까운 <span class="text-primary">지정정비사업자 검사소</span>를 찾고 예약할인을 받으세요</p>
-							<div class="d-none d-sm-none d-md-block"><span class="h6">자동차검사는<span class="badge bg-primary text-white fw-bold mr-1">한국교통안전공단</span>검사소와 <span class="badge bg-success text-white fw-bold mr-1">지정정비사업자</span>검사소에서 받을 수 있습니다.</span>
-								<div class="mt-4"></div> <div></div>
-							</div>
-						</div><!--end title-heading-->
-					</div><!--end col-->
-				</div><!--end row-->
-			</div><!--end container-->
-		</section><!--end section--><!-- Hero End -->
+		<!--<section class="bg-half-170 bg-light d-table w-100">-->
+        <section class="bg-half-170 bg-light d-table w-100" style="background:url({% static '/images/shape02.png' %}) top left;">
+            <div class="container">
+                <div class="row mt-5 justify-content-center">
+                    <div class="col-lg-12 text-center">
+                        <div class="pages-heading">
+                            <h4 class="title mb-0"> 자동차검사 대행비용 조회·예약 </h4>
+							<p class="text-muted para-desc mx-auto mb-1">자동차검사 대행비용을 조회하고 마지막에 예약도 가능합니다.</p>
+							<p class="text-muted mx-auto mb-0 pb-1">최대 3,000원 할인 혜택까지</p>
+                        </div>
+                    </div>  <!--end col-->
+                </div><!--end row-->
+                
+                <div class="position-breadcrumb">
+                    <nav aria-label="breadcrumb" class="d-inline-block">
+                        <ul class="breadcrumb bg-white rounded shadow mb-0 px-4 py-2">
+                            <li class="breadcrumb-item"><a href="/index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">자동차검사</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">픽업&딜리버리 예약</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div> <!--end container-->
+        </section>
 
-		<section class="section mt-lg-60 mt-sm-0 pt-lg-6 pt-3">
+        <!-- Shape Start -->
+        <div class="position-relative">
+            <div class="shape overflow-hidden text-white">
+                <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
+                </svg>
+            </div>
+        </div>
+        <!--Shape End-->	
+
+
+
+        <section class="section mt-lg-60 mt-sm-0">
             <div class="container mt-lg-3">
-				<form id="submitReqForm" name="submitReqForm" method="post" enctype="multipart/form-data"  accept-charset="UTF-8">
-                    {% csrf_token %}
-                    <div class="row">
-                        <div class="col-lg-8 col-md-7 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                            <div class="custom-form p-4 mt-5 rounded border">
-                                <!-- 자동차검사 기초정보	-->
-                                <div class="row"  id="testInfo">
-                                    <div class="col-lg-12">
-                                        <div class="form-group position-relative">
-                                            <label class="form-label"><span class="text-danger">*</span> 자동차번호</label>
-                                            <div class="form-icon position-relative">
-                                                <i class="mdi mdi-car-back icons"></i>
-                                                <input type="text" id="carno" name="carno" class="form-control ps-5" placeholder="">
-                                            </div>
-                                            <div id="carnomsg" class="text-danger msgfs"></div>
-                                        </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-11 col-md-12">
+						<form id="submitReqForm" name="submitReqForm" method="post" enctype="multipart/form-data"  accept-charset="UTF-8">
+						<div class="row">
 
-                                        <div class="form-group position-relative mt-3">
-                                            <label class="form-label"><span class="text-danger">*</span> 소유자생년월일(법인번호) 앞 6자리</label>
-                                            <div class="form-icon position-relative">
-                                                <i data-feather="hash" class="fea icon-sm icons"></i>
-                                                <input type="number" id="bymd" name="bymd" class="form-control ps-5" placeholder="" maxlength="6" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1'); numberMaxLength(this);">
-                                            </div>
-                                            <div class="text-danger"></div>
-                                        </div>
-                                        <div class="custom-control custom-switch mt-2">
-                                            <div class="form-group">
-                                                <div class="d-flex justify-content-between mt-1">
-                                                    <div class="form-check form-switch">
-{#                                                        <input type="checkbox" class="form-check-input mk" id="testInfoSwitch" onclick="agreeTerm.testInfoChk();">#}
-                                                        <input type="checkbox" class="form-check-input mk" id="testInfoSwitch">
-                                                        <label class="form-check-label  text-dark" for="testInfoSwitch"><span class="text-danger">*</span> 안내를 읽고 동의합니다.</label>
-                                                    </div>
-                                                    <a href="javascript:void(0);" id="" data-bs-toggle="modal" data-bs-target="#tsSearchChk_modal" class="small text-muted "><i data-feather="file" class="fea icon-sm"> </i> 안내문 보기</a>
-                                                </div>
-                                            </div>
-                                        </div>
+							<div class="col-lg-8 col-md-7 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
+								<!-- 주문폼 시작	-->
+								<!-- 휴대전화 인증	-->
+								<input type="hidden" id="tokn" name="tokn" value="98c601e4a91b08cd0df2e8e26ce6f40b">
+								<input type="hidden" id="dt" name="dt">
+								<!-- hidden value	-->
+								<input type="hidden" id="h_stype"				name="h_stype" value="1">				<!-- 서비스종류	1: 검사 -->
+								<input type="hidden"								name="m" value="add">					
+								<input type="hidden" id="act"					name="act" value="check">				<!-- 결제방법		check : 선불결제 -->
 
-                                        <div class="form-group mb-0  mt-2">
-                                            <!--<a href="javascript:void(0);" id="loadTestInfo" class="btn btn-primary w-100 disabled" data-loading-text="잠시만 기다려 주세요..."> 교통안전공단 시스템 점검으로 예약이 되지 않습니다.</a>-->
-{#                                                    <button id="loadTestInfo" class="btn btn-primary shadow-none w-100" data-loading-text="잠시만 기다려 주세요..."><i data-feather="search" class="fea icon-sm"> </i> 자동차검사정보 조회</button>#}
-                                            <a href="javascript:void(0);" id="loadTestInfo" class="btn btn-primary shadow-none w-100" data-loading-text="잠시만 기다려 주세요..."><i data-feather="search" class="fea icon-sm"> </i> 자동차검사정보 조회</a>
+								<input type="hidden" id="u"			name="u" value="">										<!-- 결과페이지로 	넘길고유번호 -->
+								<input type="hidden" id="o"			name="o" value="">										<!-- 결과페이지로 	넘길고유번호 -->
 
-                                        </div>
-                                    </div>
-                                </div><!-- 자동차검사 기초정보 end row-->
-                            </div><!-- 자동차정보 END	-->
+								<input type="hidden" id="h_today"				name="h_today" value="2022-07-11"> <!-- 픽업예약모달의 시작일자 -->
+								<input type="hidden" id="h_rv_scnt"			name="h_rv_scnt" value="1">
+								<input type="hidden" id="h_rv_ecnt"			name="h_rv_ecnt" value="31">
+								<input type="hidden" id="h_osn"				name="h_osn">
+								<input type="hidden" id="h_car_maker_type" name="h_car_maker_type" value="0">	<!-- 0 검사 -->
+								<input type="hidden" id="h_profit_center"	name="h_profit_center" value="00">	<!-- 00 KMDS -->
 
-                            <!-- 자동차검사 기초정보-->
-                            <div class="custom-form p-4 rounded border  mt-5" id="result_ts" style="display:none;">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="card overflow-hidden border-0">
-                                            <div class="card-body p-0">
-                                                <ul class="list-unstyled d-flex justify-content-between mb-0">
-                                                    <li><a href="javascript:void(0)" class="title h6 text-dark">자동차</a></li>
-                                                    <li class="h6 mb-0 jobs" id="tsresult_car_name">자동차명</li>
-                                                </ul>
-                                                <ul class="list-unstyled d-flex justify-content-between mb-0">
-                                                    <li><a href="javascript:void(0)" class="title h6 text-dark">검사종류</a></li>
-                                                    <li class="h6 mb-0 jobs" id="tsresult_test_type">검사종류</li>
-                                                </ul>
-                                                <ul class="list-unstyled d-flex justify-content-between mb-0">
-                                                    <li><a href="javascript:void(0)" class="title h6 text-dark">검사기간</a></li>
-                                                    <li class="h6 mb-0 jobs" id="tsresult_exp_date">검사만료일</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!-- 자동차검사 기초정보 end row-->
-                            </div><!-- 자동차검사 기초정보 end row-->
+								<!-- 픽업 지역 & 지역별 대행료-->
+								<input type="hidden" id="h_acode"			name="h_acode">
+								<input type="hidden" id="sido"					name="sido">
+								<input type="hidden" id="gugun"				name="gugun">
+								<input type="hidden" id="dong"					name="dong">
+								<input type="hidden" id="h_cost2"				name="h_cost2">		<!-- 지역별 정기대행료,		고객방문은 대행료 0원 -->
+								<input type="hidden" id="h_cost2_total"		name="h_cost2_total">	<!-- 지역별 정기외대행료,		고객방문은 대행료 0원 -->
 
-                            <!-- 픽업주소 Start-->
-                            <div class="custom-form p-4 mt-5 rounded border">
-                                <!-- 픽업 주소	-->
-                                <div class="row" id="locationInfo">
-                                    <div class="col-lg-12">
-                                        <div class="form-group position-relative">
-                                            <a href="javascript:void(0);" id="btnexecDaumPostcode" name="btnexecDaumPostcode" class="btn btn-primary w-100 shadow-none">
-                                                <!--<span> 죄송합니다! 지금은 서비스를 이용하실 수 없습니다</span>-->
-                                                <i data-feather="search" class="fea icon-sm"></i>
-                                                <span>출발할 내 위치·주소 선택</span>
-                                            </a>
-                                            <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:100;-webkit-overflow-scrolling:touch;">
-                                                <a href="javascript:void(0);"  id="btnCloseLayer" name="btnCloseLayer" class="btn btn-primary w-100 rounded-0 shadow-none" onclick="closeDaumPostcode()"><span>닫 기</span></a>
-                                            </div>
-                                        </div>
-                                    </div>
+								<!-- 검사 정보 -->
+								<input type="hidden" id="h_owner_pnm"		name="h_owner_pnm"/>
+								<input type="hidden" id="h_vin"					name="h_vin"/>
+								<input type="hidden" id="h_carsize"			name="h_carsize" value="0"/>
+								<input type="hidden" id="h_makeymd"		name="h_makeymd"/>
+								<input type="hidden" id="h_carno"				name="h_carno">
+								<input type="hidden" id="h_bymd"				name="h_bymd">
+								<input type="hidden" id="h_cost1"				name="h_cost1">
+								<input type="hidden" id="h_ttype"				name="h_ttype">
+								<input type="hidden" id="h_nox_yn"			name="h_nox_yn">
+								<input type="hidden" id="h_gsTypeCode"	name="h_gsTypeCode">
+								<input type="hidden" id="h_gsTypeName"	name="h_gsTypeName">
 
-                                    <div id="wrap" style="display:none;border:1px solid #dee2e6;position:relative"></div>
 
-                                    <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:100;-webkit-overflow-scrolling:touch;">
-                                        <a href="javascript:void(0);"  id="btnCloseLayer" name="btnCloseLayer" class="btn btn-primary w-100 rounded-0 shadow-none" onclick="closeDaumPostcode()"><span>닫 기</span></a>
-                                    </div>
+								<input type="hidden" id="startdate"			name="startdate">
+								<input type="hidden" id="enddate"				name="enddate">
 
-                                    <div class="col-lg-12">
-                                        <div class="form-group position-relative mb-0">
-                                            <label class="form-label mt-3"><span class="text-danger">*</span> 검사소로 출발할 내 위치</label>
-                                            <div class="form-icon position-relative ">
-                                                <i data-feather="map-pin" class="fea icon-sm icons"></i>
-                                                <input type="text" name="roadaddr" id="roadaddr" class="form-control ps-5 bg-light" placeholder="버튼을 클릭해서 위치를 선택합니다." readonly>
-                                            </div>
-                                        </div>
-                                    </div>
+								<input type="hidden" id="carname"			name="carname" placeholder="자동차 정보" readonly>
+								<input type="hidden" id="ttype_title"			name="ttype_title" placeholder="검사 종류" readonly>
+								<input type="hidden" id="expdate"				name="expdate" placeholder="검사만료일" readonly>
+								<input type="hidden" id="totcost"				name="totcost" placeholder="서비스이용료" readonly>
 
-                                    <div class="col-5 mt-3">
-                                        <div>
-                                        <a href="javascript:void(0)"
-                                            class="btn btn-success shadow-none w-100"
-                                            id="btnschdate"
-                                            style="font-size: 13px"><i class="bi bi-search" style="font-size: 14px;"></i> 가까운 검사소 찾기 </a>
-                                        </div>
-                                    </div>
-                                    <input type="hidden"	id="detailaddress" name="detailaddress">
-                                    <input type="hidden"	id="zipcode"				name="zipcode">
-                                    <input type="hidden"	id="jibunaddr"				name="jibunaddr" placeholder="지번주소">
-                                    <input type="hidden"	id="car_location"			name="car_location" placeholder="주소기타">
-                                    <input type="hidden"	id="pickup_address"	name="pickup_address" placeholder="시도+시군구+읍면동">
-                                    <input type="hidden"	id="start_x"					name="start_x">
-                                    <input type="hidden"	id="start_y"					name="start_y">
+								<input type="hidden" id="h_ulist"				name="h_ulist">
 
-                                </div>
-                            </div><!-- 픽업주소 END-->
+								<input type="hidden" id="schtime"				name="schtime" />
+								<input type="hidden" id="h_conno"			name="h_conno" value="" />	<!-- 방문검사소 : 검사대행은 사용안함 -->
+								<input type="hidden" id="h_cuno"				name="h_cuno" value="" />
 
-                            <!-- 검사소&예약일 -->
-                            <div class="custom-form p-4 rounded border  mt-5" style="display:none;">
-                                <div class="row" id="tsinfo_schedule">
-                                    <div class="col-lg-12" id="tsinfo_schedule_detail">
-                                        <div class="mb-3">
-                                            <label class="form-label" for="schdate"><span class="text-danger mr-1 me-1">*</span>방문할 예약일</label>
-                                            <div class="input-group mb-3">
-                                                <input type="text" placeholder="" id="schdate" name="schdate" required=""readonly="" class="form-control bg-light" aria-describedby="btnschdate">
-                                                <div class="input-group-append">
+								<input type="hidden" id="h_check_tel1"		name="h_check_tel1" value="N" /> <!-- 신청인 휴대전화 본인인증 여부 -->
 
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
+								<input type="hidden" id="h_cpn"				name="h_cpn" />
+								<input type="hidden" id="h_cpnp"				name="h_cpnp" value="0" />
+								<input type="hidden" id="h_prepaid_cost"		name="h_prepaid_cost" value="1000" />
+
+								<input type="hidden" id="h_payment"			name="h_payment" value="0" />
+
+								<input type="hidden" id="REMOTE_ADDR" name="REMOTE_ADDR" value="125.180.169.30">
+								<input type="hidden" id="SERVER_PORT" name="SERVER_PORT" value="443">
+								<input type="hidden" id="HTTP_USER_AGENT" name="HTTP_USER_AGENT" value="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36">
+								<!-- hidden value	-->
+					
+								<!-- 테두리를 보이려면 class 에 shadow 를 추가 -->
+								<!-- 픽업 주소	-->
+								<div class="custom-form p-4 rounded border">
+
+									<div class="row" id="locationInfo">
+
+										<div class="col-lg-12">
                                             <div class="form-group position-relative">
-                                                <label class="form-label"><span class="text-danger mr-1 me-1">*</span>방문일시</label>
-                                                <div class="form-icon position-relative">
-                                                <i data-feather="clock" class="fea icon-sm icons"></i>
-                                                <input type="text" class="form-control pl-5  bg-light" placeholder=""  id="schtime_t" name="schtime_t" required=""readonly="">
+                                                <a href="javascript:void(0);"  id="btnexecDaumPostcode" name="btnexecDaumPostcode" class="btn btn-primary w-100 shadow-none">
+                                                    <i data-feather="search" class="fea icon-sm"> </i><span> 클릭해서 자동차 픽업주소를 선택하세요</span></a>
+                                                <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:100;-webkit-overflow-scrolling:touch;">
+                                                    <a href="javascript:void(0);"  id="btnCloseLayer" name="btnCloseLayer" class="btn btn-primary w-100 rounded-0 shadow-none" onclick="closeDaumPostcode()"><span>닫 기</span></a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="mb-3">
-                                            <div class="form-group position-relative">
-                                                <label  class="form-label"><span class="text-danger mr-1 me-1">*</span> 방문할 검사소											</label>
-                                                <div class="form-icon position-relative">
-                                                <i data-feather="home" class="fea icon-sm icons"></i>
-                                                <input type="text" class="form-control pl-5  bg-light" placeholder=""  id="conname" name="conname" required=""readonly="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mb-0">
-                                            <div class="form-group position-relative mb-0">
-                                                <label class="text-danger"> * 검사소 조회 후 방문예약을 하시면 예약내역이 메세지로 발송됩니다. 아래의 "예약확인 휴대전화번호"를 정확히 입력해주세요.
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <input type="hidden" placeholder="대행 매니저 :"  id="cuname" name="cuname" readonly>
-                                    </div>
-                                </div>
-                            </div><!-- 검사소&예약일 END -->
+                                        <div id="wrap" style="display:none;border:1px solid #dee2e6;position:relative"></div>
+										<div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:100;-webkit-overflow-scrolling:touch;">
+											<a href="javascript:void(0);"  id="btnCloseLayer" name="btnCloseLayer" class="btn btn-primary w-100 rounded-0 shadow-none" onclick="closeDaumPostcode()"><span>닫 기</span></a>
+										</div>
 
-                            <!--  신청인 정보 -->
-                            <div class="custom-form p-4 mt-5 rounded border" id="userInfo">
-                            <div class="row mt-4" >
-                                <div class="col-lg-12">
-                                    <div class="form-group position-relative">
-                                        <label class="form-label">신청인 이름<span class="text-danger">*</span></label>
-                                        <div class="form-icon position-relative">
-                                        <i data-feather="user" class="fea icon-sm icons"></i>
-                                        <input type="text" class="form-control ps-5" placeholder="" id="name" name="name" value="" required="">
-                                        </div>
-                                    </div>
-                                </div><!--end col-->
-                                <div class="col-lg-12">
-                                    <div class="form-group position-relative">
-                                        <label class="form-label">예약확인 휴대전화 (숫자만입력)<span class="text-danger">*</span></label>
-                                        <div class="form-icon position-relative">
-                                        <i data-feather="smartphone" class="fea icon-sm icons"></i>
-                                        <input type="text" id="tel1" name="tel1"  value="" maxlength="11" style="ime-mode:disabled;" class="form-control ps-5" placeholder="" required="" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');">
-                                        </div>
-                                    </div>
-                                </div><!--end col-->
-                                <div class="col-lg-12">
-                                    <div class="form-group position-relative">
-                                        <a href="javascript:void(0)" class="btn btn-primary w-100 shadow-none" id="btnCheckphone">
-                                            <i data-feather="hash" class="fea icon-sm mr-1"> </i>휴대전화로 인증번호를 받으세요</a>
-                                    </div>
-                                </div><!--end col-->
-                                <div class="col-lg-12 mt-4" id="dpAuth" style="display:none;">
-                                    <div class="form-group position-relative">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <label>인증번호 입력: <span class="text-danger">*</span></label>
-                                            <a class="underline add_time mb-1" id="otptime">인증번호 유효시간 <span id="txtotptime" class="text-danger">3분 0초</span></a>
-                                        </div>
-                                        <input type="text" class="form-control" autocomplete="off"  id="txtauthno" name="txtauthno" onkeydown="return onlyNumber(event)" onkeyup="return removeChar(event)" maxlength="6" placeholder="수신하신 인증번호를 입력해주세요">
-                                        <div class="form-group position-relative mt-1">
-                                            <a href="javascript:void(0);" id="btnAuthConfirm" class="btn btn-primary w-100">
-                                            <i data-feather="check" class="fea icon-sm"> </i> 카카오톡 또는 SMS로 수신된 인증번호를 입력하고 클릭하세요</a>
-                                            <input type="hidden" id="AuthConfirmYn" name="AuthConfirmYn"  value="N">
-                                        </div>
-                                    </div>
-                                </div><!--end col-->
-                            </div><!-- 신청인 정보 END-->
-                            <div id="faq-accordion" class="d-sm-block  mt-5">
-                                <div class="card mb-2 mb-md-3">
-                                    <a href="#accordion-1" data-toggle="collapse" role="button" aria-expanded="false" class=" text-secondary">
-                                        <div class=" border-0 p-3 pr-5" id="headingfifone">
-                                            <p class="text-muted small mb-0"> 선택. 추가 연락처가 있거나 검사소에 남기실 말씀이 있다면 클릭하세요. </p>
-                                        </div>
-                                    </a>
-                                    <div class="collapse" id="accordion-1" data-parent="#faq-accordion">
-                                        <div class="px-3 px-md-4 py-3 pb-md-4">
-                                            <div class="row"  id="addedinfo">
-                                                <div class="col-lg-12">
-                                                    <div class="form-group position-relative">
-                                                        <label class="form-label">선택. 방문하실 분 연락처</label>
-                                                        <div class="form-icon position-relative">
-                                                        <i data-feather="smartphone" class="fea icon-sm icons"></i>
-                                                        <input type="text" id="tel2" name="tel2" maxlength="11" style="ime-mode:disabled;" class="form-control pl-5" placeholder="신청인과 방문하실 분이 다른경우 경우, 숫자만입력 :" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');">
-                                                        <input type="hidden" id="email" name="email" onkeyup="personalAgentInfo.checkEmail()" onclick="personalAgentInfo.checkEmail()" onchange="personalAgentInfo.checkEmail()" onpaste="personalAgentInfo.checkEmail()" value="" placeholder="이메일을 입력하세요">
-                                                        </div>
-                                                    </div>
-                                                </div>
+										<div class="col-lg-12">
+											<div class="form-group position-relative">
+												<label class="form-label"><span class="text-danger">*</span> 자동차 픽업주소</label>
+												<div class="form-icon position-relative">
+												<i data-feather="map-pin" class="fea icon-sm icons text-danger"></i>
+												<input type="text" name="roadaddr" id="roadaddr" class="form-control pl-5 bg-light" placeholder="" readonly>
+												</div>
+											</div>
+										</div>
 
-                                                <div class="col-lg-12">
-                                                    <div class="form-group position-relative">
-                                                        <label class="form-label" data-toggle="tooltip" data-placement="right" style="display:none;" title="고객센터 1577-0266 으로 문의해주셔도 좋습니다">선택. 검사소에 남기실 말씀이 있으세요?
-                                                        </label>
-                                                        <div class="form-icon position-relative">
-                                                        <i data-feather="message-circle" class="fea icon-sm icons" style="top: 15px;"></i>
-                                                        <textarea id="memo_ot" name="memo_ot" rows="2" class="form-control pl-5" style="height: 70px !important;" placeholder="방문하실 검사소에 남기실 말씀이나 희망하시는 정비내역이 있다면 작성해주세요"></textarea>
-                                                        </div>
-                                                    </div>
-                                                </div><!--end col-->
-                                                <div class="col-lg-12">
-                                                    <div class="form-group position-relative">
-                                                        <label class="text-dark small">선택. 사진은 최대 5장 까지 등록가능합니다 <span class="text-danger"></span></label>
-                                                        <input type="file" multiple  id="carimg1" name="carimg[]" data-maxfilesize="10000000" data-count="5" accept="image/*" >
-                                                    </div>
-                                                </div><!--end col-->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+										<div class="col-lg-12">
+											<div class="form-group position-relative mb-0">
+												<label class="form-label"><span class="text-danger">*</span> 주차장소 등 자세한 픽업위치</label>
+												<div class="form-icon position-relative">
+												<i data-feather="home" class="fea icon-sm icons text-danger"></i>
+												<input type="text" id="detailaddress" name="detailaddress" class="form-control pl-5" placeholder="" required="">
+												</div>
+											</div>
+										</div>
+										<input type="hidden"	id="zipcode"				name="zipcode">
+										<input type="hidden"	id="jibunaddr"				name="jibunaddr" placeholder="지번주소">
+										<input type="hidden"	id="car_location"			name="car_location" placeholder="주소기타">
+										<input type="hidden"	id="pickup_address"	name="pickup_address" placeholder="시도+시군구+읍면동">
+										<input type="hidden"	id="start_x"					name="start_x">
+										<input type="hidden"	id="start_y"					name="start_y">
+									</div>
+								</div>
 
-                            <!-- 약관 동의-->
-                            <div class="custom-form p-4 rounded border  mt-5 mb-4">
-                                <div class="row"  id="agreementInfo">
-                                    <div class="col-lg-12">
-                                        <div class="custom-control custom-switch">
-                                            <div class="form-group">
-                                                <input type="checkbox" class="custom-control-input term" id="termAllChk" onclick="agreeTerm.termAllChk();">
-                                                <label class="custom-control-label  text-dark" for="termAllChk">전체동의</label>
-                                            </div>
-                                        </div>
-                                    </div><!--end col-->
-                                    <div class="col-lg-12">
-                                        <div class="custom-control custom-switch">
-                                        <div class="d-flex justify-content-between mt-1">
-                                            <div class="form-group mb-1">
-                                                <input type="checkbox" class="custom-control-input term" id="userChk" onclick="agreeTerm.termChk('userChk');">
-                                                <label class="custom-control-label" for="userChk">이용약관 동의(필수) <span class="text-danger">*</span></label>
-                                            </div>
-                                            <a href="javascript:void(0);" id="btnCarLoc" data-toggle="modal" data-target="#userChk_modal" class=""> 자세히보기</a>
-                                        </div>
-                                    </div>
-                                    </div><!--end col-->
-                                    <div class="col-lg-12">
-                                        <div class="custom-control custom-switch">
-                                        <div class="d-flex justify-content-between mt-1">
-                                            <div class="form-group mb-1">
-                                                <input type="checkbox" class="custom-control-input term" id="personalChk"onclick="agreeTerm.termChk('personalChk');">
-                                                <label class="custom-control-label" for="personalChk">개인정보 수집 및 이용 동의(필수) <span class="text-danger">*</span> </label>
-                                            </div>
-                                            <a href="javascript:void(0);" id="btnCarLoc" data-toggle="modal" data-target="#personalChk_modal" class=""> 자세히보기</a>
-                                        </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="custom-control custom-switch">
-                                            <div class="d-flex justify-content-between mt-1">
-                                                <div class="form-group mb-1">
-                                                    <input type="checkbox" class="custom-control-input term" id="noticeChk" onclick="agreeTerm.termChk('noticeChk'); ">
-                                                    <label class="custom-control-label" for="noticeChk">자동차검사안내에 대한 동의 (선택)</label>
-                                                </div>
-                                                <a href="javascript:void(0);" id="btnCarLoc" data-toggle="modal" data-target="#noticeChk_modal" class=""> 자세히보기</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 mt-3">
-                                        <div class="form-group mb-0">
-                                            <label class="form-label">자동차검사 안내 문자 수신방법</label>
-                                            <div class="form-icon position-relative">
-                                                <i class="mdi mdi-phone ml-3 icons"></i>
-                                                <select id="notice_method" name="notice_method" class="form-control custom-select pl-5">
-                                                    <option value="tel1">신청인 휴대전화번호로 받겠습니다</option>
-                                                    <option value="tel2">신청인 기타전화번호로 받겠습니다</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!-- 자동차검사 기초정보 end row-->
-                            </div><!--end custom-form-->
+								<div class="custom-form p-4 rounded border mt-5">
+									<div class="row"  id="testInfo">
+										
+										<div class="col-lg-12">
+											<div class="form-group position-relative">
+												<label class="form-label"><span class="text-danger">*</span>자동차번호 </label>
+												<div class="form-icon position-relative">
 
-                            <!-- 주문폼 시작	-->
-                            <!-- 휴대전화 인증	-->
-                            <input type="hidden" id="tokn" name="tokn" value="0a7ca385f6efa31b76c9749718832a6d">
-                            <input type="hidden" id="dt" name="dt">
-                            <!-- hidden value	-->
-                            <input type="hidden" id="h_stype"		name="h_stype" value="1">					<!-- 서비스종류	1: 검사 -->
-                            <input type="hidden"						name="m" value="add">					<!-- DIV 구분		1: 검사 -->
-                            <input type="hidden" id="act"			name="act" value="check">					<!-- 결제방법		check : 선불결제 -->
+												<i data-feather="truck" class="fea icon-sm icons text-danger"></i>
+												<input type="text" id="carno" name="carno" class="form-control pl-5" placeholder="">
+												</div>
+											</div>
 
-                            <input type="hidden" id="u"			name="u" value="">									<!-- 결과페이지로 	넘길고유번호 -->
-                            <input type="hidden" id="o"			name="o" value="">									<!-- 결과페이지로 	넘길고유번호 -->
+											<div class="form-group position-relative">
+												<label class="form-label"><span class="text-danger">*</span> 소유자생년월일(법인번호) 앞 6자리</label>
+												<div class="form-icon position-relative">
+												<i data-feather="hash" class="fea icon-sm icons text-danger"></i>
+												<input type="number" id="bymd" name="bymd" class="form-control pl-5" placeholder="소유자 생년월일 6자리" maxlength="6" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1'); numberMaxLength(this);">
+												</div>
+											</div> 
 
-                            <input type="hidden" id="h_today"					name="h_today" value="2022-06-24">	<!-- 오늘날짜		check : 선불결제 -->
-                            <input type="hidden" id="h_rv_scnt"				name="h_rv_scnt" value="1">	            <!-- 예약가능시작일		 -->
-                            <input type="hidden" id="h_rv_ecnt"				name="h_rv_ecnt" value="31">		    <!-- 예약가능종료일		 -->
-                            <input type="hidden" id="h_osn"					name="h_osn">
-                            <input type="hidden" id="h_car_maker_type"	name="h_car_maker_type" value="0">	        <!-- 0 검사 -->
-                            <input type="hidden" id="h_profit_center"		 name="h_profit_center" value="00">		<!-- 00 KMDS -->
+											<!--
+											<div class="form-group position-relative">
+												<span class="badge badge-pill badge-warning">주의</span> 
+												<span class="content alert text-muted">비정상적인 접근을 식별하기 위해 사용자의 IP주소를 수집합니다. 동의 없이 타인의 차량을 조회하는 경우 관련 법에 의해 처벌 될 수 있으며, 조회하는 자동차가 본인 소유가 아닌 경우 반드시 해당 소유자의 동의를 받아야 합니다.</span>
+											</div>-->
 
-                            <!-- 픽업 지역 & 지역별 대행료-->
-                            <input type="hidden" id="h_acode"	name="h_acode" />
-                            <input type="hidden" id="sido"			name="sido">
-                            <input type="hidden" id="gugun"		name="gugun">
-                            <input type="hidden" id="dong"			name="dong">
-                            <input type="hidden" id="h_cost2"		name="h_cost2"	value="0" /> <!-- 고객방문은 대행료 0원 -->
+											<div class="custom-control custom-switch">
+												<div class="form-group">
+													<div class="d-flex justify-content-between mt-1">
+														<div>
+															<input type="checkbox" class="custom-control-input mk" id="testInfoSwitch" onclick="agreeTerm.testInfoChk();">
+															<label class="custom-control-label text-secondary small" for="testInfoSwitch">안내를 읽고 동의합니다.<span class="text-danger">*</span></label>
+														</div>
+														<a href="javascript:void(0);" id="" data-toggle="modal" data-target="#tsSearchChk_modal" class="small text-muted ">  <i data-feather="file" class="fea icon-sm"> </i> 안내문 보기</a>
+													</div>
+												</div>
+											</div>
 
-                            <!-- 검사 정보 -->
-                            <input type="hidden" id="h_owner_pnm"		name="h_owner_pnm"/>
-                            <input type="hidden" id="h_vin"					name="h_vin"/>
-                            <input type="hidden" id="h_carsize"			name="h_carsize" value="0"/>
-                            <input type="hidden" id="h_makeymd"		name="h_makeymd"/>
-                            <input type="hidden" id="h_carno"				name="h_carno">
-                            <input type="hidden" id="h_bymd"				name="h_bymd">
-                            <input type="hidden" id="h_cost1"				name="h_cost1">
-                            <input type="hidden" id="h_ttype"				name="h_ttype">
-                            <input type="hidden" id="h_nox_yn"			name="h_nox_yn">
-                            <input type="hidden" id="h_gsTypeCode"	name="h_gsTypeCode">
-                            <input type="hidden" id="h_gsTypeName"	name="h_gsTypeName">
+											<div class="form-group mb-0"> 
+												<!--<a href="javascript:void(0);" id="loadTestInfo" class="btn btn-primary w-100 disabled" data-loading-text="잠시만 기다려 주세요..."> 교통안전공단 시스템 점검으로 예약이 되지 않습니다.</a>-->
+												<a href="javascript:void(0);" id="loadTestInfo" class="btn bg-soft-info w-100" data-loading-text="잠시만 기다려 주세요..."><i data-feather="search" class="fea icon-sm"> </i> 클릭해서 검사정보를 조회합니다</a>
+											</div>
+										</div>
+									</div>
+								</div><!--end col-->
 
-                            <input type="hidden" id="startdate"	name="startdate">
-                            <input type="hidden" id="enddate"		name="enddate">
+								<div class="custom-form p-4 rounded border mt-5" id="result_ts" style="display:none;">
+									<div class="row">
+										<div class="col-lg-12">
+											<div class="card overflow-hidden border-0">
+												<div class="card-body p-0">
+													<ul class="list-unstyled d-flex justify-content-between mb-0">
+														<li><a href="javascript:void(0)" class="title h6 text-dark">자동차</a></li>
+														<li class="h6 mb-0 jobs" id="tsresult_car_name">자동차명</li>
+													</ul>
+													<ul class="list-unstyled d-flex justify-content-between mb-0">
+														<li><a href="javascript:void(0)" class="title h6 text-dark">검사종류</a></li>
+														<li class="h6 mb-0 jobs" id="tsresult_test_type">검사종류</li>
+													</ul>
+													<ul class="list-unstyled d-flex justify-content-between mb-0">
+														<li><a href="javascript:void(0)" class="title h6 text-dark">검사만료일</a></li>
+														<li class="h6 mb-0 jobs" id="tsresult_exp_date">검사만료일</li>
+													</ul>
 
-                            <input type="hidden" id="carname"	name="carname" placeholder="자동차 정보" readonly>
-                            <input type="hidden" id="ttype_title"	name="ttype_title" placeholder="검사 종류" readonly>
-                            <input type="hidden" id="expdate"		name="expdate" placeholder="검사만료일" readonly>
-                            <input type="hidden" id="totcost"		name="totcost" placeholder="서비스이용료" readonly>
+													<ul class="list-unstyled d-flex justify-content-between mb-0">
+														<li><a href="javascript:void(0)" class="title h6 text-dark">자동차검사료</a></li>
+														<li class="h6 mb-0 jobs" id="tsresult_cost_1">자동차검사료</li>
+													</ul>
+													<ul class="list-unstyled d-flex justify-content-between mb-0">
+														<li><a href="javascript:void(0)" class="title h6 text-dark">픽업딜리버리대행료</a></li>
+														<li class="h6 mb-0 jobs" id="tsresult_cost_2">픽업딜리버리대행료</li>
+													</ul>
+													<ul class="list-unstyled d-flex justify-content-between mt-2 mb-2 border-bottom">
+													</ul>
+													<ul class="list-unstyled d-flex justify-content-between mb-0">
+														<li><a href="javascript:void(0)" class="title h6 text-danger">합계 (부가세 포함)</a></li>
+														<li class="h6 mb-0 jobs text-danger" id="tsresult_payment">합계</li>
+													</ul>
+													<div class="col-md-12 order-4 order-md-1 mt-2 p-0">
+														<div class="form-group position-relative mb-0">
+															<p class="text-muted mb-0 tx-6"><span class="badge badge-pill badge-warning">알림</span> 모터맨의 대행서비스를 이용하시면 검사소예약을 별도로 하실 필요가 없습니다. 아래에서 대행희망일을 선택하세요.</p>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div><!-- 자동차검사 기초정보 end row-->
+									<div class="row mt-5" id="result_recall" style="display:none;">
+										<div class="col-lg-12">
+											<div class="d-flex mb-2 justify-content-between">
+												<h6>참고. 자동차 리콜정보</h6>
+												<a href="https://www.car.go.kr/home/main.do" class="text-muted h6" target="_blank">새창으로 자세히보기</a>
+											</div>
+											<div class="table-responsive">
+												<table class="table table-center table-padding mb-0" id="tblRecallData">
+													<tbody>
+														<tr>
+															<td class="h6 border-0">차명</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+										<div class="col-lg-12">
+											<div class="form-group position-relative mb-0">
+												<p class="text-muted mb-0 tx-6"><span class="badge badge-pill badge-warning">알림</span> 리콜정보는 모터맨이 고객의 안전을 위해 한국교통안전공단이 공공데이터포털을 통해 제공한 리콜현황을 참고하여 제공해 드립니다.<br>리콜은 자동차검사 결과에는 무관하며 자세한 정보는 자동차 리콜센터를 참고하세요.</p>
+											</div>
+										</div>
+									</div><!-- 자동차검사 기초정보 end row-->
+								</div>
+								<!--end custom-form-->
+									
+								<div class="custom-form p-4 rounded border mt-5">
+									<div class="row " id="tsinfo_schedule">
+										<div class="col-lg-12">
+											<div class="form-group">
+												<label class="text-dark small"><span class="text-danger">*</span> 픽업예약일 선택</label>
+												<div class="input-group mb-3">
+													<input type="text" 
+															placeholder="" 
+															id="schdate" 
+															name="schdate" 
+															required=""
+															readonly="" 
+															class="form-control bg-light"
+															aria-describedby="btnschdate">
 
-                            <input type="hidden" id="h_ulist"		name="h_ulist">
+													<div class="input-group-append">
+														<a href="javascript:void(0);" id="btnschdate" 
+															class="btn  btn-primary btn-sm btn-modal-open" 
+																modal_id	=	"scheduleAgentLayer" 
+																act			=	"schagent"  
+																ac				=	""
+																modal_size	="modal-md"
+																>
+																<span class="px-2"><i class="mdi mdi-calendar-check"></i> 픽업예약일 선택</span>
+															</a>
 
-                            <input type="hidden" id="schtime"		name="schtime" />
-                            <input type="hidden" id="h_conno"	name="h_conno" value="" />
-                            <input type="hidden" id="h_cuno"		name="h_cuno" value="" />
+																<!--<a href="javascript:void(0)" class="btn btn-primary shadow-none" id="btnschdate">픽업예약일 선택</a>-->
+													</div>
+																									</div>
+											</div>
+										</div>
 
-                            <input type="hidden" id="h_check_tel1"		name="h_check_tel1" value="N" /> <!-- 신청인 휴대전화 본인인증 여부 -->
+										<div class="col-lg-12">
+											<div class="form-group position-relative">
+												<label class="form-label"><span class="text-danger">*</span> 픽업시간</label>
+												<div class="form-icon position-relative">
+												<i data-feather="clock" class="fea icon-sm icons text-danger"></i>
+												<input type="text" class="form-control pl-5 bg-light" placeholder=""  id="schtime_t" name="schtime_t" required=""readonly="">
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-12">
+											<div class="form-group position-relative">
+												<label  class="form-label"><span class="text-danger">*</span> 담당 대행원</label>
+												<div class="form-icon position-relative">
+												<i class="mdi mdi-hail icons text-danger"></i>
+												<input type="text" class="form-control pl-5 bg-light" placeholder=""  id="cuname" name="cuname" required=""readonly="">
+												</div>
+											</div>
+										</div>
+									</div><!-- 자동차검사 기초정보 end row-->
+								</div>
+								<!--end custom-form-->
 
-                            <input type="hidden" id="h_cpn"		name="h_cpn" />
-                            <input type="hidden" id="h_cpnp"		name="h_cpnp" value="0" />
-                            <input type="hidden" id="h_prepaid_cost"		name="h_prepaid_cost" value="0" />
+								<div class="custom-form p-4 rounded border mt-5">
+									<div class="row"  id="userInfo">
+										<div class="col-lg-12">
+											<div class="form-group position-relative">                                               
+												<label class="form-label"><span class="text-danger">*</span> 신청인 이름</label>
+												<div class="form-icon position-relative">
+												<i data-feather="user" class="fea icon-sm icons text-danger"></i>
+												<input type="text" class="form-control pl-5" placeholder="" id="name" name="name" value="" required="">
+												</div>
+											</div>
+										</div><!--end col-->
+										<div class="col-lg-12">
+											<div class="form-group position-relative">
+												<label class="form-label"><span class="text-danger">*</span> 예약확인 휴대전화(숫자만입력)</label>
+												<div class="form-icon position-relative">
+												<i data-feather="smartphone" class="fea icon-sm icons text-danger"></i>
+												<input type="text" id="tel1" name="tel1"  value="" maxlength="11" style="ime-mode:disabled;" class="form-control pl-5" placeholder="" required="" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');">
+												</div>
+											</div>
+										</div><!--end col-->
+										<div class="col-lg-12">
+											<div class="form-group position-relative">
+												<a href="javascript:void(0)" class="btn btn-primary w-100 shadow-none" id="btnCheckphone">
+													<i class="mdi mdi-cursor-default-click-outline mr-1 h5"></i>카카오톡( SMS)로 인증번호를 받으세요<span class="text-danger">*</span></a>
+											</div>
+										</div><!--end col-->
 
-                            <input type="hidden" id="h_payment" name="h_payment" value="0" />
+										<div class="col-lg-12 mt-4" id="dpAuth" style="display:none;">
+											<div class="form-group position-relative">
+												<div class="d-flex justify-content-between align-items-center">
+													<label>인증번호 입력: <span class="text-danger">*</span></label> 
+													<a class="underline add_time mb-1" id="otptime">인증번호 유효시간 <span id="txtotptime" class="text-danger">3분 0초</span></a>
+												</div>
+												<input type="text" class="form-control pl-5" autocomplete="off"  id="txtauthno" name="txtauthno" onkeydown="return onlyNumber(event)" onkeyup="return removeChar(event)" maxlength="6" placeholder="휴대전화로 수신하신 인증번호를 입력해주세요">
+												<div class="form-group position-relative mt-1"> 
+													<a href="javascript:void(0);" id="btnAuthConfirm" class="btn btn-primary w-100"> 수신된 4자리 인증번호를 입력하고 클릭하세요</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="custom-form p-4 rounded border mt-5">
+									<div class="row"  id="">
+										<div class="col-lg-12">
+											<div class="form-group position-relative">
+												<label class="form-label">선택. 픽업시 연락받을 전화번호:</label>
+												<div class="form-icon position-relative">
+												<i data-feather="phone-incoming" class="fea icon-sm icons"></i>
+												<input type="text" id="tel2" name="tel2" maxlength="11" style="ime-mode:disabled;" class="form-control pl-5" placeholder="픽업시 연락받을 전화번호(숫자만입력)" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');">
+												</div>
+											</div>
+											<div class="d-flex flex-column flex-wrap flex-md-row justify-content-between align-items-center">
+												<div class="form-check mb-3 mb-md-0">
+													<input 
+														type="checkbox" 
+														class="form-check-input" 
+														id="equalSwitch">
+													<label class="form-check-label" for="equalSwitch">
+														"신청인 연락처"와 "픽업 연락처"가 같습니다.
+													</label>
+												</div>
+											</div>
+											<input type="hidden" id="email" name="email" onkeyup="personalAgentInfo.checkEmail()" onclick="personalAgentInfo.checkEmail()" onchange="personalAgentInfo.checkEmail()" onpaste="personalAgentInfo.checkEmail()" value="" placeholder="이메일을 입력하세요">
+										
+										</div>
+									</div><!-- 자동차검사 기초정보 end row-->
+								</div><!--end custom-form-->
 
-                            <input type="hidden" id="REMOTE_ADDR" name="REMOTE_ADDR" value="121.140.61.158">
-                            <input type="hidden" id="SERVER_PORT" name="SERVER_PORT" value="443">
-                            <input type="hidden" id="HTTP_USER_AGENT" name="HTTP_USER_AGENT" value="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36">
-                            <!-- hidden value	-->
-                        </div><!--end col-->
+								<div class="faq-content rounded mt-5 " id="accordionExample">
+									<div class="card mb-2">
+										<a data-toggle="collapse" href="#collapseTwo" class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapseTwo">
+											<div class="card-header bg-white p-3 border-bottom" id="headingTwo" style="border-bottom: 0px solid rgba(0,0,0,.125);">
+												<label class="text-dark small mb-0 faq-question">선택. 요청이나 부적합에 해당될 수 있는 특이사항이 있다면 클릭하세요.  </label>
+											</div>
+										</a>
+										<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+											<div class="card-body">
+												<div class="col-lg-12 px-0">
+													<div class="form-group ">
+														<textarea id="memo_ot" name="memo_ot" rows="4" class="form-control" style="font-size: 12px;" placeholder="불법 구조변경 및 등화장치 교체·착색, 시트·격벽제거, 휠타이어 돌출등은 부적합에 해당되는 사항이 있다면, 여기에 기록하거나 전화 1577-0266, 카카오톡을 통해서 상담을 하실 수 있습니다"></textarea>
+													</div>
+												</div><!--end col-->
+												<div class="col-lg-12 px-0">
+													<div class="form-group position-relative">	
+														<label>사진은 최대 5장 까지 등록가능합니다 <span class="text-danger"></span></label>
+														<input type="file" multiple  id="carimg1" name="carimg[]" data-maxfilesize="10000000" data-count="5" accept="image/*" >
+													</div>
+												</div><!--end col-->
+											</div>
+										</div>
+									</div>
+								</div><!--end col-->
+								<!-- Accordions End -->
 
-                        <div class="col-lg-4 col-md-5 col-12 mt-md-0 mt-sm-4">
-                        </div>
 
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-12 d-none d-md-block">
-                                <div class="rounded shadow bg-light p-4 mb-4" id="req_alert" style="display:none;">
-                                    <div class="d-flex mb-4 justify-content-between">
-                                        <h5>검사대행이 필요하세요?</h5>
-                                        <a href="javascript:void(0);" class="text-muted h6"></a>
-                                    </div>
-                                    <div class="table-responsive">
-                                        <table class="table table-center table-padding mb-0">
-                                            <tbody>
-                                                <tr>
-                                                    <td class="h6 border-0 text-secondary">검사료</td>
-                                                    <td class="text-right font-weight-bold border-0 text-secondary"  id="req_h_cost1">-</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="h6 text-secondary">대행료</td>
-                                                    <td class="text-right font-weight-bold text-secondary"  id="req_h_cost2"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="h6 text-secondary">예약할인</td>
-                                                    <td class="text-right font-weight-bold text-secondary"  id="req_prepaid_cost">1,000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="h6 text-secondary">회원할인</td>
-                                                    <td class="text-right font-weight-bold text-secondary"  id="req_member_cost">0</td>
-                                                </tr>
-                                                <tr class="bg-light text-secondary">
-                                                    <td class="h6 font-weight-bold">결제 금액</td>
-                                                    <td class="text-right h4 font-weight-bold text-secondary" id="req_payment">0</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <p>직접가기가 어려우신가요? 자동차검사를 대신 해줄 누군가 필요하시면 아래의 "자동차검사 >  픽업&딜리버리 예약"을 이용해주세요. </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="sidebar sticky-bar  ">
-                            <div class="border_bottom rounded border p-4 mb-4">
-                            </div>
-                        </div><!--end col-->
-                    </div><!--end row-->
-				</form>
+								<div class="custom-form p-4 rounded border mt-5 mb-4">
+									<!-- 할인 및 결제방법	-->
+									<div class="row"  id="agreementInfo">
+										<div class="col-lg-12">
+											<div class="custom-control custom-switch">
+												<div class="form-group">
+													<input type="checkbox" class="custom-control-input term" id="termAllChk" onclick="agreeTerm.termAllChk();">
+													<label class="custom-control-label" for="termAllChk">전체동의</label> 
+												</div>
+											</div>
+										</div><!--end col-->
+										<div class="col-lg-12">
+											<div class="custom-control custom-switch">
+												<div class="form-group">
+													<input type="checkbox" class="custom-control-input term" id="userChk" onclick="agreeTerm.termChk('userChk');">
+													<label class="custom-control-label text-secondary" for="userChk"><span class="text-danger">*</span> 이용약관 동의</label>
+													<a href="javascript:void(0);" id="btnCarLoc" data-toggle="modal" data-target="#userChk_modal" class=""> 자세히보기</a>
+												</div>
+											</div>
+										</div><!--end col-->
+										<div class="col-lg-12">
+											<div class="custom-control custom-switch">
+												<div class="form-group">
+													<input type="checkbox" class="custom-control-input term" id="personalChk"onclick="agreeTerm.termChk('personalChk');">
+													<label class="custom-control-label text-secondary" for="personalChk"><span class="text-danger">*</span> 개인정보 수집 및 이용 동의</label>
+													<a href="javascript:void(0);" id="btnCarLoc" data-toggle="modal" data-target="#personalChk_modal" class=""> 자세히보기</a>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-12">
+											<div class="custom-control custom-switch">
+												<div class="form-group">
+													<input type="checkbox" class="custom-control-input term" id="noticeChk" onclick="agreeTerm.termChk('noticeChk'); ">
+													<label class="custom-control-label text-secondary" for="noticeChk">자동차검사안내에 대한 동의 (선택)</label>
+													<a href="javascript:void(0);" id="btnCarLoc" data-toggle="modal" data-target="#noticeChk_modal" class=""> 자세히보기</a>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-12">
+											<div class="form-group position-relative">
+												<label class="form-label">자동차검사 안내 문자 수신방법</label>
+												<div class="form-icon position-relative">
+												<i data-feather="smartphone" class="fea icon-sm icons"></i>
+													<select id="notice_method" name="notice_method" class="form-control custom-select pl-5">
+														<option value="tel1">신청인 휴대전화번호</option>
+														<option value="tel2">픽업시 휴대전화번호</option>
+													</select>
+												</div>
+											</div>
+										</div>
 
-                <!-- // 자동차 검사 일시 정보  layer -->
-                <form action="" name="frm" id="frm" method="post" style="">
-                    <input type="hidden" name="PayMethod" value="CARD">
-                    <input type="hidden" name="GoodsCnt" value="1">
-                    <input type="hidden" name="GoodsName">
-                    <input type="hidden" name="Amt" value="">
-                    <input type="hidden" name="Moid" value="">
-                    <input type="hidden" name="MID" value="">
-                    <input type="hidden" name="ReturnURL">
-                    <input type="hidden" name="ResultYN" value="N">
-                    <input type="hidden" name="RetryURL">
-                    <input type="hidden" name="mallUserID" value="">
-                    <input type="hidden" name="BuyerName" value="">
-                    <input type="hidden" name="BuyerTel" value="">
-                    <input type="hidden" name="BuyerEmail" value="">
-                    <input type="hidden" name="OfferingPeriod" value="">
-                    <input type="hidden" name="VbankExpDate" id="VbankExpDate" value="" disabled placeholder=""> <!--//가상계좌 입금예정일-->
-                    <input type="hidden" name="EncodingType" value="utf-8">
-                    <!--hidden 데이타 필수-->
-                    <input type="hidden" name="ediDate" value="">
-                    <input type="hidden" name="MerchantKey" value="Ma29gyAFhvv/+e4/AHpV6pISQIvSKziLIbrNoXPbRS5nfTx2DOs8OJve+NzwyoaQ8p9Uy1AN4S1I0Um5v7oNUg==">
-                    <input type="hidden" name="EncryptData" value="">
-                    <input type="hidden" name="MallIP" value="61.109.247.24"/>
-                    <input type="hidden" name="UserIP" value="121.140.61.158">
-                    <input type="hidden" name="FORWARD" value="Y">
-                    <input type="hidden" name="MallResultFWD"   value="Y">
-                    <input type="hidden" name="device" value="">
-                    <!--hidden 데이타 옵션-->
-                    <input type="hidden" name="BrowserType" value="">
-                    <input type="hidden" name="MallReserved" value="">
-                    <!-- 현재는 사용안함 -->
-                    <input type="hidden" name="SUB_ID" value="">
-                    <input type="hidden" name="BuyerPostNo" value="">
-                    <input type="hidden" name="BuyerAddr" value="">
-                    <input type="hidden" name="BuyerAuthNum">
-                    <input type="hidden" name="ParentEmail">
+									</div><!-- 자동차검사 기초정보 end row-->
+								</div><!--end custom-form-->
+				
+							</div><!--end col-->
 
-                    <a id="payButton" style="display:none;"></a>
-                </form>
+							<div class="col-lg-4 col-md-5 col-12 mt-md-0 mt-sm-4">
+								<div class="sidebar sticky-bar">
+									<!--
+									<div class="widget p-4 rounded shadow p-4 mb-4 d-none d-md-block">
+										<h4 class="widget-title">도움이 필요하세요?</h4>
+										<div class="form-group mt-4 mb-0">
+											<div class="row">
 
-                <!-- 검사알림 결과폼 -->
-                <form action="" name="alertResultForm" id="alertResultForm" method="post" style="">
-                    <input type="hidden" name="name_result"		id="name_result" value="">
-                    <input type="hidden" name="tel1_result"			id="tel1_result" value="">
-                    <input type="hidden" name="carname_result"	id="carname_result" value="">
-                    <input type="hidden" name="expdate_result"	id="expdate_result" value="">
-                    <input type="hidden" name="alertdate_result"	id="alertdate_result" value="">
-                </form>
-			</div><!--end container-->
+												<div class="col-md-12">
+													<div class="send">
+														<a herf="javascript:void(0);" class="btn btn-info w-100 OpenChat" id="OpenChat"><i class="mdi mdi-chat"></i> 엄청 빠른 채팅상담</a>
+													</div>
+												</div>
+												<div class="col-md-12">
+													<div class="send">
+														<a href="tel:1577-0266" class="btn btn-info w-100" onclick="gtag('event', '전화클릭', {'event_category': '모바일전화연결','event_label': 'p_test_req-sidebar-top'});" style="font-size: 13px"><i class="mdi mdi-phone"></i> 1577-0266 전화상담</a>
+													</div>
+												</div>
+
+												<div class="col-md-12 mt-4">
+													<div class="send">
+														<a href="./p_visit.html" class="btn btn-info w-100" style="font-size: 13px"><i class="mdi mdi-sale"></i> 할인 받고 직접 방문하기</a>
+													</div>
+												</div>
+
+												<div class="col-md-12  mt-4">	<div class="send">		<a href="javascript:void(0);" class="btn btn-naver text-white w-100 btn_login_sns" data-type="naver" style="font-size: 13px"><img alt="img" src="/images/icon/naver_square.png" class="img-fluid"> 간편로그인으로 할인받기</a>	</div></div>
+											</div>
+										</div>
+									</div>-->
+																		<div class="border_bottom rounded border p-4 mb-4">
+										<div class="d-flex mb-4 justify-content-between">
+											<h6>결제 및 예약하기</h6>
+											<a href="javascript:void(0);" class="text-muted h6"></a>
+										</div>
+										<div class="table-responsive">
+											<table class="table table-center table-padding mb-0">
+												<tbody>
+													<!--
+													<tr>
+														<td class="h6 border-0">자동차검사료</td>
+														<td class="text-right font-weight-bold border-0" id="tsresult_cost_1">검사소별 상이</td>
+													</tr>
+
+													<tr>
+														<td class="h6">쿠폰할인</td>
+														<td class="text-center font-weight-bold cpnp_text">0</td>
+													</tr>
+													-->
+													<tr>
+														<td class=""><span class="badge badge-success mr-1">온라인</span><span class="h6">예약할인</span></td>
+														<td class="text-right font-weight-bold prepaid_cost_text">1000</td>
+													</tr>
+													<tr>
+														<td class="h6"><img alt="회원" src="{% static '/images/icon/naver_square.png' %}" class="" style="max-width:18px;"> 회원할인</td>
+														<td class="text-right font-weight-bold member_cost_text">0</td>
+													</tr>
+													<tr>
+														<td class="h6">재구매 할인</td>
+														<td class="text-right font-weight-bold reorder_cost_text">0</td>
+													</tr>
+													<tr class="bg-light">
+														<td class="h6 font-weight-bold">결제 금액</td>
+														<td class="text-right text-primary h4 font-weight-bold payment_text">0</td>
+													</tr>
+												</tbody>
+											</table>
+											<input type="hidden" id="cpnp" name="cpnp" value="0">
+											<input type="hidden" id="prepaid_cost" name="prepaid_cost" value="1000" >
+											<input type="hidden" id="member_cost" name="member_cost" value="0">
+											<input type="hidden" id="reorder_cost" name="reorder_cost" value="0">
+											<input type="hidden"  id="payment" name="payment" value="1000">
+
+											<ul class="list-unstyled mt-4 mb-0">
+												<li>
+													<div class="custom-control custom-radio custom-control-inline">
+													<div class="form-check">
+														<input type="radio" id="p_method-1" name="p_method" class="form-check-input"  value="1" checked="checked">
+														<label class="form-check-label" for="p_method-1">온라인신용카드결제<!-- <span class="badge badge-warning">선결제할인</span>--></label>
+													</div>
+													</div>
+												</li>
+												<!--
+												<li class="mt-3">
+													<div class="form-check">
+														<input type="radio" id="p_method-3" name="p_method" class="form-check-input"  value="0">
+														<label class="form-check-label" for="p_method-3">후불 온라인신용카드결제 <span class="badge badge-light">할인 미적용</span></label>
+													</div>
+												</li>
+												<li class="mt-3">
+													<div class="form-check">
+														<input type="radio" id="p_method-2" name="p_method" class="form-check-input"  value="2">
+														<label class="form-check-label" for="p_method-2">후불 무통장입금 <span class="badge badge-light">할인 미적용</span></label>
+													</div>
+
+												</li>
+												-->
+												<li class="mt-3">
+													<div class="custom-control custom-radio custom-control-inline">
+													<div class="form-check mb-0">
+													<input type="radio" id="p_method-2" name="p_method" class="form-check-input"  value="3">
+														<label class="form-check-label" for="p_method-2">간편결제</label>
+														<img alt="네이버페이" src="{% static '/images/icon/naver_square.png' %}" class="" style="max-width:15px;">
+														<img alt="카카오페이" src="{% static '/images/icon/kakao_square.png' %}" class="" style="max-width:15px;">
+                                                            <img alt="PAYCO" src="{% static '/images/icon/payco_square.png' %}" class="" style="max-width:15px;">
+													</div>
+													</div>
+												</li>
+												<!--
+												<li class="mt-3">
+													<div class="form-check">
+														<input type="radio" id="p_method-4" name="p_method" class="form-check-input"  value="4">
+														<label class="form-check-label" for="p_method-4">실시간계좌이체</label>
+													</div>
+												</li>
+												-->
+											</ul>
+
+											<div class="mt-2 pt-2">
+												<a href="javascript:personalAgentInfo.validation();" id="btn-reservation" class="btn btn-block  btn-success py-4 w-100">예약하기</a>
+											</div>
+
+											<!--
+											<ul class="list-unstyled mt-4 mb-0">
+
+												<li class="mt-2">
+													<div class=" custom-control-inline">
+														<div class="form-group mb-0">
+															<label class="text-muted mb-0">휴대폰인증을 완료하시면 예약버튼이 활성화되고, 예약은 취소시 100% 실시간 환불됩니다.</label>
+														</div>
+													</div>
+												</li>
+											</ul>-->
+										</div>
+									</div>
+
+
+									<div class="card rounded border-1 overflow-hidden">
+										<div class="card-header bg-light">
+											<h5 class="card-title"><span href="javascript:void(0)" class="badge badge-link bg-primary text-white me-2 mt-2">법인고객</span> 세금계산서 안내</h5>
+										</div>
+										<div class="card-body">
+											<p class="text-muted mb-0"><span class="text-danger">세금계산서 발행</span> 등으로 무통장입금이 필요하신 경우에는 <mark><a href="javascript:void(0);" class="alert-link OpenChat"><i data-feather="message-circle" class="fea icon-sm"> </i> 실시간 온라인 상담</a></mark> 또는 고객센터 <mark><a href="tel:1577-0266"><i data-feather="phone" class="fea icon-sm"> </i> 1577-0266</a></mark> 으로 문의해 주십시오.</p>
+										</div>
+									</div>
+
+
+									<div class="widget mt-4 d-none">
+										<!-- CATAGORIES -->
+										<div class="row justify-content-center mt-lg-4 ">
+											<div class="col-md-12  pt-2">
+												<div class="bg-light p-4 rounded shadow d-block">
+													<img src="images/payments/payment/ibk.png" class="text-right" alt="" height="60">
+													<div class="mt-4">
+														<h5 class=""> 457-082661-01-033</h5>
+														<div>
+															<h6 class="mb-0">예금주 <span class="text-muted">(주)케이엠디에스</span></h6>
+															<h6 class="mb-0">입금자명: <span class="text-muted">자동차번호</span></h6>
+														</div>
+													</div>
+												</div>
+											</div><!--end col-->
+										</div>
+									</div>
+
+						
+									<div id="faq-accordion" class=" d-none">
+										<div class="card mt-4 mb-2 mb-md-3 ">
+											<a href="#accordion-4" data-toggle="collapse" role="button" aria-expanded="false" class="p-3 p-md-4 text-secondary collapsed">
+												<div class="d-flex justify-content-between align-items-center">
+													<label  for="" class="text-default" style="cursor: pointer;">결제와 세금계산서발행은 어떻게 하나요? </label>  
+													<!--<h6 class="mb-0 mr-2">결제는 어떻게 하나요?</h6>-->
+													<i class="las la-arrow-right icon"></i>
+												</div>
+											</a>
+											<div class="collapse" id="accordion-4" data-parent="#faq-accordion" style="">
+												<div class="px-3 px-md-4 pb-3 pb-md-4">
+													<p>결제방법</p>
+													<p>① 예약시 온라인신용카드결제(할인적용), ② 후불신용카드결제, ③ 무통장입금, ④ 고객센터를 통한 신용카드 결제가 가능하며 모든 결제액은 부가세가 포함되어 있습니다.</p>
+													<p>세금계산서 발행</p>
+													<p>세금계산서가 필요하신 경우에는 고객센터(1577-0266, 온라인 채팅)를 통해 요청을 해주시고, 신용카드에 대한 결제 영수증은 문자메세지 또는 메일로 발송해드립니다.<br />법인카드로 결제시에는 신용카드전표를 사용하시고 별도의 세금계산서를 발행해드리지는 않습니다.<br />
+													무통장입금으로 결제하시는 경우에는 목적에 따라 소득공제 또는 지출증빙용 영수증을 문자메세지 또는 메일로 발송해드립니다.</p>
+												</div>
+											</div>
+										</div>
+										<div class="card mb-2 mb-md-3">
+											<a href="#accordion-5" data-toggle="collapse" role="button" aria-expanded="false" class="p-3 p-md-4 text-secondary">
+												<div class="d-flex justify-content-between align-items-center">
+													<label  for="" class="text-default" style="cursor: pointer;">자동차검사소에 예약은 별도로 해야하나요? </label>  
+													<!--<h6 class="mb-0 mr-2">자동차검사소에 예약은 별도로 해야하나요?</h6>-->
+													<i class="las la-arrow-right icon"></i>
+												</div>
+											</a>
+											<div class="collapse" id="accordion-5" data-parent="#faq-accordion">
+												<div class="px-3 px-md-4 pb-3 pb-md-4">
+													아닙니다. 모터맨에 대행 예약을 하시면 검사소에 별도로 예약을 하실 필요는 없습니다.
+												</div>
+											</div>
+										</div>	
+
+										<div class="card mb-2 mb-md-3">
+											<a href="#accordion-1" data-toggle="collapse" role="button" aria-expanded="false" class="p-3 p-md-4 text-secondary">
+												<div class="d-flex justify-content-between align-items-center">
+													<label  for="" class="text-default" style="cursor: pointer;">한국교통안전공단 검사소에 예약을 했습니다. 대행이 가능합니까? </label>                
+
+													<!--<h6 class="mb-0 mr-2">한국교통안전공단 검사소에 예약을 했습니다. 대행이 가능합니까?</h6>-->
+													<i class="las la-arrow-right icon"></i>
+												</div>
+											</a>
+											<div class="collapse" id="accordion-1" data-parent="#faq-accordion">
+												<div class="px-3 px-md-4 pb-3 pb-md-4">
+													네. 한국교통안전공단 검사소에 예약을 하신 고객께서는 아래의 상담톡 또는 고객센터 <a href="tel:1577-0266">1577-0266</a> 으로 문의하여 모터맨의 딜리버리 서비스를 이용하세요.
+												</div>
+											</div>
+										</div>
+										<div class="card mb-2 mb-md-3">
+											<a href="#accordion-2" data-toggle="collapse" role="button" aria-expanded="false" class="p-3 p-md-4 text-secondary">
+												<div class="d-flex justify-content-between align-items-center">
+													<label  for="" class="text-default" style="cursor: pointer;">롯데렌터카·SK렌터카·삼성카드 렌트/리스자동차를 이용합니다 </label>   
+													<!--<h6 class="mb-0 mr-2">롯데렌터카·SK렌터카·삼성카드 렌트/리스자동차를 이용합니다</h6>-->
+													<i class="las la-arrow-right icon"></i>
+												</div>
+											</a>
+											<div class="collapse" id="accordion-2" data-parent="#faq-accordion">
+												<div class="px-3 px-md-4 pb-3 pb-md-4">
+													롯데렌터카·SK렌터카·삼성카드에서 렌트/리스를 이용하시는 고객님께서는 <a href="tel:1588-2899">1588-2899</a>로 요청하시면 <span class="badge badge-primary rounded mr-1">무료 검사대행</span>을 이용하실 수 있습니다.
+												</div>
+											</div>
+										</div>
+										<div class="card mb-2 mb-md-3">
+											<a href="#accordion-3" data-toggle="collapse" role="button" aria-expanded="false" class="p-3 p-md-4 text-secondary">
+												<div class="d-flex justify-content-between align-items-center">
+													<label  for="" class="text-default" style="cursor: pointer;"><i class="mdi mdi-cellphone-android text-danger"></i>휴대전화 인증은 꼭 해야하나요? </label>  
+													<!--<h6 class="mb-0 mr-2">자동차검사소에 예약은 별도로 해야하나요?</h6>-->
+													<i class="las la-arrow-right icon"></i>
+												</div>
+											</a>
+											<div class="collapse" id="accordion-3" data-parent="#faq-accordion">
+												<div class="px-3 px-md-4 pb-3 pb-md-4">
+													고객님의 불편을 염려해 인증을 받지 않았습니다만 번호를 오입력 하신 고객님께서 서비스 이용이 불가능하신 상태가 빈번히 발생되어 부득이 휴대전화번호 확인을 시행하게 되었습니다.<br />
+													통신장애로 문자수신이 되지 않으시면 고객센터 1577-0266 또는 온라인 채팅으로 접수하실 수 있습니다.
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div><!--end col-->
+						</div><!--end row-->
+						</form><!--end form--> 
+					</div><!--end row-->
+                </div><!--end row-->
+            </div><!--end container-->
         </section><!--end section-->
         <!-- Profile End -->
 
         <!-- Footer Start -->
+		         <footer class="footer d-none d-sm-block">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-12 mb-0 mb-md-4 pb-0 pb-md-2">
+                        <a class="logo-footer" href="/index.html">
+                            <img src="/images/logo/kmds_white.png" height="24" alt="">
+						</a>
+                        <p class="mt-4">우리는 고객이 믿을 수 있는 서비스를 안전하게 제공하고자 노력하고 있습니다.</p>
+
+                        <p class="mt-4">
+						상호명 : 주식회사 케이엠디에스 |  <i class="mdi mdi-phone-classic"></i> 고객센터 1577-0266<br/>
+						사업자등록번호:  <a href="#none" class="text-reset" onclick="window.open('http://www.ftc.go.kr/bizCommPop.do?wrkr_no=8878801103', 'bizCommPop', 'width=750, height=950;');return false;"><i class="mdi mdi-file-certificate-outline"></i> 887-88-01103</a> | 통신판매업신고: 2019-안양동안-1234<br />
+
+						경기도 안양시 동안구 벌말로 126, 3008호 (관양동, 평촌 오비즈타워)<br />대표이사: 정헌수 | 개인정보관리 책임: 박흥배이사 (hbpark@kmds.co.kr)</p>
+
+                    </div><!--end col-->
+                    
+                    <div class="col-lg-2 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                        <h4 class="text-light footer-head">Company</h4>
+                        <ul class="list-unstyled footer-list mt-4">
+                            <li><a href="/page-aboutus.html" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> About us</a></li>
+                            <li><a href="/page-reviews.html" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> 이용후기</a></li>
+                            <li><a href="/page-blog.html" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Blog</a></li>
+                            <li><a href="/page-login.html" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Login</a></li>
+                        </ul>
+                    </div><!--end col-->
+                    
+                    <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                        <h4 class="text-light footer-head">Usefull Links</h4>
+                        <ul class="list-unstyled footer-list mt-4">
+                            <!--<li><a href="page-terms.html" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> 서비스 이용약관</a></li>-->
+                            <li><a href="/page-privacy.html" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> 개인정보 처리방침</a></li>
+                            <li><a href="/page-noticeservice.html" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> 자동차검사안내 처리방침</a></li>
+							
+                        </ul>
+                    </div><!--end col-->
+                </div><!--end row-->
+            </div><!--end container-->
+        </footer><!--end footer-->
+        <footer class="footer footer-bar">
+            <div class="container text-center">
+                <div class="row align-items-center">
+                    <div class="col-sm-6">
+                        <div class="text-sm-left">
+                            <p class="mb-0">© 2019-20 케이엠디에스. Design with <i class="mdi mdi-heart text-danger"></i> by <a href="https://m.motorman.co.kr/" target="_blank" class="text-success">KMDS</a>, icon by <a href="https://icons8.kr/" target="_blank" class="text-reset">icons8.com</a> </p>
+                        </div>
+                    </div><!--end col-->
+
+                    <div class="col-sm-6 mt-4 mt-sm-0 pt-2 pt-sm-0">
+
+						<ul class="list-unstyled text-sm-right mb-0">
+                            <li class="list-inline-item"><a href="javascript:void(0)"><img src="/images/payments/master-card.png" class="avatar avatar-ex-sm" title="Master Card" alt=""></a></li>
+                            <li class="list-inline-item"><a href="javascript:void(0)"><img src="/images/payments/visa.png" class="avatar avatar-ex-sm" title="Visa" alt=""></a></li>
+                        </ul>
+
+                    </div><!--end col-->
+                </div><!--end row-->
+            </div><!--end container-->
+        </footer><!--end footer-->				<!-- Modal Content Start -->
+
 
         <!-- Modal Content Start -->
 		<div class="modal fade" id="userChk_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -619,7 +1022,7 @@
 							<div class="termsContentsItem">
 								<h6>제1조(목적)</h6>
 
-								<p>이 약관은 주식회사 케이엠디에스(전자상거래 사업자)이 운영하는 홈페이지(m.mias.co.kr, 이하 “몰”이라 한다)에서 제공하는 인터넷 관련 서비스(이하 “서비스”라 한다)를 이용함에 있어 몰과 이용자의 권리․의무 및 책임사항을 규정함을 목적으로 합니다.<br>
+								<p>이 약관은 주식회사 케이엠디에스(전자상거래 사업자)이 운영하는 홈페이지(m.motorman.co.kr, 이하 “몰”이라 한다)에서 제공하는 인터넷 관련 서비스(이하 “서비스”라 한다)를 이용함에 있어 몰과 이용자의 권리․의무 및 책임사항을 규정함을 목적으로 합니다.<br>
 						※「PC통신, 무선 등을 이용하는 전자상거래에 대해서도 그 성질에 반하지 않는 한 이 약관을 준용합니다.」</p>
 
 							</div>
@@ -1196,7 +1599,7 @@
                                             <p class="mt-2 mb-0 font-weight-normal h5"> <span class="text-muted h6">운영팀</span> </p>
                                         </th>
                                         <td>031-403-5261</td>
-                                        <td>ejkim@mias.co.kr</td>
+                                        <td>ejkim@motorman.co.kr</td>
                                     </tr>
 
                                 </tbody>
@@ -1235,11 +1638,96 @@
 		<!-- Modal Content End : 개인정보 수집 및 이용에 대한 안내-->
 
 		<!-- Modal Content Start -->
-		<div class="modal fade" id="tsChk_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle4" aria-hidden="true">
+		<div class="modal fade" id="noticeChk_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered" role="document">
 				<div class="modal-content rounded shadow border-0">
 					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalCenterTitle4">자동차검사 정보의 수집 및 이용 동의</h5>
+						<h5 class="modal-title" id="exampleModalCenterTitle">자동차검사 안내에 대한 동의</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="bg-white p-3 rounded box-shadow">
+							<p class="text-muted mb-0">
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-12">
+
+						<h6>자동차검사 안내 동의 :</h6>
+						<p class="text-muted">주식회사 케이엠디에스는 (이하 "회사"는) 고객님의 개인정보를 중요시하며, "정보통신망 이용촉진 및 정보보호"에 관한 법률을 준수하고 있습니다.</p>
+						<p class="text-muted">자동차검사 안내는 "자동차검사 기간"이 도래하는 경우 해당 자동차의 검사기간에 대한 무료 안내를 제공하는 서비스입니다</p>
+
+
+							<h6 class="footer-head">수집하는 개인정보 항목 및 수집방법 :</h6>
+
+							<h6>가. 대상</h6>
+							<ul class="list-unstyled text-muted">
+								<li><a href="javascript:void(0);" class=""><i class="mdi mdi-chevron-right mr-1"></i> 자동차소유자 또는 소유자의 동의를 받은 가족(제3자는 신청할 수 없습니다.)</a></li>
+								<li><a href="javascript:void(0);" class=""><i class="mdi mdi-chevron-right mr-1"></i> 타인의 정보를 도용하여 신청하신 경우 해당 법률에 따라 처분될 수 있을 알려드립니다.</a></li>
+							</ul>
+
+
+
+							<h6>나. 안내에 해당하는 내용</h6>
+						<ul class="list-unstyled feature-list text-muted">
+							<li><i class="mdi mdi-pan-right mdi-24px mr-2"></i>검사유효기간 만료일 사전 안내 및 자동차 안전관리 정보 제공 등</li>
+						</ul>
+
+						<h6>개인정보 수집 및 이용에 대한 안내 :</h6>
+						<div class="table-responsive bg-white shadow rounded">
+							<table class="table mb-0 table-center">
+								<thead>
+									<tr>
+										<th scope="col">목적</th>
+										<th scope="col">항목</th>
+										<th scope="col" style="max-width: 150px;">보유·이용 기간</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td scope="row">자동차검사안내위한 문자(sms) 및 이메일발송, 유선안내 등</td>
+										<th>
+											<p class="mt-2 mb-0 font-weight-normal h5"> <span class="text-muted h6">자동차번호, 생년월일, 핸드폰번호, 이메일</span> </p>
+										</th>
+										<td>정보주체의 삭제요청 시까지</td>
+									</tr>
+								</tbody>
+							</table><!--end table-->
+						</div>
+
+						<h6>책임의 한계 :</h6>
+						<ul class="list-unstyled feature-list text-muted">
+							<li><i class="mdi mdi-pan-right mdi-24px mr-2"></i>자동차검사 안내는 모터맨이 제공하는 서비스를 이용한 고객에게 무료로 제공하는 부가서비스입니다. </li>
+							<li><i class="mdi mdi-pan-right mdi-24px mr-2"></i>자동차검사 안내 불가로 인한 고객의 유무형의 어떠한 손해에 대해서도 책임을 지지 않습니다</li>
+						</ul>
+								
+						 <p class="text-muted">이용자는 개인정보 수집 및 활용에 대한 동의를 거부할 권리가 있으나, 미동의 시 서비스를 이용 하실 수 없습니다.</p>
+				
+                    </div><!--end col-->
+                </div><!--end row-->
+
+				<!-- End Privacy -->
+							</p>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Modal Content End -->
+
+
+
+
+		<!-- Modal Content Start -->
+		<div class="modal fade" id="tsChk_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content rounded shadow border-0">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalCenterTitle">자동차검사 정보의 수집 및 이용 동의</h5>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
@@ -1332,115 +1820,17 @@
 				</div>
 			</div>
 		</div>
-		<!-- Modal Content End: 자동차검사 정보의 수집 및 이용 동의 -->
+		<!-- Modal Content End -->
 
 		<!-- Modal Content Start -->
-		<div class="modal fade" id="tsChk_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle4" aria-hidden="true">
+		<div class="modal fade" id="tsSearchChk_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered" role="document">
 				<div class="modal-content rounded shadow border-0">
 					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalCenterTitle4">자동차검사 정보의 수집 및 이용 동의</h5>
+						<h5 class="modal-title" id="exampleModalCenterTitle">자동차검사 정보조회에 대한 안내</h5>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-					</div>
-					<div class="modal-body">
-						<div class="bg-white p-3 rounded box-shadow">
-							<p class="text-muted mb-0">
-								<!-- 본문 시작 -->
-								<div class="row justify-content-center">
-									<div class="col-lg-12">
-
-										<h6>1. 자동차검사 정보의 수집 및 이용 동의서 :</h6>
-										<p class="text-muted">주식회사 케이엠디에스는 (이하 "회사"는) 고객님의 개인정보를 중요시하며, "정보통신망 이용촉진 및 정보보호"에 관한 법률을 준수하고 있습니다.</p>
-										<p class="text-muted">자동차검사 정보의 수집을 위해 이용자가 제공한 모든 정보는 다음의 목적을 위해 활용하며, 하기 목적 이외의 용도로 사용되지 않습니다.</p>
-
-										<h6 class="footer-head">① 수집하는 개인정보 항목 및 이용목적 :</h6>
-
-										<h6>가. 대상</h6>
-										<ul class="list-unstyled text-muted">
-											<li><i class="mdi mdi-chevron-right mr-1"></i> 한국교통안전공단으로 부터 (주)케이엠디에스에 제3자 정보제공에 동의하신 자동차소유자(제3자는 조회할 수 없습니다.)</li>
-										</ul>
-
-										<h6>나. 수집항목</h6>
-										<ul class="list-unstyled feature-list text-muted">
-											<li><i class="mdi mdi-chevron-right mr-1"></i>  자동차번호, 차량소유자 성명 등 자동차종합정보 개방시스템에 등록되어 있는 항목</li>
-										</ul>
-
-										<h6>다. 수집 및 이용목적 :</h6>
-										<p class="text-muted">자동차종합정보 개방시스템에 등록되어 있는 자동차검사안내에 필요한 정보를 수집하여 자동차검사 픽업딜리버리, 가까운 검사소 안내에 이용.</p>
-
-										<h6>② 개인정보 보유 및 이용기간 :</h6>
-										<p class="text-muted">수집된 정보는 "개인정보 수집 및 이용" 약관의 "개인정보의 보유 및 이용기간" 에 명시된 기간동안 보존되며, 이용주체의 요구가 있을 경우 관련 법령에 따라 의무적으로 보관하여야 하는 정보를 제외하고 즉시 삭제합니다.</p>
-
-										<h6>③ 자동차검사정보의 수집 동의 거부 :</h6>
-										<p class="text-muted">이용자는 자동차검사 정보의 수집, 이용을 위한 동의에 거부할 수 있습니다. 거부하시는 경우 케이엠디에스에서 운영하는 서비스 사이트를 통한 자동차검사 픽업딜리버리, 가까운 자동차검사소 안내 예약서비스를 이용하실 수 없습니다.</p>
-										<p class="text-muted">이미 동의하신 이용자는 본인의 의사에  따라 언제든 동의를 철회할 수 있으며, 동의 철회를 원하시는 경우, 한국교통안전공단에 문의해주시기 바랍니다.</p>
-
-									</div><!--end col-->
-								</div><!--end row-->
-								<!-- End Privacy -->
-								<!-- 본문 종료 -->
-
-								<!-- 본문 시작 -->
-								<div class="row justify-content-center">
-									<div class="col-lg-12">
-
-										<h6>2. 고유식별정보 처리 동의 :</h6>
-
-
-										<h6 class="footer-head">① 고유식별정보 수집 항목 및 수집, 이용목적 :</h6>
-
-										<h6>가. 대상</h6>
-										<ul class="list-unstyled text-muted">
-											<li><i class="mdi mdi-chevron-right mr-1"></i> 한국교통안전공단으로 부터 (주)케이엠디에스에 제3자 정보제공에 동의하신 자동차소유자(제3자는 조회할 수 없습니다.)</li>
-										</ul>
-
-										<h6>나. 수집항목</h6>
-										<ul class="list-unstyled feature-list text-muted">
-											<li><i class="mdi mdi-chevron-right mr-1"></i>  자동차번호, 차량소유자 성명</li>
-										</ul>
-
-										<h6>다. 수집 및 이용목적 :</h6>
-										<p class="text-muted">자동차종합정보 개방시스템에 등록되어 있는 자동차검사안내에 필요한 정보를 수집하여 자동차검사 픽업딜리버리, 가까운 검사소 안내에 이용.</p>
-
-										<h6>② 개인정보 보유 및 이용기간 :</h6>
-										<p class="text-muted">이용자가 제공한 자동차번호와 차량소유자 성명을 이용해 자동차종합정보 개방시스템에서 수집하는 자동차검사 픽업딜리버리, 검사소 예약, 안내를 위한 정보는 목적달성 후  "개인정보 수집 및 이용" 약관의 "개인정보의 보유 및 이용기간" 에 명시된 기간동안 보존되며, 이용주체의 요구가 있을 경우 관련 법령에 따라 의무적으로 보관하여야 하는 정보를 제외하고 즉시 삭제합니다.</p>
-
-										<h6>③ 동의 거부 :</h6>
-										<p class="text-muted">이용자는 자동차검사 정보의 수집, 이용을 위한 동의에 거부할 수 있습니다. 거부하시는 경우 케이엠디에스에서 운영하는 서비스 사이트를 통한 자동차검사 픽업딜리버리, 가까운 자동차검사소 안내 예약서비스를 이용하실 수 없습니다.</p>
-										<p class="text-muted">이미 동의하신 이용자는 본인의 의사에  따라 언제든 동의를 철회할 수 있으며, 동의 철회를 원하시는 경우, 한국교통안전공단에 문의해주시기 바랍니다.</p>
-
-										<h6>3. 개인정보의 제3자 수집 이용 제공에 대한 동의 :</h6>
-										<ul class="list-unstyled feature-list text-muted">
-											<li>① 개인정보를 제공받는 자 : 주식회사 케이엠디에스 </li>
-											<li>② 개인정보를 제공받는 자의 개인정보이용목적 : 자동차검사 픽업딜리버리, 자동차검사소 안내 및 예약 </li>
-											<li>③ 제공하는 개인정보의 항목 : 대상자동차번호에 대한 자동차기본, 자동차제원의 일부 </li>
-											<li>④ 개인정보를 제공받는 자의 개인정보 보유 및 이용기간 : 케이엠디에스는 이용자로 부터 조회요청 이벤트가 발생할 때 자동차종합정보 개방시스템을 통해 개인정보를 제공받고, 수집된 정보는  "개인정보 수집 및 이용" 약관의 "개인정보의 보유 및 이용기간" 에 명시된 기간동안 보존되며, 이용주체의 요구가 있을 경우 관련 법령에 따라 의무적으로 보관하여야 하는 정보를 제외하고 즉시 삭제합니다. <br />④ 에도 불구하고, 이용자가 보존되는 정보의 삭제를 요구할 경우, 관련 법령에 의거 의무적으로 보유하여야 하는 정보를 제외하고 즉시 삭제합니다.</li>
-											<li>⑤  이용자는 개인정보 수집 및 활용에 대한 동의를 거부할 권리가 있으나, 미동의 시 서비스를 이용 하실 수 없습니다.</li>
-										</ul>
-									</div><!--end col-->
-								</div><!--end row-->
-								<!-- End Privacy -->
-								<!-- 본문 종료 -->
-							</p>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Modal Content End: 자동차검사 정보의 수집 및 이용 동의 -->
-
-		<!-- Modal Content Start -->
-		<div class="modal fade" id="tsSearchChk_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle5" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered" role="document">
-				<div class="modal-content rounded shadow border-0">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalCenterTitle5">자동차검사 정보조회에 대한 안내</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 					<div class="modal-body">
 						<div class="bg-white p-3 rounded box-shadow">
@@ -1464,78 +1854,25 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 					</div>
 				</div>
 			</div>
 		</div>
-		<!-- Modal Content End : 자동차검사 정보조회에 대한 안내 -->
+		<!-- Modal Content End -->
+
+        <!-- Footer End -->
 
         <!-- Back to top -->
-        <a href="#" class="back-to-top rounded text-center" id="back-to-top">
+        <a href="#" class="back-to-top rounded text-center" id="back-to-top"> 
             <i class="mdi mdi-chevron-up d-block"></i>
         </a>
         <!-- Back to top -->
 
-	<!-- Modal Content Start -->
-	<div class="modal fade" id="scheduleAgentLayer" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-			<div class="modal-content rounded shadow border-0">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalCenterTitle">검사소 방문일 선택
-					</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-                    <input id="txtSch_address"	name="txtSch_address"	type="hidden"	class="form-control" readonly="">
-                    <input id="txtSch_sido"		name="txtSch_sido"			type="hidden"	class="form-control" readonly="">
-                    <input id="txtSch_gugun"		name="txtSch_gugun"		type="hidden"	class="form-control" readonly="">
-                    <input id="txtSch_dong"		name="txtSch_dong"		type="hidden"	class="form-control" readonly="">
-					<!--
-					<div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12">
-							<label>방문예약일을 선택하세요 <span class="text-danger">*</span></label>
-							<div class="form-group position-relative">
-								<button class="btn btn-light w-100" id="btnPrev"><i class="mdi mdi-chevron-double-left"></i> 이전 날짜로 이동</button>
-								<input id="hopeSchDate"
-									name="hopeSchDate" type="hidden" placeholder="Click Me">
-								<button class="btn btn-light  w-100" id="btnNext"><i class="mdi mdi-chevron-double-right"></i> 다음 날짜로 이동</button>
-							</div>
-                        </div>
-                    </div>
-					-->
-					<div class="form-group mb-6">
-						<label class="text-dark small">방문예약일을 선택하세요 <span class="text-danger">*</span></label>
-						<p>고객님의 검사만료일은 "<span class="text-danger" id="display_enddate"></span>" 이며, 경과되면 과태료가 발생됩니다.</p>
-						<div class="input-group mb-3">
-							<div class="input-group-prepend">
-								<a href="javascript:void(0)" class="btn btn-primary no-shadow" id="btnPrev"><i class="mdi mdi-chevron-double-left"></i> 이전 </a>
-							</div>
-							<input  type="hidden" placeholder="Click Me" id="hopeSchDate" name="hopeSchDate" required="" readonly="" class="form-control bg-light" aria-describedby="btnschdate">
-							<div class="input-group-append">
-								<a href="javascript:void(0)" class="btn btn-primary no-shadow" id="btnNext"><i class="mdi mdi-chevron-double-right"></i> 다음 </a>
-							</div>
-						</div>
-					</div>
 
 
-					<div  class="row  mt-4">
-                        <div class="col-lg-12 col-md-12 text-center" id="sch_data">
-						</div>
-					</div>
-				</div>
-				<div class="modal-footer">
-
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Modal Content End -->
-
-    <!-- Modal Content Start -->
+	<!-- Modal -->
+    <!-- 자동차검사조회 후 기간이 아닌 경우 안내 Modal Content Start -->
     <div class="modal fade" id="register_alert" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content rounded shadow border-0">
@@ -1547,7 +1884,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="feature-form">
-                        <img src="images/illustrator/Mobile_notification_SVG.svg" alt="">
+                        <!--<img src="images/illustrator/Mobile_notification_SVG.svg" alt="">-->
 						<div class="row">
 							<form id="submitAlertForm" name="submitAlertForm" method="post" accept-charset="UTF-8">
 							<div class="col-lg-12">
@@ -1557,10 +1894,10 @@
 											<dl class="row">
 												<dt class="col-md-3 col-6 font-weight-normal">자동차 :</dt>
 												<dd class="col-md-9 col-6 text-muted text-right" id="carname_alert_display"></dd>
-
-												<dt class="col-md-3 col-6 font-weight-normal">다음검사일 :</dt>
+																
+												<dt class="col-md-3 col-6 font-weight-normal">검사기간 :</dt>
 												<dd class="col-md-9 col-6 text-muted text-right" id="expdate_alert_display"></dd>
-
+																
 												<dt class="col-md-3 col-6 font-weight-normal">검사안내일 :</dt>
 												<dd class="col-md-9 col-6 text-muted text-right" id="alertdate_display"></dd>
 												<input type="hidden" id="carname_alert"	name="carname_alert" placeholder="자동차 정보" readonly="">
@@ -1581,17 +1918,17 @@
 									<div class="col-md-12">
 									</div><!--end col-->
 									<div class="col-md-12">
-										<div class="form-group position-relative">
+										<div class="form-group position-relative">                                               
 											<label>신청인 이름 <span class="text-danger">*</span></label>
-
-											<input type="text" class="form-control " placeholder="신청인 이름 :" id="name_alert" name="name_alert" required="">
+											<i class="mdi mdi-map-marker  ml-3 icons"></i>
+											<input type="text" class="form-control pl-5" placeholder="신청인 이름 :" id="name_alert" name="name_alert" value="" required="">
 										</div>
 									</div><!--end col-->
 									<div class="col-md-12">
 										<div class="form-group position-relative">
 											<label>연락받을 휴대전화 <span class="text-danger">*</span></label>
-
-											<input type="text" class="form-control " placeholder="휴대전화, 숫자만입력 :" id="tel1_alert" name="tel1_alert" required="">
+											<i class="mdi mdi-parking ml-3 icons"></i>
+											<input type="text" class="form-control pl-5" placeholder="휴대전화, 숫자만입력 :" id="tel1_alert" name="tel1_alert" required="">
 										</div>
 									</div><!--end col-->
 									<div class="col-md-12">
@@ -1605,14 +1942,15 @@
 								</div><!--end row-->
 								<div class="row">
 									<div class="col-sm-12">
-										<div class="form-group position-relative">
+										<div class="form-group position-relative"> 
 											<a href="javascript:AlertInfo.validation();" class="btn btn-success w-100"> 검사알림 신청</a>
+											<!--<button id="loadTestInfo" class="btn btn-success w-100">자동차검사정보 조회</button>-->
 										</div>
 									</div><!--end col-->
-								</div><!--end row-->
+								</div><!--end row-->                                                                        
 							</div><!--end col-->
 							</form>
-						</div>
+						</div>    
 
                     </div>
                 </div>
@@ -1657,16 +1995,19 @@
 						<div class="row justify-content-center">
 							<div class="col-lg-12 col-md-12 text-center">
 								<img src="images/alert/reservation.png" class="img-fluid alert-img" alt="">
-								<div class="text-uppercase mt-4 display-3">Oh ! no</div>
-								<div class="text-capitalize text-dark mb-4 alert-title"></div>
-								<p class="text-muted para-desc mx-auto">Start working with <span class="text-primary font-weight-bold">mias</span> that can provide everything you need to generate awareness, drive traffic, connect.</p>
+								<div class="text-uppercase mt-4 display-3 alert-maintitle">Oh ! no</div>
+								<div class="text-capitalize text-danger mt-2 mb-4 alert-title"></div>
+								<p class="text-muted para-form	mx-auto"></p>
+								<p class="text-muted para-desc	mx-auto"></p>
+
 							</div><!--end col-->
 						</div><!--end row-->
 
 						<div class="row">
-							<div class="col-md-12 text-center">
-								<a href="javascript:void(0);" class="btn btn-outline-primary mt-4 OpenChat">상담요청</a>
-								<a href="javascript:void(0);" class="btn btn-primary mt-4 " data-dismiss="modal" aria-label="Close">창 닫기</a>
+							<div class="col-md-12 text-center">  
+								<a href="tel:1577-0266" class="btn btn-outline-primary mt-4">① 1577-0266 전화예약</a>
+								<a href="javascript:void(0);" class="btn btn-outline-primary mt-4 OpenChat">② 채팅예약</a>
+								<a href="javascript:void(0);" class="btn btn-primary mt-4 " data-dismiss="modal" aria-label="Close">닫기</a>		
 								<!--<a href="index.html" class="btn btn-outline-primary mt-4 OpenChat">상담요청</a>
 								<a href="index.html" class="btn btn-primary mt-4 ml-2">Go To Home</a>
 								-->
@@ -1679,19 +2020,37 @@
     </div>
     <!-- Javascript Start -->
 
+	<!-- 공통 Modal Content Start -->
+	<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content rounded shadow border-0">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalCenterTitle">modal title</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal Content End -->
+
+{% block script %}
     <!-- javascript -->
-    <script src="{% static '/js/jquery-3.4.1.min.js' %}"></script>
+{#    <script src="{% static '/js/jquery-3.4.1.min.js' %}"></script>#}
     <script src="{% static '/js/jquery.min.js' %}"></script>
     <script src="{% static '/js/vendor/bs5/bootstrap.bundle.min.js' %}"></script>
-{#    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>#}
-{#    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>#}
     <script src="{% static '/js/jquery.easing.min.js' %}"></script>
     <script src="{% static '/js/scrollspy.min.js' %}"></script>
-    <!-- Icons -->
 	<!-- Icons -->
 	<script src="{% static '/js/feather.min.js' %}"></script>
 	<script src="{% static '/js/unicons-monochrome.js' %}"></script>
-    <script src="https://unicons.iconscout.com/release/v2.1.9/script/monochrome/bundle.js' %}"></script>
+    <script src="https://unicons.iconscout.com/release/v2.1.9/script/monochrome/bundle.js"></script>
 
 	<!-- alert	-->
 	<script type="text/javascript" src="{% static 'plugins/alert-succss-confirm-notify-mobile/js/notify.js' %}"></script>
@@ -1703,6 +2062,7 @@
     <script src="{% static '/js/jquery.twentytwenty.js' %}"></script>
 
     <!-- Main Js -->
+    <script src="{% static '/js/plugins.init.js' %}"></script> <!--Note: All init js like tiny slider, counter, countdown, maintenance, lightbox, gallery, swiper slider, aos animation etc.-->
     <script src="{% static '/js/app.js' %}"></script>
 
 
@@ -1714,149 +2074,199 @@
     <script src="{% static '/plugins/datepicker-in-fullscreen/datepicker-in-fullscreen.js' %}"></script>
 
 	<!-- mias JavaScripts	============================================= -->
-	<script src="{% static '/js/mias/jquery.form.js' %}" type="text/javascript"></script>
-	<script src="{% static '/js/mias/common.js' %}"></script>
+	<script src="{% static '/js/viap/jquery.form.js' %}" type="text/javascript"></script>
+	<script src="{% static '/js/viap/common.js' %}"></script>
 
-	<script src="{% static '/js/mias/jinCommons.js' %}" type="text/javascript"></script>
-	<script src="{% static '/js/mias/jquery.loading.js' %}"></script>
-	<script src="{% static '/js/mias/getMessage.js?v=20220624091037' %}" type="text/javascript" ></script>
-	<script src="{% static '/js/mias/jquery.popupWindow.js' %}" type="text/javascript"></script>
-
+	<script src="{% static '/js/viap/jinCommons.js' %}" type="text/javascript"></script>
+	<script src="{% static '/js/viap/jquery.loading.js' %}"></script>
+	<script src="{% static '/js/viap/getMessage.js' %}" type="text/javascript" ></script>
+	<script src="{% static '/js/viap/jquery.popupWindow.js' %}" type="text/javascript"></script>
+    <script src="{% static '/js/viap/orderTestReq.js' %}"></script>
 	<!-- 다음우편번호 조회 -->
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<!-- 다음지도, 도로명으로 좌표가져오기 -->
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=49d5b06da199c81f7c230cda9870ba77&libraries=services,clusterer,drawing"></script>
 
-	<script src="{% static '/js/mias/m_visit.js' %}"></script>
+
 
 	<!-- Image Upload	-->
 	<script src="{% static '/js/Uploader/drop_uploader.js' %}"></script>
-
-{% block script %}
 	<script>
-        // Mias 스크립트
-        const loadTestInfo = document.querySelector('#loadTestInfo');
-        const carno = document.querySelector('#carno');
-        const bymd = document.querySelector('#bymd');
-        const testInfoSwitch = document.querySelector('#testInfoSwitch');
-        const carnomsg = document.querySelector('#carnomsg');
-        const subReqForm = document.submitReqForm;
+		$(document).ready(function(){
+			$('input[type=file]').drop_uploader({
+				uploader_text: '차량사진을 여기로 가져오거나 ',
+				browse_text: '컴퓨터에서 찾기',
+				only_one_error_text: 'Only one file allowed',
+				not_allowed_error_text: '이미지 파일만 가능합니다',
+				big_file_before_error_text: 'Files, bigger than',
+				big_file_after_error_text: 'is not allowed',
+				allowed_before_error_text: 'Only',
+				allowed_after_error_text: 'files allowed',
+				browse_css_class: 'btn btn-primary',
+				browse_css_selector: 'file_browse',
+				uploader_icon: '<i class="mdi mdi-camera-enhance"></i>',
+				file_icon: '<i class="pe-7s-file"></i>',
+				progress_color: '#4a90e2',
+				time_show_errors: 5,
+				layout: 'thumbnails',
+				method: 'normal',
+				url: 'ajax_upload.php',
+				delete_url: 'ajax_delete.php',
+			});
+		});
+
+		$(document).on('click', '.btn_login_sns', function() {
+			var sns = $(this).attr('data-type');
+			if(sns == 'naver') {
+				window.open('/plugins/sns/naver.php', 'sns', "width=600,height=350,resizable=yes,scrollbars=yes");
+			}
+		});
+		function goNext(url) {
+			location.href=url;
+		}
+	</script>	
+
+	<!-- SejongPay 결제연동 스크립트(필수) -->
+	<!--<script src="innopay/js/Innopay.js" type="text/javascript"></script>-->
+	<script type="text/javascript" src="https://pg.innopay.co.kr/ipay/js/innopay-2.0.js" charset="utf-8"></script>
+
+	<!-- 모터맨 스크립트 -->
+	<script type="text/javascript">
+		var disabledDays = ['2022-01-01','2022-01-31','2022-02-01','2022-02-02','2022-03-01','2022-03-09','2022-05-05','2022-06-01','2022-06-06','2022-08-15','2022-09-09','2022-09-10','2022-09-12','2022-10-03','2022-10-10','2022-12-25'];
+		/*
+		FLATPICKR DISABLED
+		var disabledDays = ['2022-01-01','2022-01-31','2022-02-01','2022-02-02','2022-03-01','2022-03-09','2022-05-05','2022-06-01','2022-06-06','2022-08-15','2022-09-09','2022-09-10','2022-09-12','2022-10-03','2022-10-10','2022-12-25', 
+				function(date) {
+					// return true to disable
+					//return (date.getDay() === 0 || date.getDay() === 6);
+					return (date.getDay() === 0);
+				}			
+		];
+		*/
+
+		//var disabledDays = ['2022-01-01','2022-01-31','2022-02-01','2022-02-02','2022-03-01','2022-03-09','2022-05-05','2022-06-01','2022-06-06','2022-08-15','2022-09-09','2022-09-10','2022-09-12','2022-10-03','2022-10-10','2022-12-25'];
+
+		$(document).ready(function() {
+
+		$("#loadTestInfo").on("click", function() {
+			carInfo.loadTestInfo();
+		});
+
+		//예약희망일 txt fiele를 클릭했을 때
+		$("#schdate").on("click", function() {
+			$('#btnschdate').trigger('click');
+		});
+
+		/*		
+		$("#selectHopeDate").on("click",function() {
+			$('#hopeSchDate').datepickerInFullscreen();
+		});
+		*/
+		$(document).on("click", "#selectHopeDate", function(){
+			$('#hopeSchDate').trigger('click');
+		});		
 
 
-        carno.addEventListener('blur', ()=>{
-            if (carno.value =='') {
-                carnomsg.innerHTML = '자동차 번호를 입력하세요!';
-                carno.focus();
-                return;
-            } else {
-                let checkNum = checkCno(carno.value)
-                if(checkNum != 1){
-                    carnomsg.innerHTML ='자동차번호 형식이 올바르지 않습니다.';
-                    carno.focus();
-                    return;
-		        }
-            }
-        });     // 차량번호 체크
 
-        carno.addEventListener('change', ()=>{
-            let checkNum = checkCno(carno.value)
-            if (checkNum == 1) carnomsg.innerHTML='';
-        });   // 올바른 차량번호 입력시 메세지 숨김
+		$("#payButton").popupWindow({ 
+			height:700, 
+			width:700, 
+			windowURL:'pay.html',
+			windowName:'payWindow'
+		});
 
-        {#carno.value = '28어2384'#}
-        {#bymd.value = '960324'#}
-
-        loadTestInfo.addEventListener('click', () => {
-            if (bymd.value.length != 6) {
-                alert('주민번호(생년월일) 앞 6자리를 입력하세요.\n※자동차가 법인소유이면 법인번호·개인사업자인 경우 사업자번호 앞6자리를 입력하세요.');
-                bymd.focus();
-                return;
-            } else if (subReqForm.testInfoSwitch.checked == false) {
-                alert('자동차검사 정보조회를 위한 주의 사항을 읽으시고 동의가 필요합니다.\n동의를 하지 않는 경우에는 자동차검사 정보 조회가 되지 않습니다.')
-                return;
-            }
-
-            const csrftoken = getCookie('csrftoken');
-            console.log(csrftoken);
-
-            // post 방식
-            let carinput = { cn:carno.value, birth:bymd.value };
-            console.log(carinput)
-
-            fetch('{% url "carinfo" %}', {
-                method: 'POST',
-                headers: { 'X-CSRFToken': csrftoken, 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    cn:carno.value,
-                    birth:bymd.value
-                }),
-            }).then(response => response.json())
-                .then(text => carData(text))
-            .catch((error) => {
-            console.error('실패:', error);
-            });
+	
+		// Channel Plugin Scripts -->
+			$('#OpenChat').click(function(){
+				$('.textLauncherIcon').trigger('click');
+			});
 
 
-            // get 방식
-            {#let qry = '?carno=' + carno.value + '&bymd=' + bymd.value;#}
-            {#fetch('{% url 'carinfo' %}' + qry)#}
-            {#    .then(response => response.text())#}
-            {#    .then(text => carData(text));#}
-        });
+			$('.OpenChat').click(function(){
+				$('.textLauncherIcon').trigger('click');
+			});
 
-        const carData = (tsdata)=>{
-            // tsdata = JSON.parse(tsdata)
-            // console.log(tsdata)
-            if (tsdata.insptype != '') {
-              //  console.log(tsdata.insptype)
-                const tsresult_car_name = document.querySelector('#tsresult_car_name')
-                const tsresult_test_type = document.querySelector('#tsresult_test_type')
-                const tsresult_exp_date = document.querySelector('#tsresult_exp_date')
-                const result_ts = document.querySelector('#result_ts')
-
-                expdate = tsdata.fdate + '~' + tsdata.edate;
-                tsresult_car_name.innerHTML = tsdata.carname;
-                tsresult_test_type.innerHTML = tsdata.insptype;
-                tsresult_exp_date.innerHTML = expdate;
-
-                result_ts.setAttribute('style', 'display:block')
-
-
-            } else {
-                const carname_alt = document.querySelector('#carname_alert_display');
-                const expdate_alt = document.querySelector('#expdate_alert_display');
-                const alertdate_alt = document.querySelector('#alertdate_alert_display');
-
-                let md_expdate = expdate.fdate + '~' + expdate.edate;
-                let md_fdate = expdate.fdate;
-
-                carno.value = '28어8324'
-                md_expdate = '2022-09-01';
-                md_fdate = '2022-07-01';
-                carname_alt.innerHTML = carno.value;
-                expdate_alt.innerHTML= md_expdate;
-                alertdate_alt.innerHTML = md_fdate;
-
-                console.log(carno.value, '/',md_expdate, '/',md_fdate );
-
-                $('#result_ts').show();
-            }
-         };
-
-        const daumPostcode = document.querySelector('#btnexecDaumPostcode')
-        const roadaddr = document.querySelector('#roadaddr')
-
-        daumPostcode.addEventListener('click', ()=>{
-            findAddr()
-        });
-
-        roadaddr.addEventListener('click', ()=>{
-            findAddr()
-        });
-
-
+			$('.OpenChat').click(function(){
+				ChannelIO('show');
+				//ChannelIO('lounge');
+			});
+		// End Channel Plugin -->
+	});
 	</script>
 
+	<!-- // 자동차 검사 일시 정보  layer -->
+	<form action="" name="frm" id="frm" method="post" style=""> 
+	<input type="hidden" name="PayMethod" value="CARD">
+	<input type="hidden" name="GoodsCnt" value="1">
+	<input type="hidden" name="GoodsName">
+	<input type="hidden" name="Amt" value="">
+	<input type="hidden" name="Moid" value="">
+	<input type="hidden" name="MID" value="">
+	<input type="hidden" name="ReturnURL">
+	<input type="hidden" name="ResultYN" value="N">
+	<input type="hidden" name="RetryURL">
+	<input type="hidden" name="mallUserID" value="">
+	<input type="hidden" name="BuyerName" value="">
+	<input type="hidden" name="BuyerTel" value="">
+	<input type="hidden" name="BuyerEmail" value="">
+	<input type="hidden" name="OfferingPeriod" value="">
+	<input type="hidden" name="VbankExpDate" id="VbankExpDate" value="" disabled placeholder=""> <!--//가상계좌 입금예정일-->
+	<input type="hidden" name="EncodingType" value="utf-8">
+	<!--hidden 데이타 필수-->
+	<input type="hidden" name="ediDate" value="">
+	<input type="hidden" name="MerchantKey" value="Ma29gyAFhvv/+e4/AHpV6pISQIvSKziLIbrNoXPbRS5nfTx2DOs8OJve+NzwyoaQ8p9Uy1AN4S1I0Um5v7oNUg==">
+	<input type="hidden" name="EncryptData" value="">
+	<input type="hidden" name="MallIP" value="61.109.247.24"/>
+	<input type="hidden" name="UserIP" value="125.180.169.30">
+	<input type="hidden" name="FORWARD" value="Y">
+	<input type="hidden" name="MallResultFWD"   value="Y">
+	<input type="hidden" name="device" value="">
+	<!--hidden 데이타 옵션-->
+	<input type="hidden" name="BrowserType" value="">
+	<input type="hidden" name="MallReserved" value="">
+	<!-- 현재는 사용안함 -->
+	<input type="hidden" name="SUB_ID" value="">
+	<input type="hidden" name="BuyerPostNo" value="">
+	<input type="hidden" name="BuyerAddr" value="">
+	<input type="hidden" name="BuyerAuthNum">
+	<input type="hidden" name="ParentEmail">
+
+	<a id="payButton" style="display:none;"></a>
+	</form>
+
+	<!-- 검사알림 결과폼 -->
+	<form action="" name="alertResultForm" id="alertResultForm" method="post" style=""> 
+		<input type="hidden" name="name_result"		id="name_result" value="">
+		<input type="hidden" name="tel1_result"			id="tel1_result" value="">
+		<input type="hidden" name="carname_result"	id="carname_result" value="">
+		<input type="hidden" name="expdate_result"	id="expdate_result" value="">
+		<input type="hidden" name="alertdate_result"	id="alertdate_result" value="">
+	</form>
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-113408994-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-113408994-1');
+</script>
+		<!-- 공통 적용 스크립트 , 모든 페이지에 노출되도록 설치. 단 전환페이지 설정값보다 항상 하단에 위치해야함 --> 
+<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+<script type="text/javascript">
+if(!wcs_add) var wcs_add = {};
+wcs_add["wa"] = "s_3ee505a55f79";
+if(window.wcs) {
+wcs_do();
+}
+</script>		<!-- 공통 적용 스크립트 , 모든 페이지에 노출되도록 설치. 단 전환페이지 설정값보다 항상 하단에 위치해야함 -->
+<script type="text/javascript" src="//wsa.mig-log.com/wsalog.js"> </script>
+<script type="text/javascript">
+wsa.inflow("m.motorman.co.kr");
+wsa_do(wsa);
+</script>
+
 {% endblock %}
-</body>
+    </body>
 </html>

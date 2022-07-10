@@ -107,27 +107,26 @@ class CarinfoView(View):
 
 
         carno ='28어8354'
-        insptype = '종합검사'
+        # insptype = '종합검사'
+        insptype = 'N'
         fdate = '2022-07-01'
         edate = '2022-09-01'
         carname = '아반떼'
 
 
         if isError == 'Y':
-            return render(request, 'm_visit.html')
+            return render(request, 'car_info.html')
         elif isError == 'N':
-            context = { 'carno': carno, 'insptype':insptype, 'fdate': fdate, 'edate': edate, 'carname': carname}
+            context = { 'carno': carno, 'insptype': insptype, 'fdate': fdate, 'edate': edate, 'carname': carname}
             print(context)
 
             return HttpResponse(json.dumps(context), content_type='application/json')
 
     def post(self, request):
-        # form = request.POST.dict()
-
         # json으로 넘겨서 json으로 받아야 함
         form = json.loads(request.body)
 
-        print('aaa')
+        print('aaa', )
         print(form)
 
         isError = 'N'
@@ -140,6 +139,7 @@ class CarinfoView(View):
         # carno, insptype, fdate, edate, carname, isError = carInfoSearch(request)
 
         carno = '28어8354'
+        # insptype = 'N'
         insptype = '종합검사'
         fdate = '2022-07-01'
         edate = '2022-09-01'
@@ -148,7 +148,40 @@ class CarinfoView(View):
         if isError == 'Y':
             return HttpResponse(json.dumps("{'msg':'오류발생!!'}"), content_type='application/json')
         elif isError == 'N':
+
             context = {'carno': carno, 'insptype': insptype, 'fdate': fdate, 'edate': edate, 'carname': carname}
             print(context)
 
             return HttpResponse(json.dumps(context), content_type='application/json')
+
+
+class ApplyView(View):
+    def get(self, request):
+        return render(request, 'apply/car_info.html')
+
+    def post(self, request):
+        tpdata = json.loads(request.body)
+        print('bbb')
+        print(tpdata)
+
+        chk = 'Y'
+        print(chk)
+        context = {'cfmchk': chk}
+        print(context)
+        return HttpResponse(json.dumps(context), content_type='application/json')
+
+
+class PickupView(View):
+    def get(self, request):
+        return render(request, 'orderTestReq.html')
+
+    def post(self, request):
+        tpdata = json.loads(request.body)
+        print('bbb')
+        print(tpdata)
+
+        chk = 'Y'
+        print(chk)
+        context = {'cfmchk': chk}
+        print(context)
+        return HttpResponse(json.dumps(context), content_type='application/json')

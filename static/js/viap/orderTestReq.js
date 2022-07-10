@@ -218,176 +218,210 @@ carInfo = {
 
 	},
 	loadTestInfo : function() {
+		// ============= test 변수
+		$('#h_ttype').val('2');
+		$('#h_nox_yn').val('y');
+		$('#h_gsTypeCode').val('2');
+		$('#h_gsTypeName').val('종합검사');
+
+		$('#carname').val('아반테');
+		$('#ttype_title').val('종합검사');
+		$('#startdate').val('2022-07-01');
+		$('#enddate').val('2022-09-01');
+		$('#expdate').val('2022-07-10');
+		$('#h_cost1').val('60000');
+
+		$('#h_bymd').val(bymd);
+		$('#h_carno').val(carNo);
+		$("#h_carsize").val('소형');
+
+		$('#h_owner_pnm').val('홍길동');
+		$('#h_vin').val('j123456789012345');
+
+		$('#h_car_maker_type').val('현대');
+
+		$('#h_makeymd').val('2010');
+
+		$('#h_cost2').val('50000');
+		$('#detailaddress').val("부평아트센터") ;
+
+		// ==============
+
+
 		console.log("req.js 검사정보조회");
-		//검사			: 주소조회 후 자동차검사정보 가져오기
-		if($('#h_cost2').val() == ""){			//대행료가 없으면
-			Notify.alert({
-				title : '알림',
-				html : '자동차를 픽업할 <b>차량위치</b>를 먼저 선택해주세요.',
-				ok : function(){
-					//Notify.suc('OK');
-					//alert("검사소를 조회할 자동차 운행지역을 선택해 주세요.");
+		// 검사			: 주소조회 후 자동차검사정보 가져오기
 
-					var offset = $("#locationInfo").offset();
-					$('html, body').animate({scrollTop : offset.top-110}, 1200);
-				}
-			});
 
-			return;
 
-		}
-
-		if($('#detailaddress').val() == ""){
-			Notify.alert({
-				title : '알림',
-				html : '고객님, 담당대행원이 자동차를 픽업하기 위한 <b>자동차의 주차구역 등 위치</b>를 입력해주세요.',
-				ok : function(){
-
-					var offset = $("#locationInfo").offset();
-					$('html, body').animate({scrollTop : offset.top-110}, 1200);
-				}
-			});
-
-			return;
-		}
+		// if($('#h_cost2').val() == ""){			//대행료가 없으면
+		// 	Notify.alert({
+		// 		title : '알림',
+		// 		html : '자동차를 픽업할 <b>차량위치</b>를 먼저 선택해주세요.',
+		// 		ok : function(){
+		// 			//Notify.suc('OK');
+		// 			//alert("검사소를 조회할 자동차 운행지역을 선택해 주세요.");
+		//
+		// 			var offset = $("#locationInfo").offset();
+		// 			$('html, body').animate({scrollTop : offset.top-110}, 1200);
+		// 		}
+		// 	});
+		//
+		// 	// return;
+		//
+		// }
+		//
+		// console.log('aaa')
+		//
+		// if($('#detailaddress').val() == ""){
+		// 	Notify.alert({
+		// 		title : '알림',
+		// 		html : '고객님, 담당대행원이 자동차를 픽업하기 위한 <b>자동차의 주차구역 등 위치</b>를 입력해주세요.',
+		// 		ok : function(){
+		//
+		// 			var offset = $("#locationInfo").offset();
+		// 			$('html, body').animate({scrollTop : offset.top-110}, 1200);
+		// 		}
+		// 	});
+		//
+		// //	return;
+		// }
 
 
 		var sido					=	$('#sido').val();
-		var gugun				=	$('#gugun').val();	
-		var dong				=	$('#dong').val();	
-		var detailaddress	=	$('#detailaddress').val();	
+		var gugun				=	$('#gugun').val();
+		var dong				=	$('#dong').val();
+		var detailaddress		=	$('#detailaddress').val();
 		var bymd				=	$("#bymd").val().split("/").join("");
 		var carNo				=	$("#carno").val();
 		var cost2				=	$("#h_cost2").val();
 		var cost2_total		=	$("#h_cost2_toal").val();
 
 
-		if(carNo == ""){
-			Notify.alert({
-				title : '알림',
-				html : '자동차 등록번호를 입력하세요.',
-				ok : function(){
-					$("#carno").focus();
-				}
-			});
-			return;
-		}
+		// if(carNo == ""){
+		// 	Notify.alert({
+		// 		title : '알림',
+		// 		html : '자동차 등록번호를 입력하세요.',
+		// 		ok : function(){
+		// 			$("#carno").focus();
+		// 		}
+		// 	});
+		// 	// return;
+		// }
 
-		if(bymd.length != 6){
-			Notify.alert({
-				title : '알림',
-				html : '자동차등록증상 <u>소유자의 주민번호 앞 6자리(생년월일)</u>를 입력하세요.<br />※자동차가 법인소유이면 <u>법인번호</u> 앞 6자리를 입력하세요.',
-				ok : function(){
-					var offset = $("#testInfo").offset();
-					$('html, body').animate({scrollTop : offset.top-110}, 1200);
-					$("#bymd").focus();
-				}
-			});
-			return;
-		 }		
-		
-		$("#carno").val(carNo.split(" ").join(""));
-		carNo = $("#carno").val();
+		bymd = '222333'
 
-		//자동차번호 형식 체크
-		var checkNum = carInfo.checkCno(carNo);
-		if(checkNum != 1){
-			Notify.alert({
-				title : '알림',
-				html : '자동차등록번호의 형식이 올바르지 않습니다.',
-				ok : function(){
-					$("#carno").focus();
-				}
-			});
-			return;
-		}
+		// if(bymd.length != 6){
+		// 	Notify.alert({
+		// 		title : '알림',
+		// 		html : '자동차등록증상 <u>소유자의 주민번호 앞 6자리(생년월일)</u>를 입력하세요.<br />※자동차가 법인소유이면 <u>법인번호</u> 앞 6자리를 입력하세요.',
+		// 		ok : function(){
+		// 			var offset = $("#testInfo").offset();
+		// 			$('html, body').animate({scrollTop : offset.top-110}, 1200);
+		// 			$("#bymd").focus();
+		// 		}
+		// 	});
+		// 	// return;
+		//  }
+		//
+		// $("#carno").val(carNo.split(" ").join(""));
+		// carNo = $("#carno").val();
+
+		carNo = '28어7777'
+
+
+		// //자동차번호 형식 체크
+		// var checkNum = carInfo.checkCno(carNo);
+		// if(checkNum != 1){
+		// 	Notify.alert({
+		// 		title : '알림',
+		// 		html : '자동차등록번호의 형식이 올바르지 않습니다.',
+		// 		ok : function(){
+		// 			$("#carno").focus();
+		// 		}
+		// 	});
+		// 	// return;
+		// }
 		
 		//자동차검사에 한해 아래의 정보를 처리함
 
-		if(!$("#testInfoSwitch").is(":checked")){
-			Notify.alert({
-				title : '알림',
-				html : '자동차검사 정보조회를 위한 주의 사항을 읽으시고 동의가 필요합니다. <br>동의를 하지 않는 경우에는 자동차검사 정보를 조회하실 수 없습니다.',
-				ok : function(){
-					//Notify.suc('OK');
-					//alert("검사소를 조회할 자동차 운행지역을 선택해 주세요.");
+		// if(!$("#testInfoSwitch").is(":checked")){
+		// 	Notify.alert({
+		// 		title : '알림',
+		// 		html : '자동차검사 정보조회를 위한 주의 사항을 읽으시고 동의가 필요합니다. <br>동의를 하지 않는 경우에는 자동차검사 정보를 조회하실 수 없습니다.',
+		// 		ok : function(){
+		// 			//Notify.suc('OK');
+		// 			//alert("검사소를 조회할 자동차 운행지역을 선택해 주세요.");
+		//
+		// 			var offset = $("#testInfo").offset();
+		// 			$('html, body').animate({scrollTop : offset.top-110}, 1200);
+		// 		}
+		// 	});
+		//
+		// 	// return;
+		// }
+		//
+		// $('body').loading({
+		// 	stoppable: false,
+		// 	message: '검사정보 요청중입니다.<br/>잠시만 기다려주세요.',
+		// 	theme: 'dark'
+		// });
 
-					var offset = $("#testInfo").offset();
-					$('html, body').animate({scrollTop : offset.top-110}, 1200);
-				}
-			});
+		// test 지문  ================
+		data.code == 0
 
-			return;
-		}
+		if(data.code == 0){
+					$('#h_ttype').val('2');
+					$('#h_nox_yn').val('y');
+					$('#h_gsTypeCode').val('2');
+					$('#h_gsTypeName').val('종합검사');
 
-		$('body').loading({
-			stoppable: false,
-			message: '검사정보 요청중입니다.<br/>잠시만 기다려주세요.',
-			theme: 'dark'
-		});
-
-		$.ajax({
-			type : "post",
-			url : '/p2020/data.html?act=testinfo',
-			contentType : "application/x-www-form-urlencoded; charset=UTF-8",
-			data : {"no1" : carNo, "no2" : bymd, "no3" : sido, "no4" : gugun, "no5" : dong, "no6" : detailaddress, "no7" : cost2},
-			dataType : "json",
-			success : function(data) {
-				$('body').loading('stop');
-
-				if(data.code == 0){
-					$('#h_ttype').val(data.result.ttype);
-					$('#h_nox_yn').val(data.result.nox_yn);
-					$('#h_gsTypeCode').val(data.result.gsTypeCode);
-					$('#h_gsTypeName').val(data.result.gsTypeName);
-
-					$('#carname').val(data.result.car_nm);
-					$('#ttype_title').val(data.result.ttype_title);
-					$('#startdate').val(data.result.fvdt);
-					$('#enddate').val(data.result.tvdt);
-					$('#expdate').val(data.result.middate);
-					$('#h_cost1').val(data.result.cost1);
+					$('#carname').val('아반테');
+					$('#ttype_title').val('종합검사');
+					$('#startdate').val('2022-07-01');
+					$('#enddate').val('2022-09-01');
+					$('#expdate').val('2022-07-10');
+					$('#h_cost1').val('60000');
 
 					$('#h_bymd').val(bymd);
 					$('#h_carno').val(carNo);
-					$("#h_carsize").val(data.result.class);
+					$("#h_carsize").val('소형');
 
-					$('#h_owner_pnm').val(data.result.owner_pnm);
-					$('#h_vin').val(data.result.vin);
+					$('#h_owner_pnm').val('홍길동');
+					$('#h_vin').val('j123456789012345');
 
-					$('#h_car_maker_type').val(data.result.car_maker_type);
+					$('#h_car_maker_type').val('현대');
 
-					$('#h_makeymd').val(data.result.make_ymd);
+					$('#h_makeymd').val('2010');
 
 					if ($('#h_ttype').val() == "1") {	//정기검사이면
-						var total = parseInt(data.result.cost1) + parseInt($('#h_cost2').val());	//서비스 이용료, 검사료 + 대행료					
+						var total = parseInt('30000') + parseInt($('#h_cost2').val());	//서비스 이용료, 검사료 + 대행료
 					} else {	//정기검사가 아니면
-						var total = parseInt(data.result.cost1) + parseInt($('#h_cost2_total').val());	//서비스 이용료, 검사료 + 대행료	
+						var total = parseInt('50000') + parseInt($('#h_cost2_total').val());	//서비스 이용료, 검사료 + 대행료
 					}
 					//console.log('수수료+대행료:'+total);
 
-					var prepaid_cost	= $('#prepaid_cost').val();						//재구매 할인
-					var member_cost = $('#member_cost').val();						//회원 할인
-					var reorder_cost	= $('#reorder_cost').val();						//재구매 할인
-					$('#totcost').val(parseInt(total));		
+					var prepaid_cost	= '10000';						//재구매 할인
+					var member_cost = '3000';						//회원 할인
+					var reorder_cost	= '1000';						//재구매 할인
+					$('#totcost').val(parseInt(total));
 					$('#h_payment').val(total-prepaid_cost-member_cost-reorder_cost);
 					$('#payment').val(setComma(total-prepaid_cost-member_cost-reorder_cost));
 					$('.payment_text').text(setComma(total-prepaid_cost-member_cost-reorder_cost));
 					//alert('검사정보가 처리되었습니다.');
 
-					$('#tsresult_car_name').text(data.result.car_nm);
-					$('#tsresult_test_type').text(data.result.ttype_title);
-					$('#tsresult_exp_date').text(data.result.middate);
-					$('#tsresult_cost_1').text('￦'+data.result.cost1.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+					$('#tsresult_car_name').text('아반떼');
+					$('#tsresult_test_type').text('종합검사');
+					$('#tsresult_exp_date').text('2022-07-10');
+					$('#tsresult_cost_1').text('￦'+'50000' );
 					if ($('#h_ttype').val() == "1") {	//정기검사이면
 						$('#tsresult_cost_2').text('￦'+$('#h_cost2').val().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 					} else {									//정기검사가 아니면
 						$('#tsresult_cost_2').text('￦'+$('#h_cost2_total').val().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 					}
 					$('#tsresult_payment').text('￦'+total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-					
+
 					$('#result_ts').show();
-					/*	
+					/*
 					$('#testbasicinfo1').show();
 					$('#testbasicinfo2').show();
 					$('#testuserinfo').show();
@@ -405,131 +439,260 @@ carInfo = {
 					//carInfo.recall_data();		//리콜조회 by p2020/recall_data/ excel file
 					//carInfo.recall_cargokr();	//리콜조회 by cargokr
 
-				} else if(data.code == 2) {		//검사기간이 아닌 경우
-					$('#register_alert').modal('toggle');
+				} ;
+				// else if(data.code == 2) {		//검사기간이 아닌 경우
+				// 	$('#register_alert').modal('toggle');
+				//
+				// 	$('#detailaddress').val('검사알림서비스는 주차위치를 수집하지 않습니다');
+				// 	$('#h_bymd').val(bymd);
+				// 	$('#h_carno').val(carNo);
+				//
+				// 	$('#carname_alert_display').text(data.result.car_nm);
+				// 	//$('#expdate_alert_display').text(data.result.middate);
+				// 	$('#expdate_alert_display').text(data.result.fvdt+ ' ~ '+data.result.tvdt);
+				// 	$('#alertdate_display').text(data.result.fvdt);
+				//
+				// 	$('#expdate_alert').val(data.result.middate);
+				// 	$('#alertdate').val(data.result.fvdt);
+				// 	$('#startdate').val(data.result.fvdt);
+				// 	$('#enddate').val(data.result.tvdt);
+				//
+				//
+				//
+				// 	$('#carname_alert').val(data.result.car_nm);
+				// 	$('#startdate').val(data.result.fvdt);
+				// 	$('#enddate').val(data.result.tvdt);
+				// 	$('#expdate_alert').val(data.result.middate);
+				// 	$('#alertdate_alert').val(data.result.fvdt);
+				//
+				// 	$('#register_alert').show();
+				// 	$('#alertdone').show();
+				//
+				// 	//자동차검사정보 조회 후 조회된 결과로 화면을 이동
+				// 	//var offset = $("#register_alert").offset();
+				// 	//$('html, body').animate({scrollTop : offset.top-110}, 1200);
+				//
+				// 	//검사기간이 아닌 경우 기존 검사결과가 표시된 것이 있으면 초기화
+				// 	$('#tsresult_car_name').text('');
+				// 	$('#tsresult_test_type').text('');
+				// 	$('#tsresult_exp_date').text('');
+				// 	$('#tsresult_cost_1').text('');
+				// 	$('#tsresult_cost_2').text('');
+				// 	$('#tsresult_payment').text('');
+				// 	$('#result_ts').hide();
+				//
+				// 	//	검사기간이 아닌 경우 알림서비스를 신청하지 않고
+				// 	//	modal창을 닫고 나오는 경우 예약이 되지 않도록 차량번호와 생년월일을 지움 --> 다시 모달창이 뜨게 됨
+				// 	$('#carno').val('');
+				// 	$('#bymd').val('');
 
-					$('#detailaddress').val('검사알림서비스는 주차위치를 수집하지 않습니다');
-					$('#h_bymd').val(bymd);
-					$('#h_carno').val(carNo);
-
-					$('#carname_alert_display').text(data.result.car_nm);
-					//$('#expdate_alert_display').text(data.result.middate);
-					$('#expdate_alert_display').text(data.result.fvdt+ ' ~ '+data.result.tvdt);
-					$('#alertdate_display').text(data.result.fvdt);
-
-					$('#expdate_alert').val(data.result.middate);
-					$('#alertdate').val(data.result.fvdt);
-					$('#startdate').val(data.result.fvdt);
-					$('#enddate').val(data.result.tvdt);
+		// =============================
 
 
-
-					$('#carname_alert').val(data.result.car_nm);
-					$('#startdate').val(data.result.fvdt);
-					$('#enddate').val(data.result.tvdt);
-					$('#expdate_alert').val(data.result.middate);
-					$('#alertdate_alert').val(data.result.fvdt);
-
-					$('#register_alert').show();
-					$('#alertdone').show();
-
-					//자동차검사정보 조회 후 조회된 결과로 화면을 이동
-					//var offset = $("#register_alert").offset();
-					//$('html, body').animate({scrollTop : offset.top-110}, 1200);
-
-					//검사기간이 아닌 경우 기존 검사결과가 표시된 것이 있으면 초기화
-					$('#tsresult_car_name').text('');
-					$('#tsresult_test_type').text('');
-					$('#tsresult_exp_date').text('');
-					$('#tsresult_cost_1').text('');
-					$('#tsresult_cost_2').text('');
-					$('#tsresult_payment').text('');
-					$('#result_ts').hide();
-
-					//	검사기간이 아닌 경우 알림서비스를 신청하지 않고
-					//	modal창을 닫고 나오는 경우 예약이 되지 않도록 차량번호와 생년월일을 지움 --> 다시 모달창이 뜨게 됨
-					$('#carno').val('');
-					$('#bymd').val('');
-
-				} else {
-					//검사정보 조회후 다시 시도시 실패한 경우 기존 검사결과를 초기화
-					$('#tsresult_car_name').text('');
-					$('#tsresult_test_type').text('');
-					$('#tsresult_exp_date').text('');
-					$('#tsresult_cost_1').text('');
-					$('#tsresult_cost_2').text('');
-					$('#tsresult_payment').text('');
-					$('#result_ts').hide();
-
-					//setTimeout('alert("'+data.message+'")', 300);
-					$("#alert-message-modal .alert-img").attr('src', 'images/alert/'+data.img);
-					if (data.title == "정상적인 접근이 아닙니다.") {
-						var alertMainTitle	=	data.maintitle;
-						data.title					=	"<h6 class='text-danger'> 한국교통안전공단의 자동차검사 정보 조회가 <u>본인인증 후 이용될 수 있도록 정책이 변경</u>되었습니다.</h6>";
-					} else {
-						var alertMainTitle	=	"OH! NO";
-						data.title					=	data.title;
-					}
-					$('#alert-message-modal .alert-maintitle').html(alertMainTitle);
-					$('#alert-message-modal .alert-title').html(data.title);
-					$('#alert-message-modal .para-desc').html(data.message);
-					if (data.title == "<h6 class='text-danger'> 한국교통안전공단의 자동차검사 정보 조회가 <u>본인인증 후 이용될 수 있도록 정책이 변경</u>되었습니다.</h6>") {
-						var para_form	=	'<div class="row">'
-											+	'	<div class="col-lg-12">'
-											+	'		<div class="alert alert-light" style="padding: 8px 15px !important;border-radius: 6px;font-size: 14px;" role="alert">'
-											+	'			<p>픽업장소 : '+ $("#roadaddr").val()+'", '+$("#carno").val()+' 자동차에 대한 상담을 이어가시겠습니까?</p>연락받으실 정보를 남겨주시면 담당자가 연락을 드리겠습니다.'
-											+	'	    </div>'
-											+	'	</div><!--end col-->'
-											+	'	<div class="col-md-12">'
-											+	'		<div class="form-group">       '                                        
-											+	'			<div class="position-relative">'
-											+	'				<input type="text" class="form-control " placeholder="신청인 이름" name="reserveName" required="">'
-											+	'			</div>'
-											+	'		</div>'
-											+	'	</div>'
-											+	'	<div class="col-md-12">'
-											+	'		<div class="form-group">'
-											+	'			<div class="position-relative">'
-											+	'				<input type="text" class="form-control " placeholder="연락받으실 전화번호" name="reserveTel" required="">'
-											+	'			</div>'
-											+	'		</div>'
-											+	'	</div>'
-											+	'	<div class="col-lg-12 reserveResultDiv">'
-											+	'		<div class="alert alert-light" style="padding: 8px 15px !important;border-radius: 6px;font-size: 14px;" role="alert">'
-											+	'			<p class="text-muted reserveResult	mx-auto"></p>'
-											+	'	    </div>'
-											+	'	</div><!--end col-->'
-											+	'	<div class="col-md-12">'
-											+	'		<a href="javascript:void(0);" id="reserveBtn" class="btn btn-block btn-primary reserveBtn">상담예약 남기기</a>'
-											+	'	</div><!--end col-->'
-											+	'</div>';
-											//+	'<div class="row">'
-											//+	'	<div class="col-md-12 text-center">'
-											//+	'		<a href="javascript:void(0);" class="btn btn-outline-primary mt-4 OpenChat">상담요청</a>'
-											//+	'		<a href="javascript:void(0);" class="btn btn-primary mt-4 " data-dismiss="modal" aria-label="Close">창 닫기</a>'
-											//+	'		<!--<a href="index.html" class="btn btn-outline-primary mt-4 OpenChat">상담요청</a>'
-											//+	'		<a href="index.html" class="btn btn-primary mt-4 ml-2">Go To Home</a>'
-											//+	'		-->'
-											//+	'	</div><!--end col-->'
-											//+	'</div><!--end row-->'
-						$('#alert-message-modal .para-form').html(para_form);
-
-					}
-					$('.reserveResultDiv' ).hide(); //알림창에서 추가액션이 일어나는 경우, 결과를 표시하는 것을 기본으로 숨김
-					$('#alert-message-modal').modal('toggle');
-				}
-			},
-			error : function() {
-				$('body').loading('stop');
-					//$('#alert-message-modal .alert-img').html(data.img);
-					$("#alert-message-modal .alert-img").attr('src', 'images/alert/'+data.img);
-					$('#alert-message-modal .alert-title').html(data.title);
-					$('#alert-message-modal .para-desc').html(data.message);
-					$('#alert-message-modal').modal('toggle');
-				//alert(messages.do_alert_guide);
-			}
-		});
-
+		// $.ajax({
+		// 	type : "post",
+		// 	url : '/p2020/data.html?act=testinfo',
+		// 	contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+		// 	data : {"no1" : carNo, "no2" : bymd, "no3" : sido, "no4" : gugun, "no5" : dong, "no6" : detailaddress, "no7" : cost2},
+		// 	dataType : "json",
+		// 	success : function(data) {
+		// 		$('body').loading('stop');
+		//
+		// 		if(data.code == 0){
+		// 			$('#h_ttype').val(data.result.ttype);
+		// 			$('#h_nox_yn').val(data.result.nox_yn);
+		// 			$('#h_gsTypeCode').val(data.result.gsTypeCode);
+		// 			$('#h_gsTypeName').val(data.result.gsTypeName);
+		//
+		// 			$('#carname').val(data.result.car_nm);
+		// 			$('#ttype_title').val(data.result.ttype_title);
+		// 			$('#startdate').val(data.result.fvdt);
+		// 			$('#enddate').val(data.result.tvdt);
+		// 			$('#expdate').val(data.result.middate);
+		// 			$('#h_cost1').val(data.result.cost1);
+		//
+		// 			$('#h_bymd').val(bymd);
+		// 			$('#h_carno').val(carNo);
+		// 			$("#h_carsize").val(data.result.class);
+		//
+		// 			$('#h_owner_pnm').val(data.result.owner_pnm);
+		// 			$('#h_vin').val(data.result.vin);
+		//
+		// 			$('#h_car_maker_type').val(data.result.car_maker_type);
+		//
+		// 			$('#h_makeymd').val(data.result.make_ymd);
+		//
+		// 			if ($('#h_ttype').val() == "1") {	//정기검사이면
+		// 				var total = parseInt(data.result.cost1) + parseInt($('#h_cost2').val());	//서비스 이용료, 검사료 + 대행료
+		// 			} else {	//정기검사가 아니면
+		// 				var total = parseInt(data.result.cost1) + parseInt($('#h_cost2_total').val());	//서비스 이용료, 검사료 + 대행료
+		// 			}
+		// 			//console.log('수수료+대행료:'+total);
+		//
+		// 			var prepaid_cost	= $('#prepaid_cost').val();						//재구매 할인
+		// 			var member_cost = $('#member_cost').val();						//회원 할인
+		// 			var reorder_cost	= $('#reorder_cost').val();						//재구매 할인
+		// 			$('#totcost').val(parseInt(total));
+		// 			$('#h_payment').val(total-prepaid_cost-member_cost-reorder_cost);
+		// 			$('#payment').val(setComma(total-prepaid_cost-member_cost-reorder_cost));
+		// 			$('.payment_text').text(setComma(total-prepaid_cost-member_cost-reorder_cost));
+		// 			//alert('검사정보가 처리되었습니다.');
+		//
+		// 			$('#tsresult_car_name').text(data.result.car_nm);
+		// 			$('#tsresult_test_type').text(data.result.ttype_title);
+		// 			$('#tsresult_exp_date').text(data.result.middate);
+		// 			$('#tsresult_cost_1').text('￦'+data.result.cost1.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+		// 			if ($('#h_ttype').val() == "1") {	//정기검사이면
+		// 				$('#tsresult_cost_2').text('￦'+$('#h_cost2').val().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+		// 			} else {									//정기검사가 아니면
+		// 				$('#tsresult_cost_2').text('￦'+$('#h_cost2_total').val().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+		// 			}
+		// 			$('#tsresult_payment').text('￦'+total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+		//
+		// 			$('#result_ts').show();
+		// 			/*
+		// 			$('#testbasicinfo1').show();
+		// 			$('#testbasicinfo2').show();
+		// 			$('#testuserinfo').show();
+		// 			$('#testcarinfo').show();
+		// 			$('#couponinfo').show();
+		// 			$('#testpayment').show();
+		// 			$('#testagreement').show();
+		// 			$('#testorderdone').show();
+		// 			*/
+		//
+		// 			//자동차검사정보 조회 후 조회된 결과로 화면을 이동
+		// 			var offset = $("#result_ts").offset();
+		// 			$('html, body').animate({scrollTop : offset.top-110}, 1200);
+		//
+		// 			//carInfo.recall_data();		//리콜조회 by p2020/recall_data/ excel file
+		// 			//carInfo.recall_cargokr();	//리콜조회 by cargokr
+		//
+		// 		} else if(data.code == 2) {		//검사기간이 아닌 경우
+		// 			$('#register_alert').modal('toggle');
+		//
+		// 			$('#detailaddress').val('검사알림서비스는 주차위치를 수집하지 않습니다');
+		// 			$('#h_bymd').val(bymd);
+		// 			$('#h_carno').val(carNo);
+		//
+		// 			$('#carname_alert_display').text(data.result.car_nm);
+		// 			//$('#expdate_alert_display').text(data.result.middate);
+		// 			$('#expdate_alert_display').text(data.result.fvdt+ ' ~ '+data.result.tvdt);
+		// 			$('#alertdate_display').text(data.result.fvdt);
+		//
+		// 			$('#expdate_alert').val(data.result.middate);
+		// 			$('#alertdate').val(data.result.fvdt);
+		// 			$('#startdate').val(data.result.fvdt);
+		// 			$('#enddate').val(data.result.tvdt);
+		//
+		//
+		//
+		// 			$('#carname_alert').val(data.result.car_nm);
+		// 			$('#startdate').val(data.result.fvdt);
+		// 			$('#enddate').val(data.result.tvdt);
+		// 			$('#expdate_alert').val(data.result.middate);
+		// 			$('#alertdate_alert').val(data.result.fvdt);
+		//
+		// 			$('#register_alert').show();
+		// 			$('#alertdone').show();
+		//
+		// 			//자동차검사정보 조회 후 조회된 결과로 화면을 이동
+		// 			//var offset = $("#register_alert").offset();
+		// 			//$('html, body').animate({scrollTop : offset.top-110}, 1200);
+		//
+		// 			//검사기간이 아닌 경우 기존 검사결과가 표시된 것이 있으면 초기화
+		// 			$('#tsresult_car_name').text('');
+		// 			$('#tsresult_test_type').text('');
+		// 			$('#tsresult_exp_date').text('');
+		// 			$('#tsresult_cost_1').text('');
+		// 			$('#tsresult_cost_2').text('');
+		// 			$('#tsresult_payment').text('');
+		// 			$('#result_ts').hide();
+		//
+		// 			//	검사기간이 아닌 경우 알림서비스를 신청하지 않고
+		// 			//	modal창을 닫고 나오는 경우 예약이 되지 않도록 차량번호와 생년월일을 지움 --> 다시 모달창이 뜨게 됨
+		// 			$('#carno').val('');
+		// 			$('#bymd').val('');
+		//
+		// 		} else {
+		// 			//검사정보 조회후 다시 시도시 실패한 경우 기존 검사결과를 초기화
+		// 			$('#tsresult_car_name').text('');
+		// 			$('#tsresult_test_type').text('');
+		// 			$('#tsresult_exp_date').text('');
+		// 			$('#tsresult_cost_1').text('');
+		// 			$('#tsresult_cost_2').text('');
+		// 			$('#tsresult_payment').text('');
+		// 			$('#result_ts').hide();
+		//
+		// 			//setTimeout('alert("'+data.message+'")', 300);
+		// 			$("#alert-message-modal .alert-img").attr('src', 'images/alert/'+data.img);
+		// 			if (data.title == "정상적인 접근이 아닙니다.") {
+		// 				var alertMainTitle	=	data.maintitle;
+		// 				data.title					=	"<h6 class='text-danger'> 한국교통안전공단의 자동차검사 정보 조회가 <u>본인인증 후 이용될 수 있도록 정책이 변경</u>되었습니다.</h6>";
+		// 			} else {
+		// 				var alertMainTitle	=	"OH! NO";
+		// 				data.title					=	data.title;
+		// 			}
+		// 			$('#alert-message-modal .alert-maintitle').html(alertMainTitle);
+		// 			$('#alert-message-modal .alert-title').html(data.title);
+		// 			$('#alert-message-modal .para-desc').html(data.message);
+		// 			if (data.title == "<h6 class='text-danger'> 한국교통안전공단의 자동차검사 정보 조회가 <u>본인인증 후 이용될 수 있도록 정책이 변경</u>되었습니다.</h6>") {
+		// 				var para_form	=	'<div class="row">'
+		// 									+	'	<div class="col-lg-12">'
+		// 									+	'		<div class="alert alert-light" style="padding: 8px 15px !important;border-radius: 6px;font-size: 14px;" role="alert">'
+		// 									+	'			<p>픽업장소 : '+ $("#roadaddr").val()+'", '+$("#carno").val()+' 자동차에 대한 상담을 이어가시겠습니까?</p>연락받으실 정보를 남겨주시면 담당자가 연락을 드리겠습니다.'
+		// 									+	'	    </div>'
+		// 									+	'	</div><!--end col-->'
+		// 									+	'	<div class="col-md-12">'
+		// 									+	'		<div class="form-group">       '
+		// 									+	'			<div class="position-relative">'
+		// 									+	'				<input type="text" class="form-control " placeholder="신청인 이름" name="reserveName" required="">'
+		// 									+	'			</div>'
+		// 									+	'		</div>'
+		// 									+	'	</div>'
+		// 									+	'	<div class="col-md-12">'
+		// 									+	'		<div class="form-group">'
+		// 									+	'			<div class="position-relative">'
+		// 									+	'				<input type="text" class="form-control " placeholder="연락받으실 전화번호" name="reserveTel" required="">'
+		// 									+	'			</div>'
+		// 									+	'		</div>'
+		// 									+	'	</div>'
+		// 									+	'	<div class="col-lg-12 reserveResultDiv">'
+		// 									+	'		<div class="alert alert-light" style="padding: 8px 15px !important;border-radius: 6px;font-size: 14px;" role="alert">'
+		// 									+	'			<p class="text-muted reserveResult	mx-auto"></p>'
+		// 									+	'	    </div>'
+		// 									+	'	</div><!--end col-->'
+		// 									+	'	<div class="col-md-12">'
+		// 									+	'		<a href="javascript:void(0);" id="reserveBtn" class="btn btn-block btn-primary reserveBtn">상담예약 남기기</a>'
+		// 									+	'	</div><!--end col-->'
+		// 									+	'</div>';
+		// 									//+	'<div class="row">'
+		// 									//+	'	<div class="col-md-12 text-center">'
+		// 									//+	'		<a href="javascript:void(0);" class="btn btn-outline-primary mt-4 OpenChat">상담요청</a>'
+		// 									//+	'		<a href="javascript:void(0);" class="btn btn-primary mt-4 " data-dismiss="modal" aria-label="Close">창 닫기</a>'
+		// 									//+	'		<!--<a href="index.html" class="btn btn-outline-primary mt-4 OpenChat">상담요청</a>'
+		// 									//+	'		<a href="index.html" class="btn btn-primary mt-4 ml-2">Go To Home</a>'
+		// 									//+	'		-->'
+		// 									//+	'	</div><!--end col-->'
+		// 									//+	'</div><!--end row-->'
+		// 				$('#alert-message-modal .para-form').html(para_form);
+		//
+		// 			}
+		// 			$('.reserveResultDiv' ).hide(); //알림창에서 추가액션이 일어나는 경우, 결과를 표시하는 것을 기본으로 숨김
+		// 			$('#alert-message-modal').modal('toggle');
+		// 		}
+		// 	},
+		// 	error : function() {
+		// 		$('body').loading('stop');
+		// 			//$('#alert-message-modal .alert-img').html(data.img);
+		// 			$("#alert-message-modal .alert-img").attr('src', 'images/alert/'+data.img);
+		// 			$('#alert-message-modal .alert-title').html(data.title);
+		// 			$('#alert-message-modal .para-desc').html(data.message);
+		// 			$('#alert-message-modal').modal('toggle');
+		// 		//alert(messages.do_alert_guide);
+		// 	}
+		// });
+		//
 
 	},
 	recall_data : function() {	//리콜정보 가져오기
@@ -570,7 +733,7 @@ carInfo = {
 						}
 					);
 
-			
+
 				}else{
 					htmlFmt += '<tr>';
 					htmlFmt += '<td class="text-center" colspan="3">공공데이터에 일치하는 리콜정보가 없습니다. 자동차 리콜센터에서 리콜상태등 자세한 정보를 확인할 수 있습니다.</td>';
@@ -598,7 +761,7 @@ carInfo = {
 			dataType : "json",
 			success : function(data) {
 				if(data.code == 0){
-				
+
 							//차량명, 경소중대, 국산1/수입2 구분
 							//htmlFmt += '<tr onClick="carInfo.setCarName(\''+carcp+' '+v.name+'\', \''+v.csize+'\', \''+v.code.substring(0,1)+'\')">';
 							htmlFmt += '<tr>';
@@ -620,7 +783,7 @@ carInfo = {
 						}
 					);
 
-			
+
 				}else{
 					htmlFmt += '<tr>';
 					htmlFmt += '<td>차량에 해당하는 리콜정보가 없습니다</td>';
@@ -635,6 +798,8 @@ carInfo = {
 			}
 		});
 	},
+
+
 	openCarLocationInfo : function(){
 		$('#carLocationInfoLayer').show();
 	},
@@ -993,6 +1158,8 @@ schedule = {
 		var vCarmaker_type		= $('#h_car_maker_type').val();		//국산수입구분
 		var vConditionLayer		= 1;											//필수값 체크 후 검사희망일레이어 띄우기 여부 
 
+		vSido='인천'
+
 		if (vAcode == '' || vSido==''){
 			Notify.alert({
 				title : '알림',
@@ -1188,6 +1355,7 @@ schedule = {
 		var vCarmaker_type		= $('#h_car_maker_type').val();		//국산수입구분
 		var vConditionLayer		= 1;											//필수값 체크 후 검사희망일레이어 띄우기 여부 
 
+		vSido='인천'
 		if (vAcode == '' || vSido==''){
 			Notify.alert({
 				title : '알림',
@@ -2930,7 +3098,7 @@ function execDaumPostcode() {
 
 			$.ajax({
 				type : "post",
-				url : '/p2020/data.html?act=get_acode',
+				url : '/pickup/data.html?act=get_acode',
 				contentType : "application/x-www-form-urlencoded; charset=UTF-8",
 				data : {
 						"sido" : sido, 
@@ -2956,42 +3124,7 @@ function execDaumPostcode() {
 					alert("정보 조회가 실패하였습니다.\n고객센터 1577-0266 또는 온라인상담에 서비스가 가능한 지역인지 확인을 요청해주세요");
 				}
 			});
-			// 주소코드 가져오기 끝
-			//$('#btnexecDaumPostcode > span').html('클릭해서 자동차 픽업주소를 입력하세요');
 
-
-			// 카카오지도API 주소-좌표 변환 객체를 생성합니다
-			var geocoder = new daum.maps.services.Geocoder();
-
-			// 주소로 좌표를 검색합니다
-			geocoder.addressSearch(roadaddr, function(result, status) {
-
-				// 정상적으로 검색이 완료됐으면 
-				if (status === daum.maps.services.Status.OK) {
-					var coords = new daum.maps.LatLng(result[0].y, result[0].x);
-					//console.log("--------------------------------------");
-					//console.log(coords);
-					//alert('ib='+coords.ib + 'jb='+coords.jb);
-
-					//위경도 좌표입니다.
-					$(" input[name=start_x]").val(result[0].y);
-					$(" input[name=start_y]").val(result[0].x);
-					
-
-
-				} 
-			}); 
-
-            // iframe을 넣은 element를 안보이게 한다.
-            // (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
-           // element_wrap.style.display = 'none';
-
-            // iframe을 넣은 element를 안보이게 한다.
-            // (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
-            element_layer.style.display = 'none';
-
-            // 우편번호 찾기 화면이 보이기 이전으로 scroll 위치를 되돌린다.
-            document.body.scrollTop = currentScroll;
         },
         
 		// 우편번호 찾기 화면 크기가 조정되었을때 실행할 코드를 작성하는 부분. iframe을 넣은 element의 높이값을 조정한다.
